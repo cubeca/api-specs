@@ -1,0 +1,22 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/echo/echo_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Echo response",
+    "description": "Echo response",
+    "type": "object",
+    "properties": {
+        "echo": {
+            "type": "string",
+            "description": "The echoed string."
+        },
+        "reverb": {
+            "type": "string",
+            "description": "The echoed string, but each letter is doubled. ;-)"
+        }
+    },
+    "required": [
+        "echo",
+        "reverb"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+{
+    "grant_type": "password",
+    "username": "user@art.org",
+    "password": "super-secret-password",
+    "scope": "art_org",
+    "client_id": "FRONTEND_CLIENT_ID"
+}

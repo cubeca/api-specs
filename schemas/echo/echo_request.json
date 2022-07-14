@@ -1,0 +1,17 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/echo/echo_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Echo request",
+    "description": "Echo request",
+    "type": "object",
+    "properties": {
+        "shout": {
+            "type": "string",
+            "description": "The string to be echoed."
+        }
+    },
+    "required": [
+        "shout"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,47 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/auth/login_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "OAuth2 password flow request",
+    "description": "OAuth2 password flow request",
+    "type": "object",
+    "properties": {
+        "grant_type": {
+            "type": "string",
+            "description": "OAuth2 grant type. We only use 'password' here.",
+            "enum": ["password"],
+            "const": "password"
+        },
+        "username": {
+            "type": "string",
+            "description": "The username entered by the user."
+        },
+        "password": {
+            "type": "string",
+            "description": "The password entered by the user."
+        },
+        "scope": {
+            "type": "string",
+            "description": "OAuth2 scope. Currently, we only have 'art_org' here.",
+            "enum": [
+                "art_org"
+            ],
+            "const": "art_org"
+        },
+        "client_id": {
+            "type": "string",
+            "description": "OAuth2 client ID. For the Cube BFF, there is only 1 client, so we set it to the fixed value 'FRONTEND_CLIENT_ID' here. Note: OAuth2 client IDs are public.",
+            "enum": [
+                "FRONTEND_CLIENT_ID"
+            ],
+            "const": "FRONTEND_CLIENT_ID"
+        }
+    },
+    "required": [
+        "grant_type",
+        "username",
+        "password",
+        "scope",
+        "client_id"
+    ],
+    "additionalProperties": false
+}

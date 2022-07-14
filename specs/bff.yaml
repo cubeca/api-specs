@@ -1,0 +1,237 @@
+openapi: 3.1.0
+info:
+  title: BFF - CUBE DAO Canada
+
+  # Until the video platform MVP is live, only count up the patch version,
+  # i.e. 0.0.x --> 0.0.(x+1)
+  # In general, use semantic versioning: http://semver.org/
+  version: '0.0.1'
+  
+  description: |
+    # BFF (Backend-for-Frontend)
+
+    The BFF API caters to each and every whim of the Frontend,
+    i.e. it receives, bundles, packages and formats data exactly
+    as the Frontend needs it.
+
+    The actual implementation of the BFF will then in turn translate
+    the Frontend traffic into whatever the specialized and semantically
+    modular "real" backend services understand.
+
+  contact:
+    email: raphaelhuefner@gmail.com
+    url: 'https://github.com/cubeca'
+  license:
+    name: UNLICENSED
+    url: 'https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license'
+
+tags:
+  - name: Auth
+    description: Login, forgot password, etc.
+  - name: User
+    description: User stuff, like view profile etc.
+
+servers:
+  - url: 'http://dev.cube.strengthinnumbers.business/bff'
+  - url: 'http://staging.cube.strengthinnumbers.business/bff'
+  - url: 'http://localhost/'
+
+security: 
+  - oauth2_logged_in: 
+    - art_org
+    - cube_staff
+    - cube_admin
+
+paths:
+  '/auth/token':
+    post:
+      operationId: login
+      summary: Login with username and password
+      description: Log user in with username and password.
+      tags:
+        - Auth
+
+      # While we are logging in we are not yet authenticated,
+      # so we have to allow for "no auth" by overriding the
+      # global "security" setting with a local empty one.
+      security: []
+
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: ../schemas/auth/login_request.json
+            example:
+              $ref: ../schemas/auth/login_request.example.json
+        description: OAuth2 password flow request
+        required: true
+      responses:
+        '200':
+          description: Successful login result with an OAuth2 access token
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/auth/login_response.json
+              example:
+                $ref: ../schemas/auth/login_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/echo':
+    post:
+      operationId: echo
+      summary: Simple echo request
+      description: Simple echo request.
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/echo/echo_request.json
+            example:
+              $ref: ../schemas/echo/echo_request.example.json
+        description: Simple echo request
+        required: true
+      responses:
+        '200':
+          description: Simple echo response
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/echo/echo_response.json
+              example:
+                $ref: ../schemas/echo/echo_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+        
+components:
+  responses:
+    error400:
+      description: Error 400
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.400.json
+    error401:
+      description: Error 401
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.401.json
+    error403:
+      description: Error 403
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.403.json
+    error404:
+      description: Error 404
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.404.json
+    error405:
+      description: Error 405
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.405.json
+    error406:
+      description: Error 406
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.406.json
+    error422:
+      description: Error 422
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.422.json
+    error429:
+      description: Error 429
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.429.json
+    error500:
+      description: Error 500
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.500.json
+    error503:
+      description: Error 503
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.503.json
+
+  securitySchemes:
+    oauth2_logged_in:
+      type: oauth2
+      description: This API uses OAuth 2 with the password grant flow. [More info](https://api.example.com/docs/auth)
+      flows:
+        password:
+          tokenUrl: /auth/token
+          scopes:
+            art_org: Log in as an art organization
+            cube_staff: Log in as CUBE staff
+            cube_admin: Log in as CUBE admin
