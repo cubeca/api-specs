@@ -1,0 +1,38 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/mediafiles/contributor.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Contributor details",
+    "description": "Contributor details",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "link": {
+            "type": "string",
+            "format": "url"
+        },
+        "name": {
+            "type": "string"
+        },
+        "socialUrl": {
+            "type": "string",
+            "format": "url"
+        },
+        "socialHandle": {
+            "type": "string"
+        },
+        "logoUrl": {
+            "type": "string",
+            "format": "url"
+        }
+    },
+    "required": [
+        "id",
+        "link",
+        "name",
+        "socialUrl",
+        "socialHandle",
+        "logoUrl"
+    ]
+}

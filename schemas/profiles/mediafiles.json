@@ -1,0 +1,22 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/profiles/mediafiles.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Profile media files per category",
+    "description": "Profile media files per category",
+    "type": "object",
+    "properties": {
+        "category": {
+            "$ref": "../mediafiles/mediafile.json#/properties/category"
+        },
+        "videos": {
+            "type": "array",
+            "items": {
+                "$ref": "../mediafiles/mediafile_listed.json"
+            }
+        }
+    },
+    "required": [
+        "category",
+        "videos"
+    ]
+}

@@ -1,0 +1,96 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/common/language.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Language",
+    "description": "Language",
+    "type": "object",
+    "properties": {
+        "id": {
+            "$ref": "./language_id.json"
+        },
+        "names": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "languageId": {
+                        "$ref": "./language_id.json"
+                    }
+                }
+            }
+        },
+        "iso639_3Id": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "https://en.wikipedia.org/wiki/ISO_639-3"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "glottologId": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "https://github.com/glottolog/glottolog"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "isAudio": {
+            "type": "boolean",
+            "description": "can be sufficiently represented by audio alone (i.e. spoken, sung, drummed or whistled languages etc.)"
+        },
+        "isVideo": {
+            "type": "boolean",
+            "description": "can be sufficiently represented by video alone (i.e. sign language)"
+        },
+        "isWritten": {
+            "type": "boolean",
+            "description": "can be sufficiently represented by writing alone (i.e. has a script, can be shown via a Web Font)"
+        },
+        "isGraphical": {
+            "type": "boolean",
+            "description": "can be sufficiently represented by graphics only (i.e. can *NOT* be written, i.e. can *NOT* be captured with a finite set of symbols like an alphabet or the set of Mandarin logograms)"
+        },
+        "fonts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "format": "url"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "TEXTBODY",
+                            "HEADING"
+                        ],
+                        "default": "TEXTBODY"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "id",
+        "names",
+        "iso639_3Id",
+        "glottologId",
+        "isAudio",
+        "isVideo",
+        "isWritten",
+        "isGraphical",
+        "fonts"
+    ],
+    "additionalProperties": false
+}

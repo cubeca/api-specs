@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "title": "Title 1",
+            "creator": "Creator 1",
+            "url": "/videos/1",
+            "thumbnailUrl": "images/video_thumbnail.jpg",
+            "iconUrl": "images/creator_icon.png",
+            "category": "video",
+            "type": "video"
+        },
+        {
+            "id": "2",
+            "title": "Title 2",
+            "creator": "Creator 2",
+            "url": "/videos/2",
+            "thumbnailUrl": "images/video_thumbnail.jpg",
+            "iconUrl": "images/creator_icon.png",
+            "category": "video",
+            "type": "video"
+        }
+    ]
+}

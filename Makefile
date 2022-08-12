@@ -30,6 +30,14 @@ req_auth:
 		--header "Content-Type: application/x-www-form-urlencoded" \
 		--include
 
+req_auth_broken:
+	curl http://localhost:8080/auth/token \
+		--request POST \
+		--data "username=me&grant_type=password&scope=art_org&client_id=FRONTEND_CLIENT_ID" \
+		--header "Accept: application/json" \
+		--header "Content-Type: application/x-www-form-urlencoded" \
+		--include
+
 req_echo:
 	curl http://localhost:8080/echo \
 		--request POST \

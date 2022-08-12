@@ -1,0 +1,43 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/profiles/profile.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Profile main schema",
+    "description": "Profile main schema",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "heroUrl": {
+            "type": "string",
+            "format": "url"
+        },
+        "logoUrl": {
+            "type": "string",
+            "format": "url"
+        },
+        "description": {
+            "type": "string"
+        },
+        "descriptionUrl": {
+            "type": "string",
+            "description": "URL of audio file for description"
+        },
+        "videos": {
+            "type": "array",
+            "items": {
+                "$ref": "./mediafiles.json"
+            }
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "description",
+        "descriptionUrl",
+        "videos"
+    ]
+}

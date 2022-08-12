@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
   title: BFF - CUBE DAO Canada
 
@@ -30,11 +30,13 @@ tags:
     description: Login, forgot password, etc.
   - name: User
     description: User stuff, like view profile etc.
+  - name: MediaFiles
+    description: Media files
 
 servers:
-  - url: 'http://dev.cube.strengthinnumbers.business/bff'
-  - url: 'http://staging.cube.strengthinnumbers.business/bff'
-  - url: 'http://localhost/'
+  - url: 'http://dev.cube.strengthinnumbers.business/bff/api/v1'
+  - url: 'http://staging.cube.strengthinnumbers.business/bff/api/v1'
+  - url: 'http://localhost/bff/api/v1'
 
 security: 
   - oauth2_logged_in: 
@@ -140,7 +142,188 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-        
+
+  '/videos':
+    get:
+      operationId: mediafile_list
+      summary: List media files
+      description: List media files.
+      tags:
+        - MediaFiles
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: true
+          schema:
+            type: integer
+        - name: page_size
+          in: query
+          description: Number of items on a page
+          required: true
+          schema:
+            type: integer
+        - name: category
+          in: query
+          description: Media category
+          required: false
+          schema:
+            type: string
+            enum:
+              - all
+              - video
+              - audio
+              - vr
+              - pdf
+              - digital-publications
+              - talks
+              - performances
+              - cultural-teachings
+            default: all
+        - name: type
+          in: query
+          description: Mediafile type
+          required: false
+          schema:
+            type: string
+            enum:
+              - video
+              - audio
+              - pdf
+            default: video
+        - name: country
+          in: query
+          description: Related to Country
+          required: false
+          schema:
+            type: string
+            enum:
+              - CA
+            default: CA
+        - name: creator
+          in: query
+          description: Created by
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of media files
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/mediafiles/list_response.json
+              example:
+                $ref: ../schemas/mediafiles/list_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/videos/{mediafileId}':
+    get:
+      operationId: mediafile_details
+      summary: Get media file details
+      description: Get media file details.
+      tags:
+        - MediaFiles
+      parameters:
+        - name: mediafileId
+          in: path
+          description: Media file ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Media file details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/mediafiles/detail_response.json
+              example:
+                $ref: ../schemas/mediafiles/detail_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/profiles/{profileId}':
+    get:
+      operationId: profile_details
+      summary: Get profile details
+      description: Get profile details.
+      tags:
+        - User
+      parameters:
+        - name: profileId
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/detail_response.json
+              example:
+                $ref: ../schemas/profiles/detail_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
 components:
   responses:
     error400:

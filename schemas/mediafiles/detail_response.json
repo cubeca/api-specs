@@ -1,0 +1,15 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/mediafiles/detail_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Media file details",
+    "description": "Media file details",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "./mediafile_detailed.json"
+        }
+    },
+    "required": [
+        "data"
+    ]
+}

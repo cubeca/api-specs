@@ -1,0 +1,81 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/mediafiles/mediafile.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Media file full/main schema",
+    "description": "Media file full/main schema",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "url": {
+            "type": "string",
+            "format": "url"
+        },
+        "title": {
+            "type": "string"
+        },
+
+
+        "createdDate": {
+            "type": "string"
+        },
+        "updatedDate": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "descriptionUrl": {
+            "type": "string",
+            "description": "URL of audio file for description"
+        },
+        "contributors": {
+            "type": "array",
+            "items": {
+                "$ref": "./contributor.json"
+            }
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "creator": {
+            "type": "string"
+        },
+        "thumbnailUrl": {
+            "type": "string",
+            "format": "url"
+        },
+        "iconUrl": {
+            "type": "string",
+            "format": "url"
+        },
+        "category": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "url",
+        "title",
+        
+        "createdDate",
+        "updatedDate",
+        "description",
+        "descriptionUrl",
+        "contributors",
+        "tags",
+
+        "creator",
+        "thumbnailUrl",
+        "iconUrl",
+        "category",
+        "type"
+    ]
+}

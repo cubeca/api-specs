@@ -1,0 +1,7 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/common/language_id.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Language ID",
+    "description": "defaults to iso639_3Id, then glottologId, then internal UUID",
+    "type": "string"
+}

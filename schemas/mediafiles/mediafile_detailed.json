@@ -1,0 +1,67 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/mediafiles/mediafile_detailed.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Media file details",
+    "description": "Media file details",
+    "type": "object",
+    "properties": {
+        "id": {
+            "$ref": "./mediafile.json#/properties/id"
+        },
+        "url": {
+            "$ref": "./mediafile.json#/properties/url"
+        },
+        "title": {
+            "$ref": "./mediafile.json#/properties/title"
+        },
+        "createdDate": {
+            "$ref": "./mediafile.json#/properties/createdDate"
+        },
+        "updatedDate": {
+            "$ref": "./mediafile.json#/properties/updatedDate"
+        },
+        "description": {
+            "$ref": "./mediafile.json#/properties/description"
+        },
+        "descriptionUrl": {
+            "$ref": "./mediafile.json#/properties/descriptionUrl"
+        },
+        "contributors": {
+            "$ref": "./mediafile.json#/properties/contributors"
+        },
+        "tags": {
+            "$ref": "./mediafile.json#/properties/tags"
+        },
+        "creator": {
+            "$ref": "./mediafile.json#/properties/creator"
+        },
+        "thumbnailUrl": {
+            "$ref": "./mediafile.json#/properties/thumbnailUrl"
+        },
+        "iconUrl": {
+            "$ref": "./mediafile.json#/properties/iconUrl"
+        },
+        "category": {
+            "$ref": "./mediafile.json#/properties/category"
+        },
+        "type": {
+            "$ref": "./mediafile.json#/properties/type"
+        }
+    },
+    "required": [
+        "id",
+        "url",
+        "title",
+        "createdDate",
+        "updatedDate",
+        "description",
+        "descriptionUrl",
+        "contributors",
+        "tags",
+        "creator",
+        "thumbnailUrl",
+        "iconUrl",
+        "category",
+        "type"
+    ]
+}

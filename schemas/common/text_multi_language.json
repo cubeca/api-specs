@@ -1,0 +1,43 @@
+{
+    "$id": "https://api.cube.strengthinnumbers.business/schemas/common/text_multi_language.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Multi-language text",
+    "description": "Multi-language text",
+    "type": "object",
+    "properties": {
+        "texts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string"
+                    },
+                    "languageId": {
+                        "$ref": "./language_id.json"
+                    }
+                }
+            }
+        },
+        "audios": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "format": "url"
+                    },
+                    "languageId": {
+                        "$ref": "./language_id.json"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "texts",
+        "audios"
+    ],
+    "additionalProperties": false
+}
