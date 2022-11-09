@@ -11,5 +11,8 @@
                 "$ref": "./mediafile_listed.json"
             }
         }
-    }
+    },
+    "required": [
+        "data"
+    ]
 }

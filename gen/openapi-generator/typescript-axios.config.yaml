@@ -1,0 +1,42 @@
+# See https://openapi-generator.tech/docs/generators/typescript-axios for all available config options
+
+# Set to false for generators with better support for discriminators.
+#
+# true: The mapping in the discriminator includes descendent schemas that allOf
+# inherit from self and the discriminator mapping schemas in the OAS document.
+#
+# false: The mapping in the discriminator includes any descendent schemas that
+# allOf inherit from self, any oneOf schemas, any anyOf schemas, any
+# x-discriminator-values, and the discriminator mapping schemas in the OAS
+# document AND Codegen validates that oneOf and anyOf schemas contain the
+# required discriminator and throws an error if the discriminator is missing.
+legacyDiscriminatorBehavior: false
+
+# The name under which you want to publish generated npm package. Required to generate a full package
+npmName: "@cubeca/bff-client-oas-axios"
+
+# # Use this property to set an url of your private npmRepo in the package.json
+# npmRepository:
+
+# When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
+snapshot: true
+
+# # Generate string enums instead of objects for enum values.
+# stringEnums:
+
+# Generate code that conforms to ES6.
+supportsES6: true
+
+# Setting this property to true will generate interfaces next to the default class implementations.
+withInterfaces: true
+
+# # Setting this property to true adds imports for NodeJS
+# withNodeImports:
+
+# Put the model and api in separate folders and in separate classes
+withSeparateModelsAndApi: true
+
+# Try to work around the following error. Suspect this to be triggered by `withSeparateModelsAndApi: true`
+# Exception in thread "main" java.lang.RuntimeException: apiPackage and modelPackage must be defined
+apiPackage: "apis"
+modelPackage: "models"

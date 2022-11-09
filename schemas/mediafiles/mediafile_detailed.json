@@ -1,7 +1,7 @@
 {
     "$id": "https://api.cube.strengthinnumbers.business/schemas/mediafiles/mediafile_detailed.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Media file details",
+    "title": "MediaFileDetails",
     "description": "Media file details",
     "type": "object",
     "properties": {
