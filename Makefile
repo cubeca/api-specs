@@ -154,7 +154,7 @@ ci_gha_install:
 .PHONY: ci_gha
 ci_gha: ci_gha_install
 	$(MAKE) gen_openapi
-	echo ".npmrc" >> $(HERE)/build/gen/typescript-axios/.npmignore
+	# echo ".npmrc" >> $(HERE)/build/gen/typescript-axios/.npmignore
 	cp $(HERE)/.npmrc $(HERE)/build/gen/typescript-axios/.npmrc
 	cat $(HERE)/build/gen/typescript-axios/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/package-edited.json
 	mv $(HERE)/build/gen/typescript-axios/package-edited.json $(HERE)/build/gen/typescript-axios/package.json
