@@ -31,7 +31,10 @@ jobs:
       #     scope: "@${{ env.GITHUB_REPOSITORY_OWNER }}"
 
       - name: "Switch to GPR (Github Package Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
-        run: printf "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\n@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > .npmrc
+        run: |
+          echo "$PWD"
+          printf "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\n@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > .npmrc
+          ls -laR .
 
       - name: Publish to npm.pkg.github.com
         run: |
