@@ -39,6 +39,8 @@ jobs:
           echo "CURRENT==$CURRENT"
           if [ "$LATEST" != "$CURRENT" ]
           then
+              npm ci
+              npm run build
               npm publish
           fi
         env:
