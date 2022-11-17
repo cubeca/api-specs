@@ -34,12 +34,11 @@ jobs:
         run: |
           echo "$PWD"
           printf "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\n@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > .npmrc
-	        cp ./.npmrc ./build/gen/typescript-axios/.npmrc
+          cp ./.npmrc ./build/gen/typescript-axios/.npmrc
           ls -laR .
 
       - name: Publish to npm.pkg.github.com
         run: |
-	        cp ./.npmrc ./build/gen/typescript-axios/.npmrc
           cd ./build/gen/typescript-axios
           LATEST=`npm view . version 2>/dev/null || echo "0"`
           echo "LATEST==$LATEST"
