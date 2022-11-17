@@ -143,3 +143,14 @@ gen_openapi_config_help:
 # 		mcr.microsoft.com/openapi/kiota \
 # 		generate \
 # 		--help
+
+
+.PHONY: ci_gha_install
+ci_gha_install:
+	sudo snap install yq
+	npm ci
+
+
+.PHONY: ci_gha
+ci_gha: ci_gha_install
+	$(MAKE) gen_openapi
