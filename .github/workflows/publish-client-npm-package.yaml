@@ -44,5 +44,5 @@ jobs:
               npm config set @cubeca:registry https://npm.pkg.github.com/cubeca
               npm publish
           fi
-        # env:
-        #   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
