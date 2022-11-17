@@ -24,11 +24,11 @@ jobs:
         run: |
           make ci_gha
 
-      - name: Switch to GPR (Github Package Registry) at npm.pkg.github.com
-        uses: actions/setup-node@v3
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-          scope: "@${{ env.GITHUB_REPOSITORY_OWNER }}"
+      # - name: Switch to GPR (Github Package Registry) at npm.pkg.github.com
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     registry-url: 'https://npm.pkg.github.com'
+      #     scope: "@${{ env.GITHUB_REPOSITORY_OWNER }}"
 
       - name: Publish to npm.pkg.github.com
         run: |
@@ -41,7 +41,8 @@ jobs:
           then
               npm install
               npm run build
+              npm config set @cubeca:registry https://npm.pkg.github.com/cubeca
               npm publish
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
