@@ -26,7 +26,8 @@ jobs:
 
       - name: "Switch to GPR (Github Packages Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
         run: |
-          printf "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\n@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ./build/gen/typescript-axios/.npmrc
+          ./scripts/write_npmrc.sh bff '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
+          ./scripts/write_npmrc.sh bff-auth '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
 
       - name: Publish to npm.pkg.github.com
         run: |
