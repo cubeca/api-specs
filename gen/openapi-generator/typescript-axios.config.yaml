@@ -12,11 +12,12 @@
 # required discriminator and throws an error if the discriminator is missing.
 legacyDiscriminatorBehavior: false
 
-# The name under which you want to publish generated npm package. Required to generate a full package
-npmName: "@cubeca/bff-client-oas-axios"
+# Gets specified per package {bff,bff-auth} via `--additional-properties`
+# # The name under which you want to publish generated npm package. Required to generate a full package
+# npmName: "@cubeca/bff-client-oas-axios"
 
-# # Use this property to set an url of your private npmRepo in the package.json
-# npmRepository:
+# Use this property to set an url of your private npmRepo in the package.json
+npmRepository: "https://npm.pkg.github.com"
 
 # When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
 snapshot: true

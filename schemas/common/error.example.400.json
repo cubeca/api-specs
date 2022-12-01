@@ -1,4 +1,4 @@
 {
     "status": 400,
-    "type": "https://api-docs.cube.strengthinnumbers.business/errors/bad_request"
+    "type": "https://docs.cubecommons.ca/errors/bad_request"
 }

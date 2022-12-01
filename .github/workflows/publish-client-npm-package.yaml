@@ -8,7 +8,7 @@ env:
   GITHUB_SHA: ${{ github.sha }}
 
 jobs:
-  publish_package_job:
+  publish_package:
     runs-on: ubuntu-22.04
     name: Publish API client NPM package to npm.pkg.github.com
     steps:
@@ -24,33 +24,11 @@ jobs:
         run: |
           make ci_gha
 
-      # - name: "Switch to GPR (Github Package Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     registry-url: 'https://npm.pkg.github.com'
-      #     scope: "@${{ env.GITHUB_REPOSITORY_OWNER }}"
-
-      - name: "Switch to GPR (Github Package Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
+      - name: "Switch to GPR (Github Packages Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
         run: |
-          echo "$PWD"
-          printf "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\n@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > .npmrc
-          cp ./.npmrc ./build/gen/typescript-axios/.npmrc
-          ls -laR .
+          printf "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}\n@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ./build/gen/typescript-axios/.npmrc
 
       - name: Publish to npm.pkg.github.com
         run: |
-          cd ./build/gen/typescript-axios
-          LATEST=`npm view . version 2>/dev/null || echo "0"`
-          echo "LATEST==$LATEST"
-          CURRENT=`cat package.json | jq -r .version`
-          echo "CURRENT==$CURRENT"
-          if [ "$LATEST" != "$CURRENT" ]
-          then
-              npm install
-              npm run build
-              npm publish
-          fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-              # npm config set @cubeca:registry https://npm.pkg.github.com/cubeca
+          ./scripts/publish.sh bff
+          ./scripts/publish.sh bff-auth

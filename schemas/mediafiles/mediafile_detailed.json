@@ -1,5 +1,5 @@
 {
-    "$id": "https://api.cube.strengthinnumbers.business/schemas/mediafiles/mediafile_detailed.json",
+    "$id": "https://docs.cubecommons.ca/schemas/mediafiles/mediafile_detailed.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "MediaFileDetails",
     "description": "Media file details",

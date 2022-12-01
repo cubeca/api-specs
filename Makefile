@@ -25,10 +25,6 @@ clean:
 logs:
 	$(PROJECT_DOCKER_COMPOSE) logs -f
 
-.PHONY: merge
-merge:
-	npx speccy resolve -i specs/bff.yaml -o build/bff.yaml
-
 .PHONY: req_auth
 req_auth:
 	curl http://localhost:8080/auth/token \
@@ -58,30 +54,43 @@ req_echo:
 		--include
 
 
+.PHONY: merge
+merge: merge--bff merge--bff-auth
+
+merge--%:
+	npx speccy resolve -i specs/$*.yaml -o build/$*.yaml
+
+
 .PHONY: filter
-filter: merge
-	cat $(HERE)/build/bff.yaml > $(HERE)/build/bff-filtered.yaml
-	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/bff-filtered.yaml
-	yq --inplace 'del(.. | .["$$id"]?)' $(HERE)/build/bff-filtered.yaml
-	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/bff-filtered.yaml
+filter: merge filter--bff filter--bff-auth
+
+filter--%:
+	cat $(HERE)/build/$*.yaml > $(HERE)/build/$*-filtered.yaml
+	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
+	yq --inplace 'del(.. | .["$$id"]?)' $(HERE)/build/$*-filtered.yaml
+	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/$*-filtered.yaml
 
 
 .PHONY: filterdiff
-filterdiff: filter
-	yq '.' $(HERE)/build/bff.yaml > $(HERE)/build/bff-yq.yaml
-	git diff --no-index build/bff-yq.yaml build/bff-filtered.yaml
+filterdiff: filter filterdiff--bff filterdiff--bff-auth
+
+filterdiff--%:
+	yq '.' $(HERE)/build/$*.yaml > $(HERE)/build/$*-yq.yaml
+	git diff --no-index build/$*-yq.yaml build/$*-filtered.yaml
 
 
 .PHONY: gen_openapi
-gen_openapi: filter
-	-mkdir -p $(HERE)/build/gen/typescript-axios
+gen_openapi: filter gen_openapi--bff gen_openapi--bff-auth
+
+gen_openapi--%:
+	-mkdir -p $(HERE)/build/gen/typescript-axios/$*
 	cp $(HERE)/gen/openapi-generator/typescript-axios.config.yaml $(HERE)/build/gen/typescript-axios.config.yaml
 	$(DOCKER) \
 		run --rm \
 		--volume $(HERE)/build:/build \
 		openapitools/openapi-generator-cli \
 		generate \
-		--input-spec /build/bff-filtered.yaml \
+		--input-spec /build/$*-filtered.yaml \
 		--generator-name typescript-axios \
 		--config /build/gen/typescript-axios.config.yaml \
 		--global-property verbose=true \
@@ -89,11 +98,8 @@ gen_openapi: filter
 		--global-property modelDocs=true \
 		--global-property apiTests=true \
 		--global-property modelTests=true \
-		--output /build/gen/typescript-axios
-
-
-		# --env GIT_USER_ID=cubeca \
-		# --env GIT_REPO_ID=api-specs \
+		--additional-properties=npmName="@cubeca/$*-client-oas-axios" \
+		--output /build/gen/typescript-axios/$*
 
 
 .PHONY: gen_openapi_help
@@ -105,7 +111,7 @@ gen_openapi_help:
 
 
 .PHONY: gen_openapi_help_generate
-gen_openapi_help:
+gen_openapi_help_generate:
 	$(DOCKER) \
 		run --rm \
 		openapitools/openapi-generator-cli \
@@ -122,29 +128,6 @@ gen_openapi_config_help:
 		--generator-name typescript-axios
 
 
-# .PHONY: gen_kiota
-# gen_kiota: filter
-# 	-mkdir -p $(HERE)/build/gen/typescript-kiota
-# 	$(DOCKER) \
-# 		run --rm \
-# 		--volume $(HERE)/build:/build \
-# 		mcr.microsoft.com/openapi/kiota \
-# 		generate \
-# 		--language TypeScript \
-# 		--openapi /build/bff-filtered.yaml \
-# 		--output /build/gen/typescript-kiota \
-# 		--class-name CubeApiClient \
-# 		--namespace-name cubedao
-#
-#
-# .PHONY: gen_kiota_help
-# gen_kiota_help:
-# 	$(DOCKER) run --rm \
-# 		mcr.microsoft.com/openapi/kiota \
-# 		generate \
-# 		--help
-
-
 .PHONY: ci_gha_install
 ci_gha_install:
 	sudo snap install yq
@@ -154,6 +137,12 @@ ci_gha_install:
 .PHONY: ci_gha
 ci_gha: ci_gha_install
 	$(MAKE) gen_openapi
-	# echo ".npmrc" >> $(HERE)/build/gen/typescript-axios/.npmignore
-	cat $(HERE)/build/gen/typescript-axios/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/package-edited.json
-	mv $(HERE)/build/gen/typescript-axios/package-edited.json $(HERE)/build/gen/typescript-axios/package.json
+	$(MAKE) fix_package_json
+
+
+.PHONY: fix_package_json
+fix_package_json: fix_package_json--bff fix_package_json--bff-auth
+
+fix_package_json--%:
+	cat $(HERE)/build/gen/typescript-axios/$*/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/$*/package-edited.json
+	mv $(HERE)/build/gen/typescript-axios/$*/package-edited.json $(HERE)/build/gen/typescript-axios/$*/package.json

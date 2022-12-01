@@ -1,5 +1,5 @@
 {
-    "$id": "https://api.cube.strengthinnumbers.business/schemas/common/language.json",
+    "$id": "https://docs.cubecommons.ca/schemas/common/language.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Language",
     "description": "Language",

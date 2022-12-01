@@ -1,5 +1,5 @@
 {
-    "$id": "https://api.cube.strengthinnumbers.business/schemas/profiles/detail_response.json",
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/detail_response.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Profile details",
     "description": "Profile details",

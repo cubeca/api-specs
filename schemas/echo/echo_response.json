@@ -1,5 +1,5 @@
 {
-    "$id": "https://api.cube.strengthinnumbers.business/schemas/echo/echo_response.json",
+    "$id": "https://docs.cubecommons.ca/schemas/echo/echo_response.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Echo response",
     "description": "Echo response",

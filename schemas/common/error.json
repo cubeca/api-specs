@@ -1,5 +1,5 @@
 {
-    "$id": "https://api.cube.strengthinnumbers.business/schemas/common/error.json",
+    "$id": "https://docs.cubecommons.ca/schemas/common/error.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Error Response",
     "description": "An error response formatted according to https://datatracker.ietf.org/doc/html/rfc7807",

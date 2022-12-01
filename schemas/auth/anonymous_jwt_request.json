@@ -1,0 +1,18 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/auth/anonymous_jwt_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Anonymous JWT Request",
+    "description": "Anonymous JWT Request",
+    "type": "object",
+    "properties": {
+        "anonymous": {
+            "type": "boolean",
+            "default": true,
+            "description": "Dummy value."
+        }
+    },
+    "required": [
+        "anonymous"
+    ],
+    "additionalProperties": false
+}

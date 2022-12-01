@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: BFF-Auth - CUBE DAO Canada
+
+  # Until the video platform MVP is live, only count up the patch version,
+  # i.e. 0.0.x --> 0.0.(x+1)
+  # In general, use semantic versioning: http://semver.org/
+  version: '0.0.1'
+  
+  description: |
+    # BFF-Auth (Authentication for Backend-for-Frontend)
+
+    The BFF-Auth API encapsulates authentication for the BFF.
+    It's kept separate for modularity.
+
+  contact:
+    email: raphaelhuefner@gmail.com
+    url: 'https://github.com/cubeca'
+  license:
+    name: UNLICENSED
+    url: 'https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license'
+
+tags:
+  - name: Auth
+    description: Login, forgot password, etc.
+
+servers:
+  - url: http://localhost:{port}/{basePath}/{apiVersion}
+    description: Local development
+    variables:
+      port:
+        enum:
+          - '8080'
+          - '8081'
+          - '8082'
+          - '8083'
+          - '8084'
+          - '8085'
+          - '18080'
+          - '18081'
+          - '18082'
+          - '18083'
+          - '18084'
+          - '18085'
+        default: '8080'
+      basePath:
+        default: bff/auth
+      apiVersion:
+        default: v1
+
+  - url: https://bff-auth.{stage}.cubecommons.ca/{apiVersion}
+    description: CUBE's shared API server instances, including production
+    variables:
+      stage:
+        enum:
+          # # Both UNSTABLE and STAGING are stages in the development environment
+          - unstable
+          # - staging
+
+          # # Both SANDBOX and LIVE are stages in the production environment
+          # - sandbox
+          # - live
+        default: unstable
+        description: deployment stage
+      apiVersion:
+        default: v1
+
+paths:
+  '/auth/anonymous':
+    post:
+      operationId: anonymous_JWT
+      summary: Acquire a JWT as an anonymous user.
+      description: Acquire a JWT as an anonymous user.
+      tags:
+        - Auth
+
+      # While we are logging in we are not yet authenticated,
+      # so we have to allow for "no auth" by overriding the
+      # global "security" setting with a local empty one.
+      security: []
+
+      requestBody:
+        description: Anonymous JWT request
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/auth/anonymous_jwt_request.json
+            example:
+              $ref: ../schemas/auth/anonymous_jwt_request.example.json
+        required: true
+      responses:
+        '200':
+          description: Successful result contains a JWT
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/auth/jwt_response.json
+              example:
+                $ref: ../schemas/auth/jwt_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '406':
+          $ref: '#/components/responses/error406'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/auth/login':
+    post:
+      operationId: login
+      summary: Login with username and password
+      description: Log user in with username and password.
+      tags:
+        - Auth
+
+      # While we are logging in we are not yet authenticated,
+      # so we have to allow for "no auth" by overriding the
+      # global "security" setting with a local empty one.
+      security: []
+
+      requestBody:
+        description: Logged-in JWT request
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/auth/login_request.json
+            example:
+              $ref: ../schemas/auth/login_request.example.json
+        required: true
+      responses:
+        '200':
+          description: Successful login result contains a JWT
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/auth/jwt_response.json
+              example:
+                $ref: ../schemas/auth/jwt_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '406':
+          $ref: '#/components/responses/error406'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+components:
+  responses:
+    error400:
+      description: Error 400
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.400.json
+    error401:
+      description: Error 401
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.401.json
+    error403:
+      description: Error 403
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.403.json
+    error406:
+      description: Error 406
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.406.json
+    error429:
+      description: Error 429
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.429.json
+    error500:
+      description: Error 500
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.500.json
+    error503:
+      description: Error 503
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../schemas/common/error.json
+          example:
+            $ref: ../schemas/common/error.example.503.json

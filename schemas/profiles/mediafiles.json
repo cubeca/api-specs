@@ -1,5 +1,5 @@
 {
-    "$id": "https://api.cube.strengthinnumbers.business/schemas/profiles/mediafiles.json",
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/mediafiles.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Profile media files per category",
     "description": "Profile media files per category",

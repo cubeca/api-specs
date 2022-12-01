@@ -26,77 +26,56 @@ info:
     url: 'https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license'
 
 tags:
-  - name: Auth
-    description: Login, forgot password, etc.
   - name: User
     description: User stuff, like view profile etc.
   - name: MediaFiles
     description: Media files
 
 servers:
-  - url: 'http://dev.cube.strengthinnumbers.business/bff/api/v1'
-  - url: 'http://staging.cube.strengthinnumbers.business/bff/api/v1'
-  - url: 'http://localhost/bff/api/v1'
+  - url: http://localhost:{port}/{basePath}/{apiVersion}
+    description: Local development
+    variables:
+      port:
+        enum:
+          - '8080'
+          - '8081'
+          - '8082'
+          - '8083'
+          - '8084'
+          - '8085'
+          - '18080'
+          - '18081'
+          - '18082'
+          - '18083'
+          - '18084'
+          - '18085'
+        default: '8080'
+      basePath:
+        default: bff/api
+      apiVersion:
+        default: v1
+
+  - url: https://bff.{stage}.cubecommons.ca/{apiVersion}
+    description: CUBE's shared API server instances, including production
+    variables:
+      stage:
+        enum:
+          # # Both UNSTABLE and STAGING are stages in the development environment
+          - unstable
+          # - staging
+
+          # # Both SANDBOX and LIVE are stages in the production environment
+          # - sandbox
+          # - live
+        default: unstable
+        description: deployment stage
+      apiVersion:
+        default: v1
 
 security: 
-  - oauth2_logged_in: 
-    - art_org
-    - cube_staff
-    - cube_admin
+  - jwt_logged_in: []
 
 paths:
-  '/auth/token':
-    post:
-      operationId: login
-      summary: Login with username and password
-      description: Log user in with username and password.
-      tags:
-        - Auth
-
-      # While we are logging in we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
-
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: ../schemas/auth/login_request.json
-            example:
-              $ref: ../schemas/auth/login_request.example.json
-        description: OAuth2 password flow request
-        required: true
-      responses:
-        '200':
-          description: Successful login result with an OAuth2 access token
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/auth/login_response.json
-              example:
-                $ref: ../schemas/auth/login_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
   '/echo':
     post:
       operationId: echo
@@ -408,13 +387,8 @@ components:
             $ref: ../schemas/common/error.example.503.json
 
   securitySchemes:
-    oauth2_logged_in:
-      type: oauth2
-      description: This API uses OAuth 2 with the password grant flow. [More info](https://api.example.com/docs/auth)
-      flows:
-        password:
-          tokenUrl: /auth/token
-          scopes:
-            art_org: Log in as an art organization
-            cube_staff: Log in as CUBE staff
-            cube_admin: Log in as CUBE admin
+    jwt_logged_in:
+      type: http
+      description: This API uses JWT. Either anonymous JWT or logged-in JWT via username and password.
+      scheme: bearer
+      bearerFormat: JWT
