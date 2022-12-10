@@ -62,15 +62,17 @@ jobs:
           docker tag $MOCK_SERVER_DOCKER_IMAGE $GCP_MOCK_SERVER_DOCKER_IMAGE
           docker push $GCP_MOCK_SERVER_DOCKER_IMAGE
 
-      # Recommended in an earlier error message from `gcloud run deploy`, not sure why it would be necessary.
-      # Giving the Service Account the "Cloud Run Invoker" role didn't help, either.
-      - name: "Setting IAM policy"
-        run: |
-          gcloud run services add-iam-policy-binding \
-            --region=$GCP_RUN_REGION \
-            --member=allUsers \
-            --role=roles/run.invoker \
-            $GCP_RUN_APPNAME
+      # # Recommended in an earlier warning from `gcloud run deploy`, not sure why it would be necessary.
+      # # Giving the Service Account the "Cloud Run Invoker" role didn't help, either.
+      # # Turns out we can't set IAM policy here without "Cloud Run Admin" role, which I find excessive.
+      # # I was able to run this in the Google Cloud Shell as a user. I hope this was only a one-time thing.
+      # - name: "Setting IAM policy"
+      #   run: |
+      #     gcloud run services add-iam-policy-binding \
+      #       --region=$GCP_RUN_REGION \
+      #       --member=allUsers \
+      #       --role=roles/run.invoker \
+      #       $GCP_RUN_APPNAME
 
       - name: "Deploy to GCP Cloud Run"
         run: |
