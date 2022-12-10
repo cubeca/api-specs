@@ -62,11 +62,21 @@ jobs:
           docker tag $MOCK_SERVER_DOCKER_IMAGE $GCP_MOCK_SERVER_DOCKER_IMAGE
           docker push $GCP_MOCK_SERVER_DOCKER_IMAGE
 
+      # Recommended in an earlier error message from `gcloud run deploy`, not sure why it would be necessary.
+      # Giving the Service Account the "Cloud Run Invoker" role didn't help, either.
+      - name: "Setting IAM policy"
+        run: |
+          gcloud run services add-iam-policy-binding \
+            --region=$GCP_RUN_REGION \
+            --member=allUsers \
+            --role=roles/run.invoker \
+            $GCP_RUN_APPNAME
+
       - name: "Deploy to GCP Cloud Run"
         run: |
           gcloud run deploy $GCP_RUN_APPNAME \
-              --project=$GCP_PROJECT \
-              --platform=managed \
-              --region=$GCP_RUN_REGION \
-              --image=$GCP_MOCK_SERVER_DOCKER_IMAGE \
-              --allow-unauthenticated
+            --project=$GCP_PROJECT \
+            --platform=managed \
+            --region=$GCP_RUN_REGION \
+            --image=$GCP_MOCK_SERVER_DOCKER_IMAGE \
+            --allow-unauthenticated
