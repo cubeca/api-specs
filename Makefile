@@ -26,7 +26,7 @@ logs:
 	$(PROJECT_DOCKER_COMPOSE) logs -f
 
 
-MOCK_SERVER_DOCKER_IMAGE = cubeca/bff_mock_server:latest
+MOCK_SERVER_DOCKER_IMAGE ?= cubeca/bff_mock_server:latest
 
 .PHONY: mock_build
 mock_build:

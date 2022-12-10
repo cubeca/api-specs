@@ -1,6 +1,6 @@
 name: Publish mock server
 
-run-name: Publish commit ${{ github.sha }} of API spec as mock server
+run-name: Publish BFF mock server @ ${{ github.sha }}
 
 on: push
 
@@ -9,8 +9,8 @@ env:
   MOCK_SERVER_DOCKER_IMAGE: cubeca/bff_mock_server:latest
   GCP_ARTIFACT_REGISTRY_DOMAIN: northamerica-northeast2-docker.pkg.dev
   GCP_MOCK_SERVER_DOCKER_IMAGE: northamerica-northeast2-docker.pkg.dev/cubecommons-dev/cube-docker-images/bff_mock_server:${{ github.sha }}
-  GCP_SERVICE_ACCOUNT: docker-image-publisher@cubecommons-dev.iam.gserviceaccount.com
   GCP_WORKLOAD_IDENTITY_PROVIDER: projects/744911585239/locations/global/workloadIdentityPools/cube-dev/providers/github-actions
+  GCP_SERVICE_ACCOUNT: docker-image-publisher@cubecommons-dev.iam.gserviceaccount.com
 
 # See https://www.padok.fr/en/blog/github-action-gcp-identity
 
@@ -18,6 +18,15 @@ jobs:
   publish_package:
     runs-on: ubuntu-22.04
     name: Publish API spec as mock server
+
+    # Add "id-token" with the intended permissions.
+    # See https://github.com/google-github-actions/auth#usage
+    # See https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
+    # See https://github.com/cubeca/api-specs/settings/actions
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v2
