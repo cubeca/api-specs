@@ -1,0 +1,50 @@
+name: Publish mock server
+
+run-name: Publish commit ${{ github.sha }} of API spec as mock server
+
+on: push
+
+env:
+  GITHUB_SHA: ${{ github.sha }}
+  MOCK_SERVER_DOCKER_IMAGE: cubeca/bff_mock_server:latest
+  GCP_ARTIFACT_REGISTRY_DOMAIN: northamerica-northeast2-docker.pkg.dev
+  GCP_MOCK_SERVER_DOCKER_IMAGE: northamerica-northeast2-docker.pkg.dev/cubecommons-dev/cube-docker-images/bff_mock_server:${{ github.sha }}
+  GCP_SERVICE_ACCOUNT: docker-image-publisher@cubecommons-dev.iam.gserviceaccount.com
+  GCP_WORKLOAD_IDENTITY_PROVIDER: projects/744911585239/locations/global/workloadIdentityPools/cube-dev/providers/github-actions
+
+# See https://www.padok.fr/en/blog/github-action-gcp-identity
+
+jobs:
+  publish_package:
+    runs-on: ubuntu-22.04
+    name: Publish API spec as mock server
+    steps:
+      - name: Checkout ${{ github.repository }}
+        uses: actions/checkout@v2
+
+      - name: Set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - id: 'GCP auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: $GCP_WORKLOAD_IDENTITY_PROVIDER
+          service_account: $GCP_SERVICE_ACCOUNT
+
+      - name: 'Set up GCP Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+
+      - name: 'Configure Docker to use GCP Artifact Registry'
+        run: |
+          gcloud auth configure-docker $GCP_ARTIFACT_REGISTRY_DOMAIN
+
+      - name: "Run make mock_build"
+        run: |
+          make mock_build
+
+      - name: "Run docker tag and push"
+        run: |
+          docker tag $MOCK_SERVER_DOCKER_IMAGE $GCP_MOCK_SERVER_DOCKER_IMAGE
+          docker push $GCP_MOCK_SERVER_DOCKER_IMAGE

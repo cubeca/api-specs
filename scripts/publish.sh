@@ -7,9 +7,9 @@ API=$1
 
 cd ./build/gen/typescript-axios/$API
 LATEST=`npm view . version 2>/dev/null || echo "0"`
-echo "LATEST==$LATEST"
+echo "LATEST($API)==$LATEST"
 CURRENT=`cat package.json | jq -r .version`
-echo "CURRENT==$CURRENT"
+echo "CURRENT($API)==$CURRENT"
 if [ "$LATEST" != "$CURRENT" ]
 then
     npm install

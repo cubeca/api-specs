@@ -25,23 +25,29 @@ clean:
 logs:
 	$(PROJECT_DOCKER_COMPOSE) logs -f
 
-.PHONY: req_auth
-req_auth:
-	curl http://localhost:8080/auth/token \
-		--request POST \
-		--data "username=me&password=secret&grant_type=password&scope=art_org&client_id=FRONTEND_CLIENT_ID" \
-		--header "Accept: application/json" \
-		--header "Content-Type: application/x-www-form-urlencoded" \
-		--include
 
-.PHONY: req_auth_broken
-req_auth_broken:
-	curl http://localhost:8080/auth/token \
-		--request POST \
-		--data "username=me&grant_type=password&scope=art_org&client_id=FRONTEND_CLIENT_ID" \
-		--header "Accept: application/json" \
-		--header "Content-Type: application/x-www-form-urlencoded" \
-		--include
+MOCK_SERVER_DOCKER_IMAGE = cubeca/bff_mock_server:latest
+
+.PHONY: mock_build
+mock_build:
+	docker build \
+	--file ./mock-server.dockerfile \
+	--tag $(MOCK_SERVER_DOCKER_IMAGE) \
+	.
+
+.PHONY: mock_run
+mock_run:
+	docker run \
+	--rm \
+	--detach \
+	--publish 8080:4010 \
+	$(MOCK_SERVER_DOCKER_IMAGE)
+
+
+.PHONY: setup_google_artifact_registry
+setup_google_artifact_registry:
+	gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
+
 
 .PHONY: req_echo
 req_echo:
@@ -69,7 +75,7 @@ filter--%:
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .["$$id"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/$*-filtered.yaml
-
+	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
 .PHONY: filterdiff
 filterdiff: filter filterdiff--bff filterdiff--bff-auth
@@ -80,9 +86,9 @@ filterdiff--%:
 
 
 .PHONY: gen_openapi
-gen_openapi: filter gen_openapi--bff gen_openapi--bff-auth
+gen_openapi_client: filter gen_openapi_client--bff gen_openapi_client--bff-auth
 
-gen_openapi--%:
+gen_openapi_client--%:
 	-mkdir -p $(HERE)/build/gen/typescript-axios/$*
 	cp $(HERE)/gen/openapi-generator/typescript-axios.config.yaml $(HERE)/build/gen/typescript-axios.config.yaml
 	$(DOCKER) \
@@ -135,13 +141,11 @@ ci_gha_install:
 
 
 .PHONY: ci_gha
-ci_gha: ci_gha_install
-	$(MAKE) gen_openapi
-	$(MAKE) fix_package_json
+ci_gha: ci_gha_install gen_openapi_client fix_package_json
 
 
 .PHONY: fix_package_json
-fix_package_json: fix_package_json--bff fix_package_json--bff-auth
+fix_package_json: gen_openapi_client fix_package_json--bff fix_package_json--bff-auth
 
 fix_package_json--%:
 	cat $(HERE)/build/gen/typescript-axios/$*/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/$*/package-edited.json
