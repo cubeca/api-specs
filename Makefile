@@ -29,7 +29,7 @@ logs:
 MOCK_SERVER_DOCKER_IMAGE ?= cubeca/bff_mock_server:latest
 
 .PHONY: mock_build
-mock_build:
+mock_build: filter
 	docker build \
 	--file ./mock-server.dockerfile \
 	--tag $(MOCK_SERVER_DOCKER_IMAGE) \
