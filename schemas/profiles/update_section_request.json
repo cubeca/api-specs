@@ -1,0 +1,20 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/update_section_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Update Profile Section Request",
+    "description": "Update Profile Section Request",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "description"
+    ],
+    "additionalProperties": false
+}

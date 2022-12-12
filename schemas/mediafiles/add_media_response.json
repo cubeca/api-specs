@@ -1,0 +1,23 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/mediafiles/add_media_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "AddMediaResponse",
+    "description": "Add Media response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        }
+    },
+    "required": [
+        "data"
+    ]
+}

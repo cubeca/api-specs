@@ -1,0 +1,26 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/collaborators/list_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "List of collaborators",
+    "description": "List of collaborators",
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "object",
+            "properties": {
+                "collaborators": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "collaborators"
+            ]
+        }
+    },
+    "required": [
+        "data"
+    ]
+}

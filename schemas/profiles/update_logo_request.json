@@ -1,0 +1,17 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/update_logo_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Update Profile Logo Request",
+    "description": "Update Profile Logo Request",
+    "type": "object",
+    "properties": {
+        "file": {
+            "type": "string",
+            "description": "file"
+        }
+    },
+    "required": [
+        "file"
+    ],
+    "additionalProperties": false
+}

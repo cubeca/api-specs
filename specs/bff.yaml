@@ -302,6 +302,193 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
+    put:
+      operationId: profile_section_update
+      summary: Update Profile section
+      description: Update Profile section.
+      tags:
+        - User
+      parameters:
+        - name: profileId
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profiles/update_section_request.json
+            example:
+              $ref: ../schemas/profiles/update_section_request.example.json
+        description: Profile Section Update
+        required: true
+      responses:
+        '200':
+          description: Update Profile Section Response
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/update_section_response.json
+              example:
+                $ref: ../schemas/profiles/update_section_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/profiles/{profileId}/update-logo':
+    post:
+      operationId: profile_logo_update
+      summary: Update Profile logo
+      description: Update Profile logo.
+      tags:
+        - User
+      parameters:
+        - name: profileId
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profiles/update_logo_request.json
+            example:
+              $ref: ../schemas/profiles/update_logo_request.example.json
+        description: Profile Logo Update
+        required: true
+      responses:
+        '200':
+          description: Update Profile Logo Response
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/update_logo_response.json
+              example:
+                $ref: ../schemas/profiles/update_logo_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/collaborators':
+    get:
+      operationId: collaborator_list
+      summary: List collaborators
+      description: List collaborators.
+      tags:
+        - MediaFiles
+      responses:
+        '200':
+          description: Collaborator List
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/collaborators/list_response.json
+              example:
+                $ref: ../schemas/collaborators/list_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/media':
+    post:
+      operationId: add_media
+      summary: Add media
+      description: Add media.
+      tags:
+        - MediaFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/mediafiles/add_media_request.json
+            example:
+              $ref: ../schemas/mediafiles/add_media_request.example.json
+        description: Add media
+        required: true
+      responses:
+        '200':
+          description: Add media
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/mediafiles/add_media_response.json
+              example:
+                $ref: ../schemas/profiles/add_media_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
 
 components:
   responses:

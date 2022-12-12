@@ -1,0 +1,15 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/update_section_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Updated Profile Response",
+    "description": "Updated Profile Response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "./profile_detailed.json"
+        }
+    },
+    "required": [
+        "data"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "profileId": "some-profile",
+    "type": "video",
+    "title": "Test Video Upload",
+    "expiry": "Say What??? Why should this ever be over?",
+    "description": "This text field shall describe the content file.",
+    "coverImageFile": "This should be a File. TODO Figure out how React represents file uploads.",
+    "mediaFile": "This should be a File. TODO Figure out how React represents file uploads.",
+    "coverImageText": "Thumbnail Text",
+    "collaborators": [
+        "Museum of Anthropology",
+        "Burnaby Art Gallery"
+    ],
+    "contributors": [
+        "Dawn Powell, Camera Operator",
+        "Alissa Cat, Public Programs",
+        "Magnus Ten, Editor"
+    ],
+    "tags": [
+        "integration testing",
+        "tags are hard"
+    ]
+}

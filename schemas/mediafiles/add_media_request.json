@@ -1,0 +1,65 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/mediafiles/add_media_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "MediaFileDetails",
+    "description": "Media file details",
+    "type": "object",
+    "properties": {
+        "profileId": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "expiry": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "coverImageFile": {
+            "type": "string",
+            "description": "file"
+        },
+        "mediaFile": {
+            "type": "string",
+            "description": "file"
+        },
+        "coverImageText": {
+            "type": "string"
+        },
+        "collaborators": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "contributors": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "profileId",
+        "type",
+        "title",
+        "expiry",
+        "description",
+        "coverImageFile",
+        "mediaFile",
+        "coverImageText",
+        "collaborators",
+        "contributors",
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "data": {
+        "id": "1",
+        "name": "Totally updated logo: MOA",
+        "heroUrl": "/images/profile-hero.jpg",
+        "logoUrl": "/images/moa.svg",
+        "description": "Totally updated logo: Description of MOA Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare risus pretium vivamus leo, pharetra placerat mauris, viverra. Phasellus parturient amet sapien praesent semper tellus porttitor at auctor. Faucibus in at blandit dui eget in ut enim. Ultricies eu, lobortis vitae bibendum nunc tempor. Quam.",
+        "descriptionUrl": "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3",
+        "videos": [
+            {
+                "category": "video",
+                "videos": [
+                    {
+                        "id": "1",
+                        "title": "Title 1",
+                        "creator": "Creator 1",
+                        "url": "/videos/1",
+                        "thumbnailUrl": "images/video_thumbnail.jpg",
+                        "iconUrl": "images/creator_icon.png",
+                        "category": "video",
+                        "type": "video"
+                    },
+                    {
+                        "id": "2",
+                        "title": "Title 2",
+                        "creator": "Creator 2",
+                        "url": "/videos/2",
+                        "thumbnailUrl": "images/video_thumbnail.jpg",
+                        "iconUrl": "images/creator_icon.png",
+                        "category": "video",
+                        "type": "video"
+                    }
+                ]
+            }
+        ]
+    }
+}
