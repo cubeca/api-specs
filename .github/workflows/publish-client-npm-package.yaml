@@ -1,6 +1,6 @@
 name: Publish API client NPM package to npm.pkg.github.com
 
-run-name: Publish commit ${{ github.sha }} of API client NPM package to npm.pkg.github.com
+run-name: Publish API client NPM package @ ${{ github.sha }}
 
 on: push
 
