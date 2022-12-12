@@ -468,7 +468,7 @@ paths:
               schema:
                 $ref: ../schemas/mediafiles/add_media_response.json
               example:
-                $ref: ../schemas/profiles/add_media_response.example.json
+                $ref: ../schemas/mediafiles/add_media_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

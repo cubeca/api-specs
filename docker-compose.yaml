@@ -1,13 +1,16 @@
 version: "3.9"
 
 services:
-  stoplightio_prism:
-    container_name: ${PROJECT_NAME}_stoplightio_prism
-    image: stoplight/prism:4
-    # command: 'mock -d -h 0.0.0.0 /build/bff.yaml'  # with dynamic response generation (i.e. no examples)
-    command: 'mock -h 0.0.0.0 /build/bff.yaml'
+  cube_api_mock_bff:
+    container_name: ${PROJECT_NAME}_bff
+    build:
+      context: .
+      dockerfile: ./mock-server.dockerfile
+    image: ${PROJECT_NAME}_bff
+    environment:
+      PROJECT_NAME: $PROJECT_NAME
     volumes:
-      - ./build/bff.yaml:/build/bff.yaml
+      - ./build/bff-filtered.yaml:/build/bff-filtered.yaml
     ports:
-      # Serve the mocked API locally as available on port 8080
-      - '8080:4010'
+      # Serve the mocked API on the host
+      - '4010:4010'

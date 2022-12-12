@@ -8,7 +8,7 @@ export PROJECT_NAME ?= cube_api_mock
 PROJECT_DOCKER_COMPOSE = $(DOCKER_COMPOSE) --project-name $(PROJECT_NAME) --file ./docker-compose.yaml --project-directory . --env-file ./.env
 
 .PHONY: up
-up:
+up: filter
 	$(PROJECT_DOCKER_COMPOSE) up -d --force-recreate
 
 .PHONY: down
@@ -18,13 +18,17 @@ down:
 .PHONY: clean
 clean:
 	-$(PROJECT_DOCKER_COMPOSE) rm
-	-$(DOCKER) container rm $(PROJECT_NAME)_stoplightio_prism
-	-$(DOCKER) image rm $(PROJECT_NAME)_stoplightio_prism
+	-$(DOCKER) container rm $(PROJECT_NAME)_bff
+	-$(DOCKER) image rm $(PROJECT_NAME)_bff
 
 .PHONY: logs
 logs:
 	$(PROJECT_DOCKER_COMPOSE) logs -f
 
+# Stoplight Prism runs on Alpine Linux, so use `apk add bash` etc.
+.PHONY: login_mock_bff
+login_mock_bff:
+	$(DOCKER) exec -ti $(PROJECT_NAME)_bff sh
 
 MOCK_SERVER_DOCKER_IMAGE ?= cubeca/bff_mock_server:latest
 
@@ -51,7 +55,7 @@ setup_google_artifact_registry:
 
 .PHONY: req_echo
 req_echo:
-	curl http://localhost:8080/echo \
+	curl http://localhost:4010/echo \
 		--request POST \
 		--data '{"shout":"Hello CUBE"}' \
 		--header "Authorization: Bearer FAKETOKEN" \
@@ -59,6 +63,7 @@ req_echo:
 		--header "Content-Type: application/json" \
 		--include
 
+	# curl https://bff-mock-server-tjjg4pjowa-pd.a.run.app/echo \
 
 .PHONY: merge
 merge: merge--bff merge--bff-auth
