@@ -40,7 +40,7 @@ mock_build: filter
 	.
 
 .PHONY: mock_run
-mock_run:
+mock_run: mock_build
 	docker run \
 	--rm \
 	--detach \

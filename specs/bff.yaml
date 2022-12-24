@@ -72,8 +72,9 @@ servers:
       apiVersion:
         default: v1
 
-security: 
-  - jwt_logged_in: []
+# # Disable this temporarily for easier adoption of API client library.
+# security: 
+#   - jwt_logged_in: []
 
 paths:
   '/echo':
@@ -573,9 +574,10 @@ components:
           example:
             $ref: ../schemas/common/error.example.503.json
 
-  securitySchemes:
-    jwt_logged_in:
-      type: http
-      description: This API uses JWT. Either anonymous JWT or logged-in JWT via username and password.
-      scheme: bearer
-      bearerFormat: JWT
+  # # Disable this temporarily for easier adoption of API client library.
+  # securitySchemes:
+  #   jwt_logged_in:
+  #     type: http
+  #     description: This API uses JWT. Either anonymous JWT or logged-in JWT via username and password.
+  #     scheme: bearer
+  #     bearerFormat: JWT
