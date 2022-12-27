@@ -1,0 +1,43 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/content/content_listed.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Content listed",
+    "description": "Content listed",
+    "type": "object",
+    "properties": {
+        "id": {
+            "$ref": "./content.json#/properties/id"
+        },
+        "title": {
+            "$ref": "./content.json#/properties/title"
+        },
+        "creator": {
+            "$ref": "./content.json#/properties/creator"
+        },
+        "url": {
+            "$ref": "./content.json#/properties/url"
+        },
+        "thumbnailUrl": {
+            "$ref": "./content.json#/properties/thumbnailUrl"
+        },
+        "iconUrl": {
+            "$ref": "./content.json#/properties/iconUrl"
+        },
+        "category": {
+            "$ref": "./content.json#/properties/category"
+        },
+        "type": {
+            "$ref": "./content.json#/properties/type"
+        }
+    },
+    "required": [
+        "id",
+        "title",
+        "creator",
+        "url",
+        "thumbnailUrl",
+        "iconUrl",
+        "category",
+        "type"
+    ]
+}

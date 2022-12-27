@@ -28,8 +28,8 @@ info:
 tags:
   - name: User
     description: User stuff, like view profile etc.
-  - name: MediaFiles
-    description: Media files
+  - name: content
+    description: Content (e.g. videos, pdfs, audio, etc)
 
 servers:
   - url: http://localhost:{port}/{basePath}/{apiVersion}
@@ -123,13 +123,13 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
-  '/videos':
+  '/content':
     get:
-      operationId: mediafile_list
-      summary: List media files
-      description: List media files.
+      operationId: content_list
+      summary: List content
+      description: List content.
       tags:
-        - MediaFiles
+        - content
       parameters:
         - name: page
           in: query
@@ -145,7 +145,7 @@ paths:
             type: integer
         - name: category
           in: query
-          description: Media category
+          description: Content category
           required: false
           schema:
             type: string
@@ -162,7 +162,7 @@ paths:
             default: all
         - name: type
           in: query
-          description: Mediafile type
+          description: Content type
           required: false
           schema:
             type: string
@@ -171,9 +171,9 @@ paths:
               - audio
               - pdf
             default: video
-        - name: country
+        - name: nation
           in: query
-          description: Related to Country
+          description: Related to Nation/Country
           required: false
           schema:
             type: string
@@ -188,13 +188,57 @@ paths:
             type: string
       responses:
         '200':
-          description: List of media files
+          description: List of content
           content:
             application/json:
               schema:
-                $ref: ../schemas/mediafiles/list_response.json
+                $ref: ../schemas/content/list_response.json
               example:
-                $ref: ../schemas/mediafiles/list_response.example.json
+                $ref: ../schemas/content/list_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    post:
+      operationId: add_content
+      summary: Add content
+      description: Add content.
+      tags:
+        - ContentFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/content/add_content_request.json
+            example:
+              $ref: ../schemas/content/add_content_request.example.json
+        description: Add content
+        required: true
+      responses:
+        '200':
+          description: Add content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/add_content_response.json
+              example:
+                $ref: ../schemas/content/add_content_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -216,29 +260,29 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
-  '/videos/{mediafileId}':
+  '/content/{contentId}':
     get:
-      operationId: mediafile_details
-      summary: Get media file details
-      description: Get media file details.
+      operationId: content_details
+      summary: Get content details
+      description: Get content details.
       tags:
-        - MediaFiles
+        - content
       parameters:
-        - name: mediafileId
+        - name: contentId
           in: path
-          description: Media file ID
+          description: Content ID
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Media file details
+          description: Content details
           content:
             application/json:
               schema:
-                $ref: ../schemas/mediafiles/detail_response.json
+                $ref: ../schemas/content/detail_response.json
               example:
-                $ref: ../schemas/mediafiles/detail_response.example.json
+                $ref: ../schemas/content/detail_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -414,7 +458,7 @@ paths:
       summary: List collaborators
       description: List collaborators.
       tags:
-        - MediaFiles
+        - content
       responses:
         '200':
           description: Collaborator List
@@ -424,52 +468,6 @@ paths:
                 $ref: ../schemas/collaborators/list_response.json
               example:
                 $ref: ../schemas/collaborators/list_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
-  '/media':
-    post:
-      operationId: add_media
-      summary: Add media
-      description: Add media.
-      tags:
-        - MediaFiles
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/mediafiles/add_media_request.json
-            example:
-              $ref: ../schemas/mediafiles/add_media_request.example.json
-        description: Add media
-        required: true
-      responses:
-        '200':
-          description: Add media
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/mediafiles/add_media_response.json
-              example:
-                $ref: ../schemas/mediafiles/add_media_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

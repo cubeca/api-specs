@@ -1,0 +1,22 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/content.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Profile content per category",
+    "description": "Profile content per category",
+    "type": "object",
+    "properties": {
+        "category": {
+            "$ref": "../content/content.json#/properties/category"
+        },
+        "videos": {
+            "type": "array",
+            "items": {
+                "$ref": "../content/content_listed.json"
+            }
+        }
+    },
+    "required": [
+        "category",
+        "videos"
+    ]
+}

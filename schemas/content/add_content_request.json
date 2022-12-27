@@ -1,8 +1,8 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/mediafiles/add_media_request.json",
+    "$id": "https://docs.cubecommons.ca/schemas/content/add_content_request.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "MediaFileDetails",
-    "description": "Media file details",
+    "title": "Add Content",
+    "description": "Adds Content",
     "type": "object",
     "properties": {
         "profileId": {
