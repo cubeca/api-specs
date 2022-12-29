@@ -1,14 +1,14 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/mediafiles/list_response.json",
+    "$id": "https://docs.cubecommons.ca/schemas/content/list_response.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "List of media files",
-    "description": "List of media files",
+    "title": "List of content",
+    "description": "List of content",
     "type": "object",
     "properties": {
         "data": {
             "type": "array",
             "items": {
-                "$ref": "./mediafile_listed.json"
+                "$ref": "./content_listed.json"
             }
         }
     },

@@ -29,7 +29,7 @@
         "videos": {
             "type": "array",
             "items": {
-                "$ref": "./mediafiles.json"
+                "$ref": "./content.json"
             }
         }
     },

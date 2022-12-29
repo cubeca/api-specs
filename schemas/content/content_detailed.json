@@ -1,0 +1,67 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/content/content_detailed.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "ContentDetails",
+    "description": "Content details",
+    "type": "object",
+    "properties": {
+        "id": {
+            "$ref": "./content.json#/properties/id"
+        },
+        "url": {
+            "$ref": "./content.json#/properties/url"
+        },
+        "title": {
+            "$ref": "./content.json#/properties/title"
+        },
+        "createdDate": {
+            "$ref": "./content.json#/properties/createdDate"
+        },
+        "updatedDate": {
+            "$ref": "./content.json#/properties/updatedDate"
+        },
+        "description": {
+            "$ref": "./content.json#/properties/description"
+        },
+        "descriptionUrl": {
+            "$ref": "./content.json#/properties/descriptionUrl"
+        },
+        "contributors": {
+            "$ref": "./content.json#/properties/contributors"
+        },
+        "tags": {
+            "$ref": "./content.json#/properties/tags"
+        },
+        "creator": {
+            "$ref": "./content.json#/properties/creator"
+        },
+        "thumbnailUrl": {
+            "$ref": "./content.json#/properties/thumbnailUrl"
+        },
+        "iconUrl": {
+            "$ref": "./content.json#/properties/iconUrl"
+        },
+        "category": {
+            "$ref": "./content.json#/properties/category"
+        },
+        "type": {
+            "$ref": "./content.json#/properties/type"
+        }
+    },
+    "required": [
+        "id",
+        "url",
+        "title",
+        "createdDate",
+        "updatedDate",
+        "description",
+        "descriptionUrl",
+        "contributors",
+        "tags",
+        "creator",
+        "thumbnailUrl",
+        "iconUrl",
+        "category",
+        "type"
+    ]
+}
