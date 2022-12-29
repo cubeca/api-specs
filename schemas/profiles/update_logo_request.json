@@ -5,11 +5,16 @@
     "description": "Update Profile Logo Request",
     "type": "object",
     "properties": {
-        "name": "string",
-        "file_contents_base64": "string"
-      },
+        "name": {
+            "type":"string"
+        },
+        "file_contents_base64": {
+            "type":"string"
+        }
+    },
     "required": [
-        "file"
+        "name",
+        "file_contents_base64"
     ],
     "additionalProperties": false
 }

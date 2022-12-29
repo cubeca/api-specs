@@ -1,3 +1,4 @@
 {
-    "file": "This should be a File. TODO Figure out how React represents file uploads."
+    "name": "filename.ext",
+    "file_contents_base64": "base64stuff="
 }
