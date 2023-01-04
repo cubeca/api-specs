@@ -110,6 +110,7 @@ gen_openapi_client--%:
 		--global-property apiTests=true \
 		--global-property modelTests=true \
 		--additional-properties=npmName="@cubeca/$*-client-oas-axios" \
+		--skip-validate-spec \
 		--output /build/gen/typescript-axios/$*
 
 
@@ -155,3 +156,13 @@ fix_package_json: gen_openapi_client fix_package_json--bff fix_package_json--bff
 fix_package_json--%:
 	cat $(HERE)/build/gen/typescript-axios/$*/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/$*/package-edited.json
 	mv $(HERE)/build/gen/typescript-axios/$*/package-edited.json $(HERE)/build/gen/typescript-axios/$*/package.json
+
+.PHONY: bff_client_package
+bff_client_package:
+	rm -rf $(HERE)/build/gen/
+	make gen_openapi_client
+	rm ~/cubeca-bff-client*.tgz
+	cd $(HERE)/build/gen/typescript-axios/bff && \
+	npm install && \
+	npm pack --pack-destination ~ && \
+	mv ~/cubeca-bff-client-oas-axios*.tgz ~/cube-bff-client.tgz
