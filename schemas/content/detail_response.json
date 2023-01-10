@@ -1,7 +1,7 @@
 {
     "$id": "https://docs.cubecommons.ca/schemas/content/detail_response.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "ContgentDetailsResponse",
+    "title": "ContentDetailsResponse",
     "description": "Content details response",
     "type": "object",
     "properties": {

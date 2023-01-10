@@ -15,8 +15,9 @@
         "title": {
             "type": "string"
         },
-
-
+        "credits": {
+          "type": "string"
+      },
         "createdDate": {
             "type": "string"
         },
