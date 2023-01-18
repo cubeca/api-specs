@@ -159,6 +159,9 @@ paths:
               - talks
               - performances
               - cultural-teachings
+
+              # Hack to get the Frontend loading for MVP
+              - featured
             default: all
         - name: type
           in: query
