@@ -27,8 +27,10 @@ info:
 
 tags:
   - name: User
-    description: User stuff, like view profile etc.
-  - name: content
+    description: User stuff
+  - name: Profile
+    description: Profile stuff
+  - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
 
 servers:
@@ -129,7 +131,7 @@ paths:
       summary: List content
       description: List content.
       tags:
-        - content
+        - Content
       parameters:
         - name: page
           in: query
@@ -269,7 +271,7 @@ paths:
       summary: Get content details
       description: Get content details.
       tags:
-        - content
+        - Content
       parameters:
         - name: contentId
           in: path
@@ -313,7 +315,7 @@ paths:
       summary: Get profile details
       description: Get profile details.
       tags:
-        - User
+        - Profile
       parameters:
         - name: profileId
           in: path
@@ -355,7 +357,7 @@ paths:
       summary: Update Profile section
       description: Update Profile section.
       tags:
-        - User
+        - Profile
       parameters:
         - name: profileId
           in: path
@@ -408,7 +410,7 @@ paths:
       summary: Update Profile logo
       description: Update Profile logo.
       tags:
-        - User
+        - Profile
       parameters:
         - name: profileId
           in: path
@@ -455,13 +457,66 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
+  '/profiles/{profileId}/update-audio-description':
+    post:
+      operationId: profile_audio_description_update
+      summary: Update Profile audio description
+      description: Update Profile audio description.
+      tags:
+        - Profile
+      parameters:
+        - name: profileId
+          in: path
+          description: Profile ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profiles/update_audio_description_request.json
+            example:
+              $ref: ../schemas/profiles/update_audio_description_request.example.json
+        description: Profile audio description Update
+        required: true
+      responses:
+        '200':
+          description: Update Profile audio description Response
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/update_audio_description_response.json
+              example:
+                $ref: ../schemas/profiles/update_audio_description_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
   '/collaborators':
     get:
       operationId: collaborator_list
       summary: List collaborators
       description: List collaborators.
       tags:
-        - content
+        - Content
       responses:
         '200':
           description: Collaborator List

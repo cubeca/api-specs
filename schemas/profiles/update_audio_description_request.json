@@ -1,0 +1,20 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/update_audio_description_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Update Profile audio description Request",
+    "description": "Update Profile audio description Request",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type":"string"
+        },
+        "file_contents_base64": {
+            "type":"string"
+        }
+    },
+    "required": [
+        "name",
+        "file_contents_base64"
+    ],
+    "additionalProperties": false
+}

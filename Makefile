@@ -11,6 +11,8 @@ ifneq ($(FORCE),)
 	OPENAPI_GENERATOR_OPTIONS ?= --skip-validate-spec
 endif
 
+NPM_PREFIX_GLOBAL ?= $(shell npm prefix -g)
+
 .PHONY: up
 up: filter
 	$(PROJECT_DOCKER_COMPOSE) up -d --force-recreate
@@ -94,7 +96,7 @@ filterdiff--%:
 	git diff --no-index build/$*-yq.yaml build/$*-filtered.yaml
 
 
-.PHONY: gen_openapi
+.PHONY: gen_openapi_client
 gen_openapi_client: filter gen_openapi_client--bff gen_openapi_client--bff-auth
 
 gen_openapi_client--%:
@@ -161,6 +163,7 @@ fix_package_json--%:
 	cat $(HERE)/build/gen/typescript-axios/$*/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/$*/package-edited.json
 	mv $(HERE)/build/gen/typescript-axios/$*/package-edited.json $(HERE)/build/gen/typescript-axios/$*/package.json
 
+
 # Package the BFF API client package locally
 .PHONY: bff_client_package
 bff_client_package:
@@ -170,3 +173,25 @@ bff_client_package:
 	npm install && \
 	npm pack --pack-destination ~ && \
 	mv ~/cubeca-bff-client-oas-axios*.tgz ~/cubeca-bff-client.tgz
+
+
+# Link the BFF API client package(s) locally
+# See https://docs.npmjs.com/cli/v9/commands/npm-link
+# See https://www.geeksforgeeks.org/how-to-install-a-local-module-using-npm/
+.PHONY: npm_link
+npm_link:
+	rm -rf $(HERE)/build/gen/
+	make gen_openapi_client
+	$(MAKE) npm_link--bff
+	$(MAKE) npm_link--bff-auth
+
+npm_link--%:
+	cd $(HERE)/build/gen/typescript-axios/$* && \
+	npm install && \
+	npm run build && \
+	npm link
+
+
+.PHONY: npm_link_check
+npm_link_check:
+	ls -la $(NPM_PREFIX_GLOBAL)/lib/node_modules/\@cubeca
