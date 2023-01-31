@@ -1,0 +1,45 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/auth/create_user_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Create User Request",
+    "description": "Create user flow request",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name entered by the user."
+        },
+        "email": {
+            "type": "string",
+            "description": "The email entered by the user."
+        },
+        "password": {
+          "type": "string",
+          "description": "The password entered by the user."
+        },
+        "permissionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Permission ids for user"
+      },
+        "hasAcceptedTerms": {
+          "type": "boolean",
+          "description": "Indicate if user has accepted terms."
+        },
+        "hasAcceptedNewsletter": {
+          "type": "boolean",
+          "description": "Indicate if user has accepted newsletter."
+      }
+    },
+    "required": [
+        "name",
+        "email",
+        "password",
+        "permissionIds",
+        "hasAcceptedTerms",
+        "hasAcceptedNewsletter"
+    ],
+    "additionalProperties": false
+}
