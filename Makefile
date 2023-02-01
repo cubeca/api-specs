@@ -37,6 +37,7 @@ login_mock_bff:
 	$(DOCKER) exec -ti $(PROJECT_NAME)_bff sh
 
 MOCK_SERVER_DOCKER_IMAGE ?= cubeca/bff_mock_server:latest
+MOCK_AUTH_SERVER_DOCKER_IMAGE ?= cubeca/bff_auth_mock_server:latest
 
 .PHONY: mock_build
 mock_build: filter
@@ -52,6 +53,21 @@ mock_run: mock_build
 	--detach \
 	--publish 8080:4010 \
 	$(MOCK_SERVER_DOCKER_IMAGE)
+
+.PHONY: mock_auth_build
+mock_auth_build: filter
+	docker build \
+	--file ./mock-auth-server.dockerfile \
+	--tag $(MOCK_AUTH_SERVER_DOCKER_IMAGE) \
+	.
+
+.PHONY: mock_auth_run
+mock_auth_run: mock_auth_build
+	docker run \
+	--rm \
+	--detach \
+	--publish 8081:4010 \
+	$(MOCK_AUTH_SERVER_DOCKER_IMAGE)
 
 
 .PHONY: setup_google_artifact_registry
@@ -183,3 +199,8 @@ npm_link--%:
 .PHONY: npm_link_check
 npm_link_check:
 	ls -la $(NPM_PREFIX_GLOBAL)/lib/node_modules/\@cubeca
+
+
+.PHONY: install_local_tools
+install_local_tools:
+	brew install yq
