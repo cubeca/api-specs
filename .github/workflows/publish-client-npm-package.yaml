@@ -29,7 +29,33 @@ jobs:
           ./scripts/write_npmrc.sh bff '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
           ./scripts/write_npmrc.sh bff-auth '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
 
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          tag_prefix: ""
+          custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: "Debugging output from tag_version step"
+      #   run: |
+      #     echo "Using output tag_version.previous_tag: ${{ steps.tag_version.outputs.previous_tag }}"
+      #     echo "Using output tag_version.new_tag: ${{ steps.tag_version.outputs.new_tag }}"
+      # 
+      #     echo "Using output tag_version.previous_version: ${{ steps.tag_version.outputs.previous_version }}"
+      #     echo "Using output tag_version.new_version: ${{ steps.tag_version.outputs.new_version }}"
+      # 
+      #     echo "Using output tag_version.release_type: ${{ steps.tag_version.outputs.release_type }}"
+      #     echo "Using output tag_version.changelog: ${{ steps.tag_version.outputs.changelog }}"
+
       - name: Publish to npm.pkg.github.com
+        # env:
+        #   PREVIOUS_TAG: "${{ steps.tag_version.outputs.previous_tag }}"
+        #   NEW_TAG: "${{ steps.tag_version.outputs.new_tag }}"
+        #   PREVIOUS_VERSION: "${{ steps.tag_version.outputs.previous_version }}"
+        #   NEW_VERSION: "${{ steps.tag_version.outputs.new_version }}"
+        #   RELEASE_TYPE: "${{ steps.tag_version.outputs.release_type }}"
+        #   CHANGELOG: "${{ steps.tag_version.outputs.changelog }}"
         run: |
-          ./scripts/publish.sh bff
-          ./scripts/publish.sh bff-auth
+          ./scripts/publish.sh bff "${{ steps.tag_version.outputs.new_version }}"
+          ./scripts/publish.sh bff-auth "${{ steps.tag_version.outputs.new_version }}"
