@@ -62,7 +62,7 @@ jobs:
 
       - # See also https://github.com/marketplace/actions/action-repository-dispatch
         name: Trigger update of vendorized API client pkgs in cubeca/cube_ui repo
-        uses: iniva/action-repository-dispatch@v1
+        uses: iniva/action-repository-dispatch@v1.1.7
         with:
           targetRepository: cubeca/cube_ui
           eventType: vendor-update
