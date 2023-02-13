@@ -32,6 +32,10 @@ tags:
     description: Profile stuff
   - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
+  - name: ContentFiles
+    description: Just to keep the client lib consistent
+  - name: Upload
+    description: All communications to do with uploading
 
 servers:
   - url: http://localhost:{port}/{basePath}/{apiVersion}
@@ -309,13 +313,13 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
-  '/content/get-upload-url':
+  '/upload/get-video-tus-url':
     get:
       operationId: content_upload_url
       summary: Get tus upload url from cloudflare
       description: Get tus upload url from cloudflare.
       tags:
-        - ContentFiles
+        - Upload
       parameters:
         - name: upload-length
           in: header
