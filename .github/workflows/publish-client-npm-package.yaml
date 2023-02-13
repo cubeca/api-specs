@@ -59,3 +59,11 @@ jobs:
         run: |
           ./scripts/publish.sh bff "${{ steps.tag_version.outputs.new_version }}"
           ./scripts/publish.sh bff-auth "${{ steps.tag_version.outputs.new_version }}"
+
+      - # See also https://github.com/marketplace/actions/action-repository-dispatch
+        name: Trigger update of vendorized API client pkgs in cubeca/cube_ui repo
+        uses: iniva/action-repository-dispatch@v1
+        with:
+          targetRepository: cubeca/cube_ui
+          eventType: vendor-update
+          token: ${{ secrets.VENDOR_UPDATE_PERSONAL_ACCESS_TOKEN }}
