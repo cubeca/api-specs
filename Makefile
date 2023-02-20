@@ -204,3 +204,17 @@ npm_link_check:
 .PHONY: install_local_tools
 install_local_tools:
 	brew install yq
+
+# Package the BFF API client package locally
+.PHONY: bff_client_packages
+bff_client_packages:
+	rm -rf $(HERE)/build/gen/
+	make gen_openapi_client
+	cd $(HERE)/build/gen/typescript-axios/bff && \
+	npm install && \
+	npm pack --pack-destination ~ && \
+	mv ~/cubeca-bff-client-oas-axios*.tgz ~/cubeca-bff-client.tgz
+	cd $(HERE)/build/gen/typescript-axios/bff-auth && \
+	npm install && \
+	npm pack --pack-destination ~ && \
+	mv ~/cubeca-bff-auth-client-oas-axios*.tgz ~/cubeca-bff-auth-client.tgz
