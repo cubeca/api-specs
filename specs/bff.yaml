@@ -683,10 +683,12 @@ components:
           example:
             $ref: ../schemas/common/error.example.503.json
 
-  # # Disable this temporarily for easier adoption of API client library.
-  # securitySchemes:
-  #   jwt_logged_in:
-  #     type: http
-  #     description: This API uses JWT. Either anonymous JWT or logged-in JWT via username and password.
-  #     scheme: bearer
-  #     bearerFormat: JWT
+  securitySchemes:
+    jwt_logged_in:
+      type: http
+      description: This API uses JWT. Either anonymous JWT or logged-in JWT via username and password.
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - jwt_logged_in: []
