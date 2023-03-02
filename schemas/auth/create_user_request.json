@@ -23,7 +23,7 @@
             "type": "string"
           },
           "description": "Permission ids for user"
-      },
+        },
         "hasAcceptedTerms": {
           "type": "boolean",
           "description": "Indicate if user has accepted terms."

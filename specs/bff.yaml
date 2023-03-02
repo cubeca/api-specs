@@ -38,7 +38,23 @@ tags:
     description: All communications to do with uploading
 
 servers:
-  - url: http://localhost:{port}/{basePath}/{apiVersion}
+  - url: https://bff-{stage}.cubecommons.ca
+    description: CUBE's shared API server instances, including production
+    variables:
+      stage:
+        enum:
+          # # DEV, UNSTABLE and STAGING are stages in the development environment
+          - dev
+          - unstable
+          # - staging
+
+          # # Both SANDBOX and LIVE are stages in the production environment
+          # - sandbox
+          # - live
+        default: dev
+        description: deployment stage
+
+  - url: http://localhost:{port}/{basePath}
     description: Local development
     variables:
       port:
@@ -57,26 +73,7 @@ servers:
           - '18085'
         default: '8080'
       basePath:
-        default: bff/api
-      apiVersion:
-        default: v1
-
-  - url: https://bff.{stage}.cubecommons.ca/{apiVersion}
-    description: CUBE's shared API server instances, including production
-    variables:
-      stage:
-        enum:
-          # # Both UNSTABLE and STAGING are stages in the development environment
-          - unstable
-          # - staging
-
-          # # Both SANDBOX and LIVE are stages in the production environment
-          # - sandbox
-          # - live
-        default: unstable
-        description: deployment stage
-      apiVersion:
-        default: v1
+        default: bff
 
 # # Disable this temporarily for easier adoption of API client library.
 # security: 

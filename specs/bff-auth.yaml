@@ -25,7 +25,23 @@ tags:
     description: Login, forgot password, etc.
 
 servers:
-  - url: http://localhost:{port}/{basePath}/{apiVersion}
+  - url: https://bff-auth-{stage}.cubecommons.ca
+    description: CUBE's shared API server instances, including production
+    variables:
+      stage:
+        enum:
+          # # DEV, UNSTABLE and STAGING are stages in the development environment
+          - dev
+          - unstable
+          # - staging
+
+          # # Both SANDBOX and LIVE are stages in the production environment
+          # - sandbox
+          # - live
+        default: dev
+        description: deployment stage
+
+  - url: http://localhost:{port}/{basePath}
     description: Local development
     variables:
       port:
@@ -44,26 +60,7 @@ servers:
           - '18085'
         default: '8080'
       basePath:
-        default: bff/auth
-      apiVersion:
-        default: v1
-
-  - url: https://bff-auth.{stage}.cubecommons.ca/{apiVersion}
-    description: CUBE's shared API server instances, including production
-    variables:
-      stage:
-        enum:
-          # # Both UNSTABLE and STAGING are stages in the development environment
-          - unstable
-          # - staging
-
-          # # Both SANDBOX and LIVE are stages in the production environment
-          # - sandbox
-          # - live
-        default: unstable
-        description: deployment stage
-      apiVersion:
-        default: v1
+        default: bff-auth
 
 paths:
   '/auth/anonymous':
@@ -120,10 +117,10 @@ paths:
       tags:
         - Auth
 
-      # While we are logging in we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
+      # This can be called without JWT, or with an `anonymous` JWT claim.
+      security:
+        - {}
+        - jwt_logged_in: []
 
       requestBody:
         description: Logged-in JWT request
@@ -149,10 +146,6 @@ paths:
           $ref: '#/components/responses/error401'
         '403':
           $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
         '500':
           $ref: '#/components/responses/error500'
         '503':
@@ -166,10 +159,11 @@ paths:
       tags:
         - Auth
 
-      # While we are creating a new user, we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
+      # When calling this without JWT (or without a `userAdmin` JWT claim), the created user will only be allowed to have a single JWT claim called `active`.
+      # When calling this with a `userAdmin` JWT claim, the created user will be allowed all requested JWT claims.
+      security:
+        - {}
+        - jwt_logged_in: []
 
       requestBody:
         description: Creating a new user
@@ -211,11 +205,6 @@ paths:
       tags:
         - Auth
 
-      # While we are creating a new user, we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
-
       requestBody:
         description: Update Email
         content:
@@ -255,11 +244,6 @@ paths:
       description: Update user password.
       tags:
         - Auth
-
-      # While we are creating a new user, we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
 
       requestBody:
         description: Update Password
