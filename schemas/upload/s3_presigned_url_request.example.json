@@ -1,0 +1,9 @@
+{
+  "profileId": "dd98dd09-db77-4d9f-b1f5-8bfc08ec8dab",
+  "upload": {
+    "fileName": "file_example_MP3_700KB.mp3",
+    "fileSizeBytes": 764176,
+    "mimeType": "audio/mpeg",
+    "urlValidDurationSeconds": 1800
+  }
+}

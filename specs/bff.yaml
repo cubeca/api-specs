@@ -310,17 +310,17 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
-  '/upload/get-video-tus-url':
-    get:
-      operationId: content_upload_url
-      summary: Get tus upload url from cloudflare
-      description: Get tus upload url from cloudflare.
+  '/upload/video-tus-reservation':
+    post:
+      operationId: upload_video_tus_endpoint
+      summary: TUS "endpoint" to upload URL from Cloudflare
+      description: This (and not it's return value!) has to be given directly to the TUS client as it's `endpoint` parameter.
       tags:
         - Upload
       parameters:
         - name: upload-length
           in: header
-          description: Upload length
+          description: Upload Length
           required: true
           schema:
             type: string
@@ -338,6 +338,100 @@ paths:
               schema:
                 type: string
               description: Tus upload url received from cloudflare.
+            CUBE-File-Id:
+              schema:
+                type: string
+              description: File ID associated with the Tus upload url received from cloudflare.
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/upload/s3-presigned-url':
+    post:
+      operationId: upload_files_via_presigned_url
+      summary: Get S3 / R2 presigned url from Cloudflare
+      description: Get S3 / R2 presigned url from Cloudflare
+      tags:
+        - Upload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/upload/s3_presigned_url_request.json
+            example:
+              $ref: ../schemas/upload/s3_presigned_url_request.example.json
+        description: Add content
+        required: true
+      responses:
+        '200':
+          description: Add content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/upload/s3_presigned_url_response.json
+              example:
+                $ref: ../schemas/upload/s3_presigned_url_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/files/{fileId}':
+    get:
+      operationId: file_details
+      summary: Get file details
+      description: Get file details.
+      tags:
+        - Files
+      parameters:
+        - name: fileId
+          in: path
+          description: File ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/files/detail_response.json
+              example:
+                $ref: ../schemas/files/detail_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

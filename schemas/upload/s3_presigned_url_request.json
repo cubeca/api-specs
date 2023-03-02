@@ -1,0 +1,40 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/upload/s3_presigned_url_request.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "S3 presigned URL Request",
+    "description": "S3 presigned URL Request",
+    "type": "object",
+    "properties": {
+        "profileId": {
+            "type": "string"
+        },
+        "upload": {
+            "type": "object",
+            "properties": {
+                "fileName": {
+                    "type": "string"
+                },
+                "fileSizeBytes": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "urlValidDurationSeconds": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": [
+                "fileName",
+                "fileSizeBytes",
+                "mimeType"
+            ]
+        }
+    },
+    "required": [
+        "profileId",
+        "upload"
+    ]
+}

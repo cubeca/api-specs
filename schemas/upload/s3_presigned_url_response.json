@@ -1,0 +1,19 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/upload/s3_presigned_url_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "S3 presigned URL Response",
+    "description": "S3 presigned URL Response",
+    "type": "object",
+    "properties": {
+        "fileId": {
+            "type": "string"
+        },
+        "presignedUrl": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "fileId",
+        "presignedUrl"
+    ]
+}

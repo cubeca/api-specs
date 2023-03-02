@@ -1,0 +1,66 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/files/detail_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "FilesDetailsResponse",
+    "description": "FilesDetailsResponse",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string"
+        },
+        "storageType": {
+            "type": "string"
+        },
+        "playerInfo": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "hlsUrl": {
+                            "type": "string"
+                        },
+                        "dashUrl": {
+                            "type": "string"
+                        },
+                        "videoIdOrSignedUrl": {
+                            "type": "string"
+                        }
+                    },
+                    "required": []
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "mimeType": {
+                            "type": "string"
+                        },
+                        "fileType": {
+                            "type": "string"
+                        },
+                        "publicUrl": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "mimeType",
+                        "fileType",
+                        "publicUrl"
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "storageType",
+        "playerInfo"
+    ]
+}

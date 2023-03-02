@@ -1,0 +1,11 @@
+{
+    "id": "c866d7b4-ed1c-43a5-84f4-31a30c6112e3",
+    "createdAt": "2023-03-02T14:34:00Z",
+    "updatedAt": "2023-03-02T14:34:00Z",
+    "storageType": "cloudflareStream",
+    "playerInfo": {
+        "hlsUrl": "https://customer-ayah89x7bps0l5b8.cloudflarestream.com/bd903a6626e24f2297126e25d65e6ef1/manifest/video.m3u8",
+        "dashUrl": "https://customer-ayah89x7bps0l5b8.cloudflarestream.com/bd903a6626e24f2297126e25d65e6ef1/manifest/video.mpd",
+        "videoIdOrSignedUrl": "bd903a6626e24f2297126e25d65e6ef1"
+    }
+}
