@@ -1,17 +1,11 @@
 {
-    "profileId": "some-profile",
+    "profileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
     "type": "video",
     "title": "Test Video Upload",
     "expiry": "Say What??? Why should this ever be over?",
     "description": "This text field shall describe the content file.",
-    "coverImageFile": {
-      "name": "Name of file",
-      "file_contents_base64": "base 64 representation of file"
-    },
-    "mediaFile": {
-      "name": "Name of file",
-      "file_contents_base64": "base 64 representation of file"
-    },
+    "coverImageFileId": "24d6b370-a709-4a7b-b323-752186cd492d",
+    "contentFileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
     "coverImageText": "Thumbnail Text",
     "collaborators": [
         "Museum of Anthropology",
