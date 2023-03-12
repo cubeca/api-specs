@@ -1,0 +1,22 @@
+{
+    "$id": "https://docs.cubecommons.ca/schemas/auth/jwt_response.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "JWT Response",
+    "description": "JWT Response",
+    "type": "object",
+    "properties": {
+        "jwt": {
+            "type": "string",
+            "description": "JWT."
+        },
+        "profileId": {
+          "type": "string",
+          "description": "Id of profile for authenticated user"
+      }
+    },
+    "required": [
+        "jwt",
+        "profileId"
+    ],
+    "additionalProperties": false
+}

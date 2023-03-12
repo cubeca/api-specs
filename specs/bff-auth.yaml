@@ -137,9 +137,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/auth/jwt_response.json
+                $ref: ../schemas/auth/login_response.json
               example:
-                $ref: ../schemas/auth/jwt_response.example.json
+                $ref: ../schemas/auth/login_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

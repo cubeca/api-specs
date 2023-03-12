@@ -9,6 +9,18 @@
             "type": "string",
             "description": "The name entered by the user."
         },
+        "organization": {
+          "type": "string",
+          "description": "The name entered by the user."
+        },
+        "website": {
+          "type": "string",
+          "description": "The name entered by the user."
+        },
+        "tag": {
+          "type": "string",
+          "description": "The name entered by the user."
+        },
         "email": {
             "type": "string",
             "description": "The email entered by the user."

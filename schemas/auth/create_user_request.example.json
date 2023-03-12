@@ -1,5 +1,8 @@
 {
   "name": "New User",
+  "organization": "Organization",
+  "website": "http://www.organization.org",
+  "tag": "@organization",
   "email": "new_user@email.com",
   "password": "some-password",
   "permissionIds": ["view", "edit"],

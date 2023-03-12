@@ -8,8 +8,8 @@
         "id": {
             "$ref": "./profile.json#/properties/id"
         },
-        "name": {
-            "$ref": "./profile.json#/properties/name"
+        "organization": {
+            "$ref": "./profile.json#/properties/organization"
         },
         "heroUrl": {
             "$ref": "./profile.json#/properties/heroUrl"
@@ -22,16 +22,12 @@
         },
         "descriptionUrl": {
             "$ref": "./profile.json#/properties/descriptionUrl"
-        },
-        "videos": {
-            "$ref": "./profile.json#/properties/videos"
         }
     },
     "required": [
         "id",
-        "name",
+        "organization",
         "description",
-        "descriptionUrl",
-        "videos"
+        "descriptionUrl"
     ]
 }

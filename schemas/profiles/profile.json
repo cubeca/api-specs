@@ -8,7 +8,7 @@
         "id": {
             "type": "string"
         },
-        "name": {
+        "organization": {
             "type": "string"
         },
         "heroUrl": {
