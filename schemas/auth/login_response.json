@@ -1,8 +1,8 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/auth/jwt_response.json",
+    "$id": "https://docs.cubecommons.ca/schemas/auth/login_response.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "JWT Response",
-    "description": "JWT Response",
+    "title": "Login Response",
+    "description": "Login Response",
     "type": "object",
     "properties": {
         "jwt": {
