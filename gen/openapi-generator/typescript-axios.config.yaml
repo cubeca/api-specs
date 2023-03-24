@@ -19,8 +19,8 @@ legacyDiscriminatorBehavior: false
 # Use this property to set an url of your private npmRepo in the package.json
 npmRepository: "https://npm.pkg.github.com"
 
-# When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
-snapshot: true
+# # When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
+# snapshot: true
 
 # # Generate string enums instead of objects for enum values.
 # stringEnums:

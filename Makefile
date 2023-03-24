@@ -11,6 +11,9 @@ ifneq ($(FORCE),)
 	OPENAPI_GENERATOR_OPTIONS ?= --skip-validate-spec
 endif
 
+OPENAPI_GENERATOR_DOCKER_IMAGE ?= openapitools/openapi-generator-cli:v6.4.0
+export NEW_VERSION ?= $(PREVIOUS_VERSION)
+
 NPM_PREFIX_GLOBAL ?= $(shell npm prefix -g)
 
 .PHONY: up
@@ -102,6 +105,9 @@ filter--%:
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .["$$id"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/$*-filtered.yaml
+	ifneq ($(NEW_VERSION),)
+		yq --inplace '.info.version = "'$NEW_VERSION'"' $(HERE)/build/$*-filtered.yaml
+	endif
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
 .PHONY: filterdiff
@@ -121,7 +127,7 @@ gen_openapi_client--%:
 	$(DOCKER) \
 		run --rm \
 		--volume $(HERE)/build:/build \
-		openapitools/openapi-generator-cli \
+		$(OPENAPI_GENERATOR_DOCKER_IMAGE) \
 		generate \
 		--input-spec /build/$*-filtered.yaml \
 		--generator-name typescript-axios \
@@ -140,7 +146,7 @@ gen_openapi_client--%:
 gen_openapi_help:
 	$(DOCKER) \
 		run --rm \
-		openapitools/openapi-generator-cli \
+		$(OPENAPI_GENERATOR_DOCKER_IMAGE) \
 		help
 
 
@@ -148,7 +154,7 @@ gen_openapi_help:
 gen_openapi_help_generate:
 	$(DOCKER) \
 		run --rm \
-		openapitools/openapi-generator-cli \
+		$(OPENAPI_GENERATOR_DOCKER_IMAGE) \
 		help \
 		generate
 
@@ -157,7 +163,7 @@ gen_openapi_help_generate:
 gen_openapi_config_help:
 	$(DOCKER) \
 		run --rm \
-		openapitools/openapi-generator-cli \
+		$(OPENAPI_GENERATOR_DOCKER_IMAGE) \
 		config-help \
 		--generator-name typescript-axios
 

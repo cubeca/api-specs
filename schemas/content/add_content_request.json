@@ -26,6 +26,12 @@
         "mediaFileId": {
             "type": "string"
         },
+        "subtitlesFileId": {
+            "type": "string"
+        },
+        "transcriptFileId": {
+            "type": "string"
+        },
         "coverImageText": {
             "type": "string"
         },
