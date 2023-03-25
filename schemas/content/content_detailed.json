@@ -37,7 +37,7 @@
         },
         "credits": {
           "$ref": "./content.json#/properties/credits"
-      },
+        },
         "thumbnailUrl": {
             "$ref": "./content.json#/properties/thumbnailUrl"
         },

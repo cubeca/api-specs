@@ -17,7 +17,7 @@
         },
         "credits": {
           "type": "string"
-      },
+        },
         "createdDate": {
             "type": "string"
         },
