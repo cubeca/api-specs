@@ -4,16 +4,16 @@ run-name: Publish API client NPM package @ ${{ github.sha }}
 
 on: push
 
-env:
-  GITHUB_SHA: ${{ github.sha }}
-
 jobs:
   publish_package:
     runs-on: ubuntu-22.04
     name: Publish API client NPM package to npm.pkg.github.com
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Set branch_hash env var
+        run: echo "branch_hash=$(echo -n '${{ github.ref_name }}' | sha256sum | cut -b 1-12)" >> $GITHUB_ENV
 
       - name: Determine new version if any
         id: determine_version
@@ -23,6 +23,11 @@ jobs:
           # But do not create a git tag just yet, in case anything goes wrong during deployment.
           dry_run: true
           tag_prefix: ""
+
+          # Since the full version string goes onto permanent record at npmjs.org,
+          # we conceal the branch name which would get appended by default.
+          append_to_pre_release_tag: prerelease-${{ env.branch_hash }}
+
           custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
