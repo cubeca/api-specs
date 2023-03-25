@@ -1,4 +1,4 @@
-name: Publish API client NPM package to npm.pkg.github.com
+name: Publish API client NPM packages
 
 run-name: Publish API client NPM package @ ${{ github.sha }}
 
@@ -7,7 +7,7 @@ on: push
 jobs:
   publish_package:
     runs-on: ubuntu-22.04
-    name: Publish API client NPM package to npm.pkg.github.com
+    name: Publish API client NPM packages
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v3
@@ -60,13 +60,13 @@ jobs:
 
       # - name: "Switch to GPR (Github Packages Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
       #   run: |
-      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
-      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff-auth '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
+      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff/.npmrc '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
+      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff-auth/.npmrc '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
 
       - name: Authenticate with npmjs.org to publish packages
         run: |
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff-auth '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
 
       - name: Tag version and push tag
         id: tag_version_and_push
