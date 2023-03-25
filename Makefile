@@ -12,6 +12,8 @@ ifneq ($(FORCE),)
 endif
 
 OPENAPI_GENERATOR_DOCKER_IMAGE ?= openapitools/openapi-generator-cli:v6.4.0
+export DEFAULT_PREVIOUS_VERSION ?= 0.0.1
+export PREVIOUS_VERSION ?= $(DEFAULT_PREVIOUS_VERSION)
 export NEW_VERSION ?= $(PREVIOUS_VERSION)
 
 NPM_PREFIX_GLOBAL ?= $(shell npm prefix -g)
@@ -105,9 +107,7 @@ filter--%:
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .["$$id"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/$*-filtered.yaml
-	ifneq ($(NEW_VERSION),)
-		yq --inplace '.info.version = "'$NEW_VERSION'"' $(HERE)/build/$*-filtered.yaml
-	endif
+	yq --inplace '.info.version = "'$(NEW_VERSION)'"' $(HERE)/build/$*-filtered.yaml
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
 .PHONY: filterdiff
