@@ -12,8 +12,8 @@ jobs:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v3
 
-      - name: Set branch_hash env var
-        run: echo "branch_hash=$(echo -n '${{ github.ref_name }}' | sha256sum | cut -b 1-12)" >> $GITHUB_ENV
+      - name: Set BRANCH_HASH env var
+        run: echo "BRANCH_HASH=$(echo -n '${{ github.ref_name }}' | sha256sum | cut -b 1-12)" >> $GITHUB_ENV
 
       - name: Determine new version if any
         id: determine_version
@@ -26,7 +26,7 @@ jobs:
 
           # Since the full version string goes onto permanent record at npmjs.org,
           # we conceal the branch name which would get appended by default.
-          append_to_pre_release_tag: prerelease-${{ env.branch_hash }}
+          append_to_pre_release_tag: prerelease-${{ env.BRANCH_HASH }}
 
           custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -58,10 +58,15 @@ jobs:
         run: |
           make ci_gha
 
-      - name: "Switch to GPR (Github Packages Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
+      # - name: "Switch to GPR (Github Packages Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
+      #   run: |
+      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
+      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff-auth '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
+
+      - name: Authenticate with npmjs.org to publish packages
         run: |
-          ./scripts/write_npmrc.sh bff '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
-          ./scripts/write_npmrc.sh bff-auth '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff-auth '${{ secrets.NPMJS_ACCESS_TOKEN }}'
 
       - name: Tag version and push tag
         id: tag_version_and_push
@@ -86,21 +91,14 @@ jobs:
           echo "Using output tag_version_and_push.changelog: ${{ steps.tag_version_and_push.outputs.changelog }}"
 
       - name: Publish to npm.pkg.github.com
-        # env:
-        #   PREVIOUS_TAG: "${{ steps.determine_version.outputs.previous_tag }}"
-        #   NEW_TAG: "${{ steps.determine_version.outputs.new_tag }}"
-        #   PREVIOUS_VERSION: "${{ steps.determine_version.outputs.previous_version }}"
-        #   NEW_VERSION: "${{ steps.determine_version.outputs.new_version }}"
-        #   RELEASE_TYPE: "${{ steps.determine_version.outputs.release_type }}"
-        #   CHANGELOG: "${{ steps.determine_version.outputs.changelog }}"
         run: |
           ./scripts/publish.sh bff "${{ steps.determine_version.outputs.new_version }}"
           ./scripts/publish.sh bff-auth "${{ steps.determine_version.outputs.new_version }}"
 
-      - # See also https://github.com/marketplace/actions/action-repository-dispatch
-        name: Trigger update of vendorized API client pkgs in cubeca/cube_ui repo
-        uses: iniva/action-repository-dispatch@v1.1.7
-        with:
-          targetRepository: cubeca/cube_ui
-          eventType: vendor-update
-          token: ${{ secrets.VENDOR_UPDATE_PERSONAL_ACCESS_TOKEN }}
+      # - # See also https://github.com/marketplace/actions/action-repository-dispatch
+      #   name: Trigger update of vendorized API client pkgs in cubeca/cube_ui repo
+      #   uses: iniva/action-repository-dispatch@v1.1.7
+      #   with:
+      #     targetRepository: cubeca/cube_ui
+      #     eventType: vendor-update
+      #     token: ${{ secrets.VENDOR_UPDATE_PERSONAL_ACCESS_TOKEN }}
