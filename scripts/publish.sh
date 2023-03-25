@@ -18,5 +18,5 @@ if [ -n "$NEW_VERSION" ] && [ "$LATEST_PUBLISHED_VERSION" != "$NEW_VERSION" ]; t
 
   npm install
   npm run build
-  npm publish
+  npm publish --access public
 fi

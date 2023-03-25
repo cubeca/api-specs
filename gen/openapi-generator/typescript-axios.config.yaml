@@ -17,7 +17,8 @@ legacyDiscriminatorBehavior: false
 # npmName: "@cubeca/bff-client-oas-axios"
 
 # Use this property to set an url of your private npmRepo in the package.json
-npmRepository: "https://npm.pkg.github.com"
+# npmRepository: https://npm.pkg.github.com
+npmRepository: https://registry.npmjs.org
 
 # # When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
 # snapshot: true
@@ -39,5 +40,5 @@ withSeparateModelsAndApi: true
 
 # Try to work around the following error. Suspect this to be triggered by `withSeparateModelsAndApi: true`
 # Exception in thread "main" java.lang.RuntimeException: apiPackage and modelPackage must be defined
-apiPackage: "apis"
-modelPackage: "models"
+apiPackage: apis
+modelPackage: models
