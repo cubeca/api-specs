@@ -33,9 +33,7 @@ tags:
   - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
   - name: ContentFiles
-    description: Just to keep the client lib consistent
-  - name: Upload
-    description: All communications to do with uploading
+    description: Allows client to interact with Cloudflare API for file data (e.g. content uploading, retrieve media urls)
 
 servers:
   - url: https://bff-{stage}.cubecommons.ca
@@ -225,7 +223,7 @@ paths:
       summary: Add content
       description: Add content.
       tags:
-        - ContentFiles
+        - Content
       requestBody:
         content:
           application/json:
@@ -315,7 +313,7 @@ paths:
       summary: TUS "endpoint" to upload URL from Cloudflare
       description: This (and not it's return value!) has to be given directly to the TUS client as it's `endpoint` parameter.
       tags:
-        - Upload
+        - ContentFiles
       parameters:
         - name: upload-length
           in: header
@@ -368,7 +366,7 @@ paths:
       summary: Get S3 / R2 presigned url from Cloudflare
       description: Get S3 / R2 presigned url from Cloudflare
       tags:
-        - Upload
+        - ContentFiles
       requestBody:
         content:
           application/json:
@@ -414,7 +412,7 @@ paths:
       summary: Get file details
       description: Get file details.
       tags:
-        - Files
+        - ContentFiles
       parameters:
         - name: fileId
           in: path
@@ -458,7 +456,7 @@ paths:
       summary: Get upload url from S3 for cloudflare R2
       description: Get upload url from S3 for cloudflare R2.
       tags:
-        - Upload
+        - ContentFiles
       responses:
         '200':
           description: OK
@@ -706,6 +704,50 @@ paths:
                 $ref: ../schemas/collaborators/list_response.json
               example:
                 $ref: ../schemas/collaborators/list_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/files':
+    get:
+      operationId: files
+      summary: Details about a provided fileId
+      description: LDetails about a provided fileId.
+      tags:
+        - Files
+      parameters:
+        - name: fileId
+          in: path
+          description: File ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File Details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/files/detail_response.json
+              example:
+                $ref: ../schemas/files/detail_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
