@@ -5,8 +5,17 @@
     "description": "Content details",
     "type": "object",
     "properties": {
-        "id": {
+        "mediaFileId": {
             "$ref": "./content.json#/properties/id"
+        },
+        "profileId": {
+          "$ref": "./content.json#/properties/id"
+        },
+        "coverImageFileId": {
+          "$ref": "./content.json#/properties/id"
+        },
+        "coverImageText": {
+          "type": "string"
         },
         "url": {
             "$ref": "./content.json#/properties/url"

@@ -33,9 +33,7 @@ tags:
   - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
   - name: ContentFiles
-    description: Just to keep the client lib consistent
-  - name: Upload
-    description: All communications to do with uploading
+    description: File related calls for uploads to Cloudflare and retrieving file details
 
 servers:
   - url: https://bff-{stage}.cubecommons.ca
@@ -225,7 +223,7 @@ paths:
       summary: Add content
       description: Add content.
       tags:
-        - ContentFiles
+        - Content
       requestBody:
         content:
           application/json:
@@ -315,7 +313,7 @@ paths:
       summary: TUS "endpoint" to upload URL from Cloudflare
       description: This (and not it's return value!) has to be given directly to the TUS client as it's `endpoint` parameter.
       tags:
-        - Upload
+        - ContentFiles
       parameters:
         - name: upload-length
           in: header
@@ -368,7 +366,7 @@ paths:
       summary: Get S3 / R2 presigned url from Cloudflare
       description: Get S3 / R2 presigned url from Cloudflare
       tags:
-        - Upload
+        - ContentFiles
       requestBody:
         content:
           application/json:
@@ -414,7 +412,7 @@ paths:
       summary: Get file details
       description: Get file details.
       tags:
-        - Files
+        - ContentFiles
       parameters:
         - name: fileId
           in: path
