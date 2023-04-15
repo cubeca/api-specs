@@ -2,10 +2,9 @@
 HERE = $(shell pwd)
 
 DOCKER ?= docker
-DOCKER_COMPOSE ?= docker-compose
 
 export PROJECT_NAME ?= cube_api_mock
-PROJECT_DOCKER_COMPOSE = $(DOCKER_COMPOSE) --project-name $(PROJECT_NAME) --file ./docker-compose.yaml --project-directory . --env-file ./.env
+PROJECT_DOCKER_COMPOSE = $(DOCKER) compose --project-name $(PROJECT_NAME) --file ./docker-compose.yaml --project-directory . --env-file ./.env
 
 ifneq ($(FORCE),)
 	OPENAPI_GENERATOR_OPTIONS ?= --skip-validate-spec
