@@ -1,6 +1,6 @@
 name: Publish API client and server NPM packages
 
-run-name: Publish API NPM package @ ${{ github.sha }}
+run-name: Publish API NPM packages @ ${{ github.sha }}
 
 on: push
 

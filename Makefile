@@ -204,6 +204,10 @@ ci_gha: ci_gha_install gen_openapi_client fix_openapi_client_package_json gen_si
 fix_openapi_client_package_json: gen_openapi_client fix_openapi_client_package_json--bff fix_openapi_client_package_json--bff-auth
 
 fix_openapi_client_package_json--%:
+	# debug start
+	ls -la $(HERE)/build/gen/typescript-axios/$*/package.json
+	id
+	# debug stop
 	yq \
 		--inplace \
 		--output-format=json \
