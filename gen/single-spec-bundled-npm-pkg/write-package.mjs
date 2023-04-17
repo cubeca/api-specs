@@ -29,6 +29,10 @@ const pkg = {
     "openapi"
   ],
   "license": "UNLICENSED",
+  "scripts": {
+    "build": "echo \"INFO: no build step necessary\" && exit 0",
+    "prepare": "npm run build"
+  },
   "exports": {
     "node": {
       "import": "./index.mjs",
