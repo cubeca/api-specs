@@ -125,7 +125,7 @@ gen_openapi_client--%:
 	cp $(HERE)/gen/openapi-generator/typescript-axios.config.yaml $(HERE)/build/gen/typescript-axios.config.yaml
 	$(DOCKER) \
 		run --rm \
-		--user $(id -u):$(id -g) \
+		--user $(shell id -u):$(shell id -g) \
 		--volume $(HERE)/build:/build \
 		$(OPENAPI_GENERATOR_DOCKER_IMAGE) \
 		generate \
