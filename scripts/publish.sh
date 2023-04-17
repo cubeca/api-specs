@@ -3,14 +3,14 @@
 # Make Bash's error handling strict(er).
 set -o nounset -o pipefail -o errexit
 
-export API=$1
+export PACKAGE_DIR=$1
 export NEW_VERSION=$2
 
-cd ./build/gen/typescript-axios/$API
+cd $PACKAGE_DIR
 
 LATEST_PUBLISHED_VERSION=`npm view . version 2>/dev/null || echo "0"`
-echo "LATEST_PUBLISHED_VERSION($API)==$LATEST_PUBLISHED_VERSION"
-echo "NEW_VERSION($API)==$NEW_VERSION"
+echo "LATEST_PUBLISHED_VERSION($PACKAGE_DIR)==$LATEST_PUBLISHED_VERSION"
+echo "NEW_VERSION($PACKAGE_DIR)==$NEW_VERSION"
 
 if [ -n "$NEW_VERSION" ] && [ "$LATEST_PUBLISHED_VERSION" != "$NEW_VERSION" ]; then
   cat ./package.json | jq '.version = $ENV.NEW_VERSION' > ./package-edited.json

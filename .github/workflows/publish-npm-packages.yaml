@@ -1,13 +1,13 @@
-name: Publish API client NPM packages
+name: Publish API client and server NPM packages
 
-run-name: Publish API client NPM package @ ${{ github.sha }}
+run-name: Publish API NPM package @ ${{ github.sha }}
 
 on: push
 
 jobs:
   publish_package:
     runs-on: ubuntu-22.04
-    name: Publish API client NPM packages
+    name: Publish API client and server NPM packages
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v3
@@ -67,6 +67,9 @@ jobs:
         run: |
           ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
           ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/bff/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/all-specs-unbundled-npm-pkg/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
 
       - name: Tag version and push tag
         id: tag_version_and_push
@@ -92,8 +95,11 @@ jobs:
 
       - name: Publish to npm.pkg.github.com
         run: |
-          ./scripts/publish.sh bff "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh bff-auth "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/typescript-axios/bff "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/typescript-axios/bff-auth "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/bff "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/bff-auth "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/all-specs-unbundled-npm-pkg "${{ steps.determine_version.outputs.new_version }}"
 
       # - # See also https://github.com/marketplace/actions/action-repository-dispatch
       #   name: Trigger update of vendorized API client pkgs in cubeca/cube_ui repo

@@ -95,7 +95,7 @@ req_echo:
 merge: merge--bff merge--bff-auth
 
 merge--%:
-	npx speccy resolve -i specs/$*.yaml -o build/$*.yaml
+	npx speccy resolve --internal-refs specs/$*.yaml -o build/$*.yaml
 
 
 .PHONY: filter
@@ -104,7 +104,7 @@ filter: merge filter--bff filter--bff-auth
 filter--%:
 	cat $(HERE)/build/$*.yaml > $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
-	yq --inplace 'del(.. | .["$$id"]?)' $(HERE)/build/$*-filtered.yaml
+	yq --inplace 'del(.. | .id?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '.info.version = "'$(NEW_VERSION)'"' $(HERE)/build/$*-filtered.yaml
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
@@ -167,6 +167,29 @@ gen_openapi_config_help:
 		--generator-name typescript-axios
 
 
+.PHONY: gen_single_spec_bundled_npm_pkg
+gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--bff gen_single_spec_bundled_npm_pkg--bff-auth
+
+gen_single_spec_bundled_npm_pkg--%:
+	-mkdir -p $(HERE)/build/gen/single-spec-bundled-npm-pkg/$*
+	node $(HERE)/gen/single-spec-bundled-npm-pkg/write-package.mjs $(HERE)/build/gen/single-spec-bundled-npm-pkg/$* $(HERE)/build/$*-filtered.json
+
+
+.PHONY: gen_all_specs_unbundled_npm_pkg
+gen_all_specs_unbundled_npm_pkg:
+	-mkdir -p $(HERE)/build/gen/all-specs-unbundled-npm-pkg/specs
+	cp -rp $(HERE)/schemas $(HERE)/build/gen/all-specs-unbundled-npm-pkg/schemas
+	$(MAKE) cp_all_specs_unbundled_npm_pkg--bff
+	$(MAKE) cp_all_specs_unbundled_npm_pkg--bff-auth
+	cp -rp $(HERE)/gen/all-specs-unbundled-npm-pkg/index.cjs $(HERE)/build/gen/all-specs-unbundled-npm-pkg/index.cjs
+	cp -rp $(HERE)/gen/all-specs-unbundled-npm-pkg/index.mjs $(HERE)/build/gen/all-specs-unbundled-npm-pkg/index.mjs
+	node $(HERE)/gen/all-specs-unbundled-npm-pkg/write-package.mjs $(HERE)/build/gen/all-specs-unbundled-npm-pkg $(NEW_VERSION)
+
+cp_all_specs_unbundled_npm_pkg--%:
+	yq '.' $(HERE)/specs/$*.yaml --output-format=json > $(HERE)/build/gen/all-specs-unbundled-npm-pkg/specs/$*.json
+	yq '.info.version = "'$(NEW_VERSION)'"' --inplace --output-format=json $(HERE)/build/gen/all-specs-unbundled-npm-pkg/specs/$*.json
+
+
 .PHONY: ci_gha_install
 ci_gha_install:
 	sudo snap install yq
@@ -174,15 +197,18 @@ ci_gha_install:
 
 
 .PHONY: ci_gha
-ci_gha: ci_gha_install gen_openapi_client fix_package_json
+ci_gha: ci_gha_install gen_openapi_client fix_openapi_client_package_json gen_single_spec_bundled_npm_pkg gen_all_specs_unbundled_npm_pkg
 
 
-.PHONY: fix_package_json
-fix_package_json: gen_openapi_client fix_package_json--bff fix_package_json--bff-auth
+.PHONY: fix_openapi_client_package_json
+fix_openapi_client_package_json: gen_openapi_client fix_openapi_client_package_json--bff fix_openapi_client_package_json--bff-auth
 
-fix_package_json--%:
-	cat $(HERE)/build/gen/typescript-axios/$*/package.json | jq '.repository.url = "https://github.com/cubeca/api-specs.git"' > $(HERE)/build/gen/typescript-axios/$*/package-edited.json
-	mv $(HERE)/build/gen/typescript-axios/$*/package-edited.json $(HERE)/build/gen/typescript-axios/$*/package.json
+fix_openapi_client_package_json--%:
+	yq \
+		--inplace \
+		--output-format=json \
+		'.repository.url = "https://github.com/cubeca/api-specs.git"' \
+		$(HERE)/build/gen/typescript-axios/$*/package.json
 
 # Link the BFF API client package(s) locally
 # See https://docs.npmjs.com/cli/v9/commands/npm-link

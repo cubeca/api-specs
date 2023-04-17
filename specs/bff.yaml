@@ -1,9 +1,8 @@
 openapi: 3.0.3
 info:
-  title: BFF - CUBE DAO Canada
+  title: BFF - The Association for Cube Commons Canada
 
-  # Until the video platform MVP is live, only count up the patch version,
-  # i.e. 0.0.x --> 0.0.(x+1)
+  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   # In general, use semantic versioning: http://semver.org/
   version: '0.0.1'
   
@@ -19,11 +18,11 @@ info:
     modular "real" backend services understand.
 
   contact:
-    email: raphaelhuefner@gmail.com
-    url: 'https://github.com/cubeca'
+    email: tech@cubecommons.ca
+    url: https://github.com/cubeca
   license:
     name: UNLICENSED
-    url: 'https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license'
+    url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
 
 tags:
   - name: User
