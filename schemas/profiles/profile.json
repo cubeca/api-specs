@@ -1,6 +1,6 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/profiles/profile.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/profile.json",
     "title": "Profile main schema",
     "description": "Profile main schema",
     "type": "object",

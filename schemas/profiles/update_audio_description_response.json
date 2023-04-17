@@ -1,6 +1,6 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/profiles/update_audio_description_response.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/update_audio_description_response.json",
     "title": "Updated Profile audio description Response",
     "description": "Updated Profile audio description Response",
     "type": "object",

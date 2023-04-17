@@ -1,6 +1,6 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/auth/jwt_response.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/auth/jwt_response.json",
     "title": "JWT Response",
     "description": "JWT Response",
     "type": "object",

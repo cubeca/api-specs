@@ -1,6 +1,6 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/content/detail_response.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/detail_response.json",
     "title": "ContentDetailsResponse",
     "description": "Content details response",
     "type": "object",

@@ -1,6 +1,6 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/common/language_id.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/common/language_id.json",
     "title": "Language ID",
     "description": "defaults to iso639_3Id, then glottologId, then internal UUID",
     "type": "string"

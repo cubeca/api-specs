@@ -1,6 +1,6 @@
 {
-    "$id": "https://docs.cubecommons.ca/schemas/upload/s3_presigned_url_response.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/upload/s3_presigned_url_response.json",
     "title": "S3 presigned URL Response",
     "description": "S3 presigned URL Response",
     "type": "object",

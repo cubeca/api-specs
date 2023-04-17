@@ -32,7 +32,9 @@
                             "type": "string"
                         }
                     },
-                    "required": []
+                    "required": [
+                        "videoIdOrSignedUrl"
+                    ]
                 },
                 {
                     "type": "object",
