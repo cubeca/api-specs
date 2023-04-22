@@ -55,7 +55,7 @@ servers:
         default: dev
         description: deployment stage
 
-  - url: http://localhost:{port}/{basePath}
+  - url: http://localhost:{port}
     description: Local development
     variables:
       port:
@@ -63,8 +63,6 @@ servers:
           - '8084'
           - '18084'
         default: '8084'
-      basePath:
-        default: bff
 
 security: 
   - jwt_logged_in: []
@@ -727,6 +725,8 @@ components:
       $ref: './_partials/common-components.yaml#/responses/error422'
     error429:
       $ref: './_partials/common-components.yaml#/responses/error429'
+    error500:
+      $ref: './_partials/common-components.yaml#/responses/error500'
     error503:
       $ref: './_partials/common-components.yaml#/responses/error503'
 

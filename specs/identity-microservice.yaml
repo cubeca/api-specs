@@ -357,6 +357,8 @@ components:
       $ref: './_partials/common-components.yaml#/responses/error422'
     error429:
       $ref: './_partials/common-components.yaml#/responses/error429'
+    error500:
+      $ref: './_partials/common-components.yaml#/responses/error500'
     error503:
       $ref: './_partials/common-components.yaml#/responses/error503'
 
