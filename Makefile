@@ -103,8 +103,9 @@ filter: merge filter--bff filter--bff-auth filter--cloudflare-microservice filte
 
 filter--%:
 	cat $(HERE)/build/$*.yaml > $(HERE)/build/$*-filtered.yaml
+	# Only delete "id" properties which are siblings of a "$schema", otherwise we'd sabotage our DB "id" fields.
+	yq --inplace 'del(.. | .["$$schema"]? | parent | .id?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
-	yq --inplace 'del(.. | .id?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) |= "default"' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '.info.version = "'$(NEW_VERSION)'"' $(HERE)/build/$*-filtered.yaml
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
