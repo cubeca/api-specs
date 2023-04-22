@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Cloudflare Microservice - The Association for Cube Commons Canada
+
+  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
+  # In general, use semantic versioning: http://semver.org/
+  version: '0.0.1'
+  
+  description: |
+    # Cloudflare Microservice
+
+    The Cloudflare Microservice should probably be named "File Microservice".
+    It just so happened that CUBE started out by hosting all uploaded files with Cloudflare.
+
+    The Cloudflare Microservice is the custodian of all files that have been uploaded to CUBE,
+    regardless of what purpose for, be it profile hero images, video subtitles,
+    or content cover images (a.k.a. thumbnails).
+
+  contact:
+    email: tech@cubecommons.ca
+    url: https://github.com/cubeca
+  license:
+    name: UNLICENSED
+    url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
+
+tags:
+  - name: Files
+    description: Everything to do with files, but only *after* they have been uploaded
+  - name: Upload
+    description: All communications to do with uploading
+
+servers:
+  - url: http://localhost:{port}
+    description: Local development
+    variables:
+      port:
+        enum:
+          - '8080'
+          - '18080'
+        default: '8080'
+
+security: 
+  - jwt_logged_in: []
+
+paths:
+
+  '/upload/video-tus-reservation':
+    post:
+      operationId: upload_video_tus_endpoint
+      summary: TUS "endpoint" to upload URL from Cloudflare
+      description: This (and not it's return value!) has to be given directly to the TUS client as it's `endpoint` parameter.
+      tags:
+        - Upload
+      parameters:
+        - name: upload-length
+          in: header
+          description: Upload Length
+          required: true
+          schema:
+            type: string
+        - name: upload-metadata
+          in: header
+          description: Upload Metadata
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Location:
+              schema:
+                type: string
+              description: Tus upload url received from cloudflare.
+            CUBE-File-Id:
+              schema:
+                type: string
+              description: File ID associated with the Tus upload url received from cloudflare.
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/upload/s3-presigned-url':
+    post:
+      operationId: upload_files_via_presigned_url
+      summary: Get S3 / R2 presigned url from Cloudflare
+      description: Get S3 / R2 presigned url from Cloudflare
+      tags:
+        - Upload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/upload/s3_presigned_url_request.json
+            example:
+              $ref: ../schemas/upload/s3_presigned_url_request.example.json
+        description: Add content
+        required: true
+      responses:
+        '200':
+          description: Add content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/upload/s3_presigned_url_response.json
+              example:
+                $ref: ../schemas/upload/s3_presigned_url_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/files/{fileId}':
+    get:
+      operationId: file_details
+      summary: Get file details
+      description: Get file details.
+      tags:
+        - Files
+      parameters:
+        - name: fileId
+          in: path
+          description: File ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/files/detail_response.json
+              example:
+                $ref: ../schemas/files/detail_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+components:
+  $ref: ./_partials/common-components.yaml

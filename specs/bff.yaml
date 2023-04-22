@@ -60,19 +60,9 @@ servers:
     variables:
       port:
         enum:
-          - '8080'
-          - '8081'
-          - '8082'
-          - '8083'
           - '8084'
-          - '8085'
-          - '18080'
-          - '18081'
-          - '18082'
-          - '18083'
           - '18084'
-          - '18085'
-        default: '8080'
+        default: '8084'
       basePath:
         default: bff
 
@@ -81,302 +71,32 @@ security:
 
 paths:
   '/auth/anonymous':
-    post:
-      operationId: anonymous_JWT
-      summary: Acquire a JWT as an anonymous user.
-      description: Acquire a JWT as an anonymous user.
-      tags:
-        - Auth
-
-      # While we are logging in we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
-
-      requestBody:
-        description: Anonymous JWT request
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/auth/anonymous_jwt_request.json
-            example:
-              $ref: ../schemas/auth/anonymous_jwt_request.example.json
-        required: true
-      responses:
-        '200':
-          description: Successful result contains a JWT
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/auth/jwt_response.json
-              example:
-                $ref: ../schemas/auth/jwt_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
 
   '/auth/login':
-    post:
-      operationId: login
-      summary: Login with username and password
-      description: Log user in with username and password.
-      tags:
-        - Auth
-
-      # This can be called without JWT, or with an `anonymous` JWT claim.
-      security:
-        - {}
-        - jwt_logged_in: []
-
-      requestBody:
-        description: Logged-in JWT request
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/auth/login_request.json
-            example:
-              $ref: ../schemas/auth/login_request.example.json
-        required: true
-      responses:
-        '200':
-          description: Successful login result contains a JWT
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/auth/login_response.json
-              example:
-                $ref: ../schemas/auth/login_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
 
   '/auth/user':
-    post:
-      operationId: user
-      summary: Create a new user
-      description: Creates a new user.
-      tags:
-        - Auth
-
-      # When calling this without JWT (or without a `userAdmin` JWT claim), the created user will only be allowed to have a single JWT claim called `active`.
-      # When calling this with a `userAdmin` JWT claim, the created user will be allowed all requested JWT claims.
-      security:
-        - {}
-        - jwt_logged_in: []
-
-      requestBody:
-        description: Creating a new user
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/auth/create_user_request.json
-            example:
-              $ref: ../schemas/auth/create_user_request.example.json
-        required: true
-      responses:
-        '201':
-          description: Successful user creation
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: OK
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1user
 
   '/auth/email':
-    put:
-      operationId: update_email
-      summary: Update user email.
-      description: Update user email.
-      tags:
-        - Auth
-
-      requestBody:
-        description: Update Email
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/auth/update_email_request.json
-            example:
-              $ref: ../schemas/auth/update_email_request.example.json
-        required: true
-      responses:
-        '200':
-          description: Successful email update result
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: OK
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1email
 
   '/auth/password':
-    put:
-      operationId: update_password
-      summary: Update user password.
-      description: Update user password.
-      tags:
-        - Auth
-
-      requestBody:
-        description: Update Password
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/auth/update_password_request.json
-            example:
-              $ref: ../schemas/auth/update_password_request.example.json
-        required: true
-      responses:
-        '200':
-          description: Successful password update result
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: OK
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1password
 
   '/auth/verify':
-    get:
-      operationId: verify_email
-      summary: Verify user email.
-      description: Verify user email.
-      tags:
-        - Auth
-
-      # While we are creating a new user, we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
-
-      parameters:
-        - in: query
-          name: uuid
-          schema:
-            type: string
-          description: The uuid of the user verifying their email
-      responses:
-        '200':
-          description: Successful email verification
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: OK
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1verify
 
   '/auth/forgot-password':
-    get:
-      operationId: forgot_password
-      summary: Trigger forgot password flow.
-      description: Trigger forgot password flow.
-      tags:
-        - Auth
-
-      # While we are creating a new user, we are not yet authenticated,
-      # so we have to allow for "no auth" by overriding the
-      # global "security" setting with a local empty one.
-      security: []
-
-      parameters:
-        - in: query
-          name: email
-          schema:
-            type: string
-          description: The email of the user resetting their password
-      responses:
-        '200':
-          description: Successful password update result
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: OK
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '406':
-          $ref: '#/components/responses/error406'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
 
   '/echo':
     post:
@@ -990,91 +710,4 @@ paths:
           $ref: '#/components/responses/error503'
 
 components:
-  responses:
-    error400:
-      description: Error 400
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.400.json
-    error401:
-      description: Error 401
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.401.json
-    error403:
-      description: Error 403
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.403.json
-    error404:
-      description: Error 404
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.404.json
-    error405:
-      description: Error 405
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.405.json
-    error406:
-      description: Error 406
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.406.json
-    error422:
-      description: Error 422
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.422.json
-    error429:
-      description: Error 429
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.429.json
-    error500:
-      description: Error 500
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.500.json
-    error503:
-      description: Error 503
-      content:
-        application/problem+json:
-          schema:
-            $ref: ../schemas/common/error.json
-          example:
-            $ref: ../schemas/common/error.example.503.json
-
-  securitySchemes:
-    jwt_logged_in:
-      type: http
-      description: This API uses JWT. Either anonymous JWT or logged-in JWT via username and password.
-      scheme: bearer
-      bearerFormat: JWT
+  $ref: ./_partials/common-components.yaml

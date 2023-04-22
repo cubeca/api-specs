@@ -69,6 +69,10 @@ jobs:
           ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
           ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/bff/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
           ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/content-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/identity-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/profile-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
           ./scripts/write_npmrc_npmjs.sh ./build/gen/all-specs-unbundled-npm-pkg/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
 
       - name: Tag version and push tag
@@ -82,16 +86,16 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
-      - name: "Debugging output from tag_version_and_push step"
-        run: |
-          echo "Using output tag_version_and_push.previous_tag: ${{ steps.tag_version_and_push.outputs.previous_tag }}"
-          echo "Using output tag_version_and_push.new_tag: ${{ steps.tag_version_and_push.outputs.new_tag }}"
+      # - name: "Debugging output from tag_version_and_push step"
+      #   run: |
+      #     echo "Using output tag_version_and_push.previous_tag: ${{ steps.tag_version_and_push.outputs.previous_tag }}"
+      #     echo "Using output tag_version_and_push.new_tag: ${{ steps.tag_version_and_push.outputs.new_tag }}"
 
-          echo "Using output tag_version_and_push.previous_version: ${{ steps.tag_version_and_push.outputs.previous_version }}"
-          echo "Using output tag_version_and_push.new_version: ${{ steps.tag_version_and_push.outputs.new_version }}"
+      #     echo "Using output tag_version_and_push.previous_version: ${{ steps.tag_version_and_push.outputs.previous_version }}"
+      #     echo "Using output tag_version_and_push.new_version: ${{ steps.tag_version_and_push.outputs.new_version }}"
 
-          echo "Using output tag_version_and_push.release_type: ${{ steps.tag_version_and_push.outputs.release_type }}"
-          echo "Using output tag_version_and_push.changelog: ${{ steps.tag_version_and_push.outputs.changelog }}"
+      #     echo "Using output tag_version_and_push.release_type: ${{ steps.tag_version_and_push.outputs.release_type }}"
+      #     echo "Using output tag_version_and_push.changelog: ${{ steps.tag_version_and_push.outputs.changelog }}"
 
       - name: Publish to npm.pkg.github.com
         run: |
@@ -99,6 +103,10 @@ jobs:
           ./scripts/publish.sh ./build/gen/typescript-axios/bff-auth "${{ steps.determine_version.outputs.new_version }}"
           ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/bff "${{ steps.determine_version.outputs.new_version }}"
           ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/bff-auth "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare-microservice "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/content-microservice "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/identity-microservice "${{ steps.determine_version.outputs.new_version }}"
+          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/profile-microservice "${{ steps.determine_version.outputs.new_version }}"
           ./scripts/publish.sh ./build/gen/all-specs-unbundled-npm-pkg "${{ steps.determine_version.outputs.new_version }}"
 
       # - # See also https://github.com/marketplace/actions/action-repository-dispatch

@@ -92,20 +92,20 @@ req_echo:
 	# curl https://bff-mock-server-tjjg4pjowa-pd.a.run.app/echo \
 
 .PHONY: merge
-merge: merge--bff merge--bff-auth
+merge: merge--bff merge--bff-auth merge--cloudflare-microservice merge--content-microservice merge--identity-microservice merge--profile-microservice
 
 merge--%:
 	npx speccy resolve --internal-refs specs/$*.yaml -o build/$*.yaml
 
 
 .PHONY: filter
-filter: merge filter--bff filter--bff-auth
+filter: merge filter--bff filter--bff-auth filter--cloudflare-microservice filter--content-microservice filter--identity-microservice filter--profile-microservice
 
 filter--%:
 	cat $(HERE)/build/$*.yaml > $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace 'del(.. | .id?)' $(HERE)/build/$*-filtered.yaml
-	yq --inplace '(.. | select(has("const")) | .const | key) = "default"' $(HERE)/build/$*-filtered.yaml
+	yq --inplace '(.. | select(has("const")) | .const | key) |= "default"' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '.info.version = "'$(NEW_VERSION)'"' $(HERE)/build/$*-filtered.yaml
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
@@ -169,7 +169,7 @@ gen_openapi_config_help:
 
 
 .PHONY: gen_single_spec_bundled_npm_pkg
-gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--bff gen_single_spec_bundled_npm_pkg--bff-auth
+gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--bff gen_single_spec_bundled_npm_pkg--bff-auth gen_single_spec_bundled_npm_pkg--cloudflare-microservice gen_single_spec_bundled_npm_pkg--content-microservice gen_single_spec_bundled_npm_pkg--identity-microservice gen_single_spec_bundled_npm_pkg--profile-microservice
 
 gen_single_spec_bundled_npm_pkg--%:
 	-mkdir -p $(HERE)/build/gen/single-spec-bundled-npm-pkg/$*
@@ -178,17 +178,7 @@ gen_single_spec_bundled_npm_pkg--%:
 
 .PHONY: gen_all_specs_unbundled_npm_pkg
 gen_all_specs_unbundled_npm_pkg:
-	-mkdir -p $(HERE)/build/gen/all-specs-unbundled-npm-pkg/specs
-	cp -rp $(HERE)/schemas $(HERE)/build/gen/all-specs-unbundled-npm-pkg/schemas
-	$(MAKE) cp_all_specs_unbundled_npm_pkg--bff
-	$(MAKE) cp_all_specs_unbundled_npm_pkg--bff-auth
-	cp -rp $(HERE)/gen/all-specs-unbundled-npm-pkg/index.cjs $(HERE)/build/gen/all-specs-unbundled-npm-pkg/index.cjs
-	cp -rp $(HERE)/gen/all-specs-unbundled-npm-pkg/index.mjs $(HERE)/build/gen/all-specs-unbundled-npm-pkg/index.mjs
-	node $(HERE)/gen/all-specs-unbundled-npm-pkg/write-package.mjs $(HERE)/build/gen/all-specs-unbundled-npm-pkg $(NEW_VERSION)
-
-cp_all_specs_unbundled_npm_pkg--%:
-	yq '.' $(HERE)/specs/$*.yaml --output-format=json > $(HERE)/build/gen/all-specs-unbundled-npm-pkg/specs/$*.json
-	yq '.info.version = "'$(NEW_VERSION)'"' --inplace --output-format=json $(HERE)/build/gen/all-specs-unbundled-npm-pkg/specs/$*.json
+	./scripts/gen_all_specs_unbundled_npm_pkg.sh $(HERE) $(NEW_VERSION)
 
 
 .PHONY: ci_gha_install

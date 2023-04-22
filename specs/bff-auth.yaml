@@ -42,49 +42,33 @@ servers:
         default: dev
         description: deployment stage
 
-  - url: http://localhost:{port}/{basePath}
+  - url: http://localhost:{port}
     description: Local development
     variables:
       port:
         enum:
-          - '8080'
-          - '8081'
-          - '8082'
-          - '8083'
           - '8084'
-          - '8085'
-          - '18080'
-          - '18081'
-          - '18082'
-          - '18083'
           - '18084'
-          - '18085'
-        default: '8080'
-      basePath:
-        default: bff-auth
+        default: '8084'
 
 paths:
   '/auth/anonymous':
-    $ref: ./bff.yaml#/paths/~1auth~1anonymous
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
   '/auth/login':
-    $ref: ./bff.yaml#/paths/~1auth~1login
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
   '/auth/user':
-    $ref: ./bff.yaml#/paths/~1auth~1user
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1user
   '/auth/email':
-    $ref: ./bff.yaml#/paths/~1auth~1email
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1email
   '/auth/password':
-    $ref: ./bff.yaml#/paths/~1auth~1password
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1password
   '/auth/verify':
-    $ref: ./bff.yaml#/paths/~1auth~1verify
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1verify
   '/auth/forgot-password':
-    $ref: ./bff.yaml#/paths/~1auth~1forgot-password
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
 
 components:
-  responses:
-    $ref: ./bff.yaml#/components/responses
-
-  securitySchemes:
-    $ref: ./bff.yaml#/components/securitySchemes
+  $ref: ./_partials/common-components.yaml
 
 security:
   - jwt_logged_in: []

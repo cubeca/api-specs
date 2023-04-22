@@ -1,0 +1,231 @@
+openapi: 3.0.3
+info:
+  title: Content Microservice - The Association for Cube Commons Canada
+
+  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
+  # In general, use semantic versioning: http://semver.org/
+  version: '0.0.1'
+  
+  description: |
+    # Content Microservice
+
+    The Content Microservice is the "custodian" of "content pieces", which are usually one main media file,
+    tied together with some supporting files like thumbnail, sign language video, subtitles, etc.
+    plus some metadata like title, description, owner profile etc.
+
+  contact:
+    email: tech@cubecommons.ca
+    url: https://github.com/cubeca
+  license:
+    name: UNLICENSED
+    url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
+
+tags:
+  - name: Content
+    description: Content (e.g. videos, pdfs, audio, etc)
+
+servers:
+  # No public URL available.
+
+  - url: http://localhost:{port}
+    description: Local development
+    variables:
+      port:
+        enum:
+          - '8081'
+          - '18081'
+        default: '8081'
+
+security: 
+  - jwt_logged_in: []
+
+paths:
+
+  '/content':
+    get:
+      operationId: content_list
+      summary: List content
+      description: List content.
+      tags:
+        - Content
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: true
+          schema:
+            type: integer
+        - name: page_size
+          in: query
+          description: Number of items on a page
+          required: true
+          schema:
+            type: integer
+        - name: category
+          in: query
+          description: Content category
+          required: false
+          schema:
+            type: string
+            enum:
+              - all
+              - video
+              - audio
+              - vr
+              - pdf
+              - digital-publications
+              - talks
+              - performances
+              - cultural-teachings
+
+              # Hack to get the Frontend loading for MVP
+              - featured
+            default: all
+        - name: type
+          in: query
+          description: Content type
+          required: false
+          schema:
+            type: string
+            enum:
+              - video
+              - audio
+              - pdf
+            default: video
+        - name: nation
+          in: query
+          description: Related to Nation/Country
+          required: false
+          schema:
+            type: string
+            enum:
+              - CA
+            default: CA
+        - name: creator
+          in: query
+          description: Created by
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/list_response.json
+              example:
+                $ref: ../schemas/content/list_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    post:
+      operationId: add_content
+      summary: Add content
+      description: Add content.
+      tags:
+        - Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/content/storage.json
+            example:
+              $ref: ../schemas/content/storage.example.json
+        description: Add content
+        required: true
+      responses:
+        '200':
+          description: Add content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/storage.json
+              example:
+                $ref: ../schemas/content/storage.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/content/{contentId}':
+    get:
+      operationId: content_details
+      summary: Get content details
+      description: Get content details.
+      tags:
+        - Content
+      parameters:
+        - name: contentId
+          in: path
+          description: Content ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/detail_response.json
+              example:
+                $ref: ../schemas/content/detail_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+
+
+components:
+  $ref: ./_partials/common-components.yaml

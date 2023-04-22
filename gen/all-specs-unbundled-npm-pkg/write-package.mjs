@@ -2,12 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { argv } from 'node:process';
 
-const [_argv0, _scriptname, pkgDirName, version] = argv;
+const [_argv0, _scriptname, pkgDirName, version, apiIdsArg] = argv;
+
+const apiIds = apiIdsArg.replace(/^[\s,]*/, '').replace(/[\s,]*$/, '').split(',').map(s => s.trim());
+
+const toCamelCase = s => s.split(/[^a-zA-Z0-9]/).map((part, index) => (index === 0 ? part[0].toLowerCase() : part[0].toUpperCase()) + part.substring(1).toLowerCase()).join('');
 
 const INDENTATION = 2;
-
-const bffApiSpec = JSON.parse(fs.readFileSync(path.join(pkgDirName, 'specs/bff.json'), 'utf8'));
-
 
 const pkgName = `@cubeca/api-specs`;
 
@@ -42,3 +43,23 @@ const pkg = {
 
 fs.writeFileSync(path.join(pkgDirName, 'package.json'), JSON.stringify(pkg, undefined, INDENTATION));
 fs.writeFileSync(path.join(pkgDirName, 'index.d.ts'), `declare module '${pkgName}';`);
+
+
+const indexCjsLines = apiIds.map(a => `  ${toCamelCase(a)}ApiSpecFile: path.join(__dirname, 'specs/${a}.json'),`)
+const indexCjs = `const path = require('node:path');
+
+module.exports = {
+${indexCjsLines.join("\n")}
+}
+`;
+
+fs.writeFileSync(path.join(pkgDirName, 'index.cjs'), indexCjs);
+
+
+const indexMjsLines = apiIds.map(a => `export const ${toCamelCase(a)}ApiSpecFile = path.join(__dirname, 'specs/${a}.json');`)
+const indexMjs = `import path from 'node:path';
+
+${indexMjsLines.join("\n")}
+`;
+
+fs.writeFileSync(path.join(pkgDirName, 'index.mjs'), indexMjs);
