@@ -6,9 +6,6 @@ set -o nounset -o pipefail -o errexit
 export HERE=$1
 export NEW_VERSION=$2
 
-echo "HERE=$HERE"
-echo "NEW_VERSION=$NEW_VERSION"
-
 mkdir -p ${HERE}/build/gen/all-specs-unbundled-npm-pkg
 cp -rp ${HERE}/schemas ${HERE}/build/gen/all-specs-unbundled-npm-pkg/schemas
 
