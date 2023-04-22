@@ -340,4 +340,26 @@ paths:
           $ref: '#/components/responses/error503'
 
 components:
-  $ref: ./_partials/common-components.yaml
+  responses:
+    error400:
+      $ref: './_partials/common-components.yaml#/responses/error400'
+    error401:
+      $ref: './_partials/common-components.yaml#/responses/error401'
+    error403:
+      $ref: './_partials/common-components.yaml#/responses/error403'
+    error404:
+      $ref: './_partials/common-components.yaml#/responses/error404'
+    error405:
+      $ref: './_partials/common-components.yaml#/responses/error405'
+    error406:
+      $ref: './_partials/common-components.yaml#/responses/error406'
+    error422:
+      $ref: './_partials/common-components.yaml#/responses/error422'
+    error429:
+      $ref: './_partials/common-components.yaml#/responses/error429'
+    error503:
+      $ref: './_partials/common-components.yaml#/responses/error503'
+
+  securitySchemes:
+    jwt_logged_in:
+      $ref: './_partials/common-components.yaml#/securitySchemes/jwt_logged_in'

@@ -51,6 +51,9 @@ servers:
           - '18084'
         default: '8084'
 
+security:
+  - jwt_logged_in: []
+
 paths:
   '/auth/anonymous':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
@@ -68,7 +71,26 @@ paths:
     $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
 
 components:
-  $ref: ./_partials/common-components.yaml
+  responses:
+    error400:
+      $ref: './_partials/common-components.yaml#/responses/error400'
+    error401:
+      $ref: './_partials/common-components.yaml#/responses/error401'
+    error403:
+      $ref: './_partials/common-components.yaml#/responses/error403'
+    error404:
+      $ref: './_partials/common-components.yaml#/responses/error404'
+    error405:
+      $ref: './_partials/common-components.yaml#/responses/error405'
+    error406:
+      $ref: './_partials/common-components.yaml#/responses/error406'
+    error422:
+      $ref: './_partials/common-components.yaml#/responses/error422'
+    error429:
+      $ref: './_partials/common-components.yaml#/responses/error429'
+    error503:
+      $ref: './_partials/common-components.yaml#/responses/error503'
 
-security:
-  - jwt_logged_in: []
+  securitySchemes:
+    jwt_logged_in:
+      $ref: './_partials/common-components.yaml#/securitySchemes/jwt_logged_in'
