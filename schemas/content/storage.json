@@ -1,0 +1,73 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/storage.json",
+    "title": "Content Storage",
+    "description": "Content Storage",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "profileId": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "expiry": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "coverImageFileId": {
+            "type": "string"
+        },
+        "mediaFileId": {
+            "type": "string"
+        },
+        "subtitlesFileId": {
+            "type": "string"
+        },
+        "transcriptFileId": {
+            "type": "string"
+        },
+        "coverImageText": {
+            "type": "string"
+        },
+        "collaborators": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "contributors": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "id",
+        "profileId",
+        "type",
+        "title",
+        "expiry",
+        "description",
+        "coverImageFileId",
+        "mediaFileId",
+        "coverImageText",
+        "collaborators",
+        "contributors"
+    ]
+}

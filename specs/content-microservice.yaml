@@ -49,73 +49,80 @@ paths:
       tags:
         - Content
       parameters:
-        - name: page
+        - name: offset
           in: query
-          description: Page number
+          description: Offset into the result set
           required: true
           schema:
             type: integer
-        - name: page_size
+        - name: limit
           in: query
-          description: Number of items on a page
+          description: Max number of items to return
           required: true
           schema:
             type: integer
-        - name: category
+        - name: profileId
           in: query
-          description: Content category
-          required: false
+          description: ID of profile to return content for
+          required: true
           schema:
             type: string
-            enum:
-              - all
-              - video
-              - audio
-              - vr
-              - pdf
-              - digital-publications
-              - talks
-              - performances
-              - cultural-teachings
+            format: uuid
+        # - name: category
+        #   in: query
+        #   description: Content category
+        #   required: false
+        #   schema:
+        #     type: string
+        #     enum:
+        #       - all
+        #       - video
+        #       - audio
+        #       - vr
+        #       - pdf
+        #       - digital-publications
+        #       - talks
+        #       - performances
+        #       - cultural-teachings
 
-              # Hack to get the Frontend loading for MVP
-              - featured
-            default: all
-        - name: type
-          in: query
-          description: Content type
-          required: false
-          schema:
-            type: string
-            enum:
-              - video
-              - audio
-              - pdf
-            default: video
-        - name: nation
-          in: query
-          description: Related to Nation/Country
-          required: false
-          schema:
-            type: string
-            enum:
-              - CA
-            default: CA
-        - name: creator
-          in: query
-          description: Created by
-          required: false
-          schema:
-            type: string
+        #       # Hack to get the Frontend loading for MVP
+        #       - featured
+        #     default: all
+        # - name: type
+        #   in: query
+        #   description: Content type
+        #   required: false
+        #   schema:
+        #     type: string
+        #     enum:
+        #       - video
+        #       - audio
+        #       - pdf
+        #     default: video
+        # - name: nation
+        #   in: query
+        #   description: Related to Nation/Country
+        #   required: false
+        #   schema:
+        #     type: string
+        #     enum:
+        #       - CA
+        #     default: CA
+        # - name: creator
+        #   in: query
+        #   description: Created by
+        #   required: false
+        #   schema:
+        #     type: string
       responses:
         '200':
           description: List of content
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/list_response.json
+                $ref: ../schemas/content/storage_list.json
               example:
-                $ref: ../schemas/content/list_response.example.json
+                $ref: ../schemas/content/storage_list.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -201,9 +208,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/detail_response.json
+                $ref: ../schemas/content/storage.json
               example:
-                $ref: ../schemas/content/detail_response.example.json
+                $ref: ../schemas/content/storage.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -224,8 +231,6 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-
-
 
 components:
   $ref: ./_partials/common-components.yaml

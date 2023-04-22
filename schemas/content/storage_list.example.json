@@ -1,0 +1,34 @@
+{
+    "meta":{
+        "offset": 0,
+        "limit": 1,
+        "total": 1
+    },
+    "data":[
+        {
+            "profileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
+            "type": "video",
+            "title": "Test Video Upload",
+            "expiry": "Say What??? Why should this ever be over?",
+            "description": "This text field shall describe the content file.",
+            "coverImageFileId": "24d6b370-a709-4a7b-b323-752186cd492d",
+            "mediaFileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
+            "subtitlesFileId": "6f05411a-e991-4346-be54-6dc2b4e4e528",
+            "transcriptFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
+            "coverImageText": "Thumbnail Text",
+            "collaborators": [
+                "Museum of Anthropology",
+                "Burnaby Art Gallery"
+            ],
+            "contributors": [
+                "Dawn Powell, Camera Operator",
+                "Alissa Cat, Public Programs",
+                "Magnus Ten, Editor"
+            ],
+            "tags": [
+                "integration testing",
+                "tags are hard"
+            ]
+        }
+    ]
+}

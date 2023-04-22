@@ -1,0 +1,37 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/list_response.json",
+    "title": "List of content",
+    "description": "List of content",
+    "type": "object",
+    "properties": {
+        "meta": {
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "offset",
+                "limit"
+            ]
+        },
+        "data": {
+            "type": "array",
+            "items": {
+                "$ref": "./storage.json"
+            }
+        }
+    },
+    "required": [
+        "meta",
+        "data"
+    ]
+}
