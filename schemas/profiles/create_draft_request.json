@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/create_draft_request.json",
+    "title": "Create Profile Draft",
+    "description": "Create Profile Draft",
+    "type": "object",
+    "properties": {
+        "organization": {
+            "$ref": "./storage.json#/properties/organization"
+        },
+        "website": {
+            "$ref": "./storage.json#/properties/website"
+        },
+        "tag": {
+            "$ref": "./storage.json#/properties/tag"
+        }
+    },
+    "required": [
+        "organization",
+        "website",
+        "tag"
+    ]
+}

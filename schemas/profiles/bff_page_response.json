@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_page_response.json",
+    "title": "BFF data for Profile page",
+    "description": "BFF data for Profile page",
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$ref": "./storage.json#/properties/id"
+                },
+                "organization": {
+                    "$ref": "./storage.json#/properties/organization"
+                },
+                "website": {
+                    "$ref": "./storage.json#/properties/website"
+                },
+                "tag": {
+                    "$ref": "./storage.json#/properties/tag"
+                },
+                "heroUrl": {
+                    "type": "string",
+                    "format": "url"
+                },
+                "logoUrl": {
+                    "type": "string",
+                    "format": "url"
+                },
+                "description": {
+                    "$ref": "./storage.json#/properties/description"
+                },
+                "descriptionAudioUrl": {
+                    "type": "string",
+                    "format": "url"
+                },
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./content.json"
+                    }
+                }
+            },
+            "required": [
+                "id",
+                "organization",
+                "website",
+                "tag"
+            ]
+        }
+    },
+    "required": [
+        "data"
+    ]
+}

@@ -6,28 +6,31 @@
     "type": "object",
     "properties": {
         "id": {
-            "$ref": "./content.json#/properties/id"
+            "$ref": "./storage.json#/properties/id"
         },
         "title": {
-            "$ref": "./content.json#/properties/title"
+            "$ref": "./storage.json#/properties/title"
         },
         "creator": {
-            "$ref": "./content.json#/properties/creator"
+            "type": "string"
         },
         "url": {
-            "$ref": "./content.json#/properties/url"
+            "type": "string",
+            "format": "url"
         },
         "thumbnailUrl": {
-            "$ref": "./content.json#/properties/thumbnailUrl"
+            "type": "string",
+            "format": "url"
         },
         "iconUrl": {
-            "$ref": "./content.json#/properties/iconUrl"
+            "type": "string",
+            "format": "url"
         },
         "category": {
-            "$ref": "./content.json#/properties/category"
+            "$ref": "./storage.json#/properties/category"
         },
         "type": {
-            "$ref": "./content.json#/properties/type"
+            "$ref": "./storage.json#/properties/type"
         }
     },
     "required": [

@@ -96,52 +96,6 @@ paths:
     # For now, forwarding 1:1 to identity microservice.
     $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
 
-  '/echo':
-    post:
-      operationId: echo
-      summary: Simple echo request
-      description: Simple echo request.
-      tags:
-        - User
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/echo/echo_request.json
-            example:
-              $ref: ../schemas/echo/echo_request.example.json
-        description: Simple echo request
-        required: true
-      responses:
-        '200':
-          description: Simple echo response
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/echo/echo_response.json
-              example:
-                $ref: ../schemas/echo/echo_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
   '/content':
     get:
       operationId: content_list
@@ -327,171 +281,44 @@ paths:
           $ref: '#/components/responses/error503'
 
   '/upload/video-tus-reservation':
-    post:
-      operationId: upload_video_tus_endpoint
-      summary: TUS "endpoint" to upload URL from Cloudflare
-      description: This (and not it's return value!) has to be given directly to the TUS client as it's `endpoint` parameter.
-      tags:
-        - Upload
-      parameters:
-        - name: upload-length
-          in: header
-          description: Upload Length
-          required: true
-          schema:
-            type: string
-        - name: upload-metadata
-          in: header
-          description: Upload Metadata
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          headers:
-            Location:
-              schema:
-                type: string
-              description: Tus upload url received from cloudflare.
-            CUBE-File-Id:
-              schema:
-                type: string
-              description: File ID associated with the Tus upload url received from cloudflare.
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to cloudflare microservice.
+    $ref: ./cloudflare-microservice.yaml#/paths/~1upload~1video-tus-reservation
 
   '/upload/s3-presigned-url':
-    post:
-      operationId: upload_files_via_presigned_url
-      summary: Get S3 / R2 presigned url from Cloudflare
-      description: Get S3 / R2 presigned url from Cloudflare
-      tags:
-        - Upload
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/upload/s3_presigned_url_request.json
-            example:
-              $ref: ../schemas/upload/s3_presigned_url_request.example.json
-        description: Add content
-        required: true
-      responses:
-        '200':
-          description: Add content
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/upload/s3_presigned_url_response.json
-              example:
-                $ref: ../schemas/upload/s3_presigned_url_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to cloudflare microservice.
+    $ref: ./cloudflare-microservice.yaml#/paths/~1upload~1s3-presigned-url
 
   '/files/{fileId}':
-    get:
-      operationId: file_details
-      summary: Get file details
-      description: Get file details.
-      tags:
-        - Files
-      parameters:
-        - name: fileId
-          in: path
-          description: File ID
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: File details
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/files/detail_response.json
-              example:
-                $ref: ../schemas/files/detail_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    # For now, forwarding 1:1 to cloudflare microservice.
+    $ref: ./cloudflare-microservice.yaml#/paths/~1files~1{fileId}
+
+  '/profiles':
+    # For now, forwarding 1:1 to profile microservice.
+    $ref: ./profile-microservice.yaml#/paths/~1profiles
 
   '/profiles/{profileId}':
+    parameters:
+      - name: profileId
+        in: path
+        description: Profile ID
+        required: true
+        schema:
+          type: string
     get:
       operationId: profile_details
       summary: Get profile details
       description: Get profile details.
       tags:
         - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: Profile details
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/detail_response.json
+                $ref: ../schemas/profiles/bff_page_response.json
               example:
-                $ref: ../schemas/profiles/detail_response.example.json
+                $ref: ../schemas/profiles/bff_page_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -512,163 +339,9 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-    put:
-      operationId: profile_section_update
-      summary: Update Profile section
-      description: Update Profile section.
-      tags:
-        - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/profiles/update_section_request.json
-            example:
-              $ref: ../schemas/profiles/update_section_request.example.json
-        description: Profile Section Update
-        required: true
-      responses:
-        '200':
-          description: Update Profile Section Response
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/profiles/update_section_response.json
-              example:
-                $ref: ../schemas/profiles/update_section_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
-  '/profiles/{profileId}/update-logo':
-    post:
-      operationId: profile_logo_update
-      summary: Update Profile logo
-      description: Update Profile logo.
-      tags:
-        - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/profiles/update_logo_request.json
-            example:
-              $ref: ../schemas/profiles/update_logo_request.example.json
-        description: Profile Logo Update
-        required: true
-      responses:
-        '200':
-          description: Update Profile Logo Response
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/profiles/update_logo_response.json
-              example:
-                $ref: ../schemas/profiles/update_logo_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
-  '/profiles/{profileId}/update-audio-description':
-    post:
-      operationId: profile_audio_description_update
-      summary: Update Profile audio description
-      description: Update Profile audio description.
-      tags:
-        - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/profiles/update_audio_description_request.json
-            example:
-              $ref: ../schemas/profiles/update_audio_description_request.example.json
-        description: Profile audio description Update
-        required: true
-      responses:
-        '200':
-          description: Update Profile audio description Response
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/profiles/update_audio_description_response.json
-              example:
-                $ref: ../schemas/profiles/update_audio_description_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+    patch:
+      # For now, forwarding 1:1 to profile microservice.
+      $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}/patch
 
   '/collaborators':
     get:

@@ -1,32 +1,32 @@
 {
     "data": {
-        "id": "1",
-        "name": "MOA",
-        "heroUrl": "/images/profile-hero.jpg",
-        "logoUrl": "/images/moa.svg",
+        "id": "49e7a6d4-135c-48cb-a191-2b7cbe2e135a",
+        "organization": "MOA",
+        "website": "https://moa.ubc.ca/",
+        "tag": "@moa",
+        "heroUrl": "https://www-dev.cubecommons.ca/images/profile-hero.jpg",
+        "logoUrl": "https://www-dev.cubecommons.ca/images/moa.svg",
         "description": "Description of MOA Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare risus pretium vivamus leo, pharetra placerat mauris, viverra. Phasellus parturient amet sapien praesent semper tellus porttitor at auctor. Faucibus in at blandit dui eget in ut enim. Ultricies eu, lobortis vitae bibendum nunc tempor. Quam.",
         "descriptionUrl": "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3",
-        "videos": [
+        "content": [
             {
                 "category": "video",
-                "videos": [
+                "content": [
                     {
-                        "id": "1",
+                        "id": "a2643e33-7c5b-4370-9faa-435a8d0ee119",
                         "title": "Title 1",
                         "creator": "Creator 1",
-                        "url": "/videos/1",
-                        "thumbnailUrl": "images/video_thumbnail.jpg",
-                        "iconUrl": "images/creator_icon.png",
+                        "thumbnailUrl": "https://www-dev.cubecommons.ca/images/video_thumbnail.jpg",
+                        "iconUrl": "https://www-dev.cubecommons.ca/images/creator_icon.png",
                         "category": "video",
                         "type": "video"
                     },
                     {
-                        "id": "2",
+                        "id": "2e98cfd3-051e-4489-9522-71e6466dc050",
                         "title": "Title 2",
                         "creator": "Creator 2",
-                        "url": "/videos/2",
-                        "thumbnailUrl": "images/video_thumbnail.jpg",
-                        "iconUrl": "images/creator_icon.png",
+                        "thumbnailUrl": "https://www-dev.cubecommons.ca/images/video_thumbnail.jpg",
+                        "iconUrl": "https://www-dev.cubecommons.ca/images/creator_icon.png",
                         "category": "video",
                         "type": "video"
                     }

@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/storage.json",
+    "title": "Profile storage schema",
+    "description": "Profile storage schema",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "organization": {
+            "type": "string"
+        },
+        "website": {
+            "type": "string"
+        },
+        "tag": {
+            "type": "string"
+        },
+        "heroFileId": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "logoFileId": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "description": {
+            "type": "string"
+        },
+        "descriptionAudioFileId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "description audio file"
+        }
+    },
+    "required": [
+        "organization",
+        "website",
+        "tag"
+    ]
+}

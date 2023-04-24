@@ -36,30 +36,76 @@ security:
   - jwt_logged_in: []
 
 paths:
+  '/profiles':
+    post:
+      operationId: create_profile_draft
+      summary: Create Profile draft
+      description: Create Profile draft. (This is currently triggered during user sign-up.)
+      tags:
+        - Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profiles/create_draft_request.json
+            example:
+              $ref: ../schemas/profiles/create_draft_request.example.json
+        description: Profile draft
+        required: true
+      responses:
+        '200':
+          description: Create Profile draft Response
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/create_draft_response.json
+              example:
+                $ref: ../schemas/profiles/create_draft_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
 
   '/profiles/{profileId}':
+    parameters:
+      - name: profileId
+        in: path
+        description: Profile ID
+        required: true
+        schema:
+          type: string
+          format: uuid
     get:
       operationId: profile_details
       summary: Get profile details
       description: Get profile details.
       tags:
         - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: Profile details
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/detail_response.json
+                $ref: ../schemas/profiles/storage.json
               example:
-                $ref: ../schemas/profiles/detail_response.example.json
+                $ref: ../schemas/profiles/storage.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -80,143 +126,30 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-    put:
-      operationId: profile_section_update
-      summary: Update Profile section
-      description: Update Profile section.
+    patch:
+      operationId: update_profile
+      summary: Update Profile
+      description: Update Profile.
       tags:
         - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../schemas/profiles/update_section_request.json
+              $ref: ../schemas/profiles/update_request.json
             example:
-              $ref: ../schemas/profiles/update_section_request.example.json
-        description: Profile Section Update
+              $ref: ../schemas/profiles/update_request.example.json
+        description: Profile Update
         required: true
       responses:
         '200':
-          description: Update Profile Section Response
+          description: Update Profile Response
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/update_section_response.json
+                $ref: ../schemas/profiles/storage.json
               example:
-                $ref: ../schemas/profiles/update_section_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
-  '/profiles/{profileId}/update-logo':
-    post:
-      operationId: profile_logo_update
-      summary: Update Profile logo
-      description: Update Profile logo.
-      tags:
-        - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/profiles/update_logo_request.json
-            example:
-              $ref: ../schemas/profiles/update_logo_request.example.json
-        description: Profile Logo Update
-        required: true
-      responses:
-        '200':
-          description: Update Profile Logo Response
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/profiles/update_logo_response.json
-              example:
-                $ref: ../schemas/profiles/update_logo_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
-  '/profiles/{profileId}/update-audio-description':
-    post:
-      operationId: profile_audio_description_update
-      summary: Update Profile audio description
-      description: Update Profile audio description.
-      tags:
-        - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/profiles/update_audio_description_request.json
-            example:
-              $ref: ../schemas/profiles/update_audio_description_request.example.json
-        description: Profile audio description Update
-        required: true
-      responses:
-        '200':
-          description: Update Profile audio description Response
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/profiles/update_audio_description_response.json
-              example:
-                $ref: ../schemas/profiles/update_audio_description_response.example.json
+                $ref: ../schemas/profiles/storage.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

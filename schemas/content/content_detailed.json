@@ -6,49 +6,57 @@
     "type": "object",
     "properties": {
         "id": {
-            "$ref": "./content.json#/properties/id"
+            "$ref": "./storage.json#/properties/id"
         },
         "url": {
-            "$ref": "./content.json#/properties/url"
+            "type": "string",
+            "format": "url"
         },
         "title": {
-            "$ref": "./content.json#/properties/title"
+            "$ref": "./storage.json#/properties/title"
         },
         "createdDate": {
-            "$ref": "./content.json#/properties/createdDate"
+            "type": "string"
         },
         "updatedDate": {
-            "$ref": "./content.json#/properties/updatedDate"
+            "type": "string"
         },
         "description": {
-            "$ref": "./content.json#/properties/description"
+            "$ref": "./storage.json#/properties/description"
         },
         "descriptionUrl": {
-            "$ref": "./content.json#/properties/descriptionUrl"
+            "type": "string",
+            "format": "url",
+            "description": "URL of audio file for description"
         },
         "contributors": {
-            "$ref": "./content.json#/properties/contributors"
+            "type": "array",
+            "items": {
+                "$ref": "./contributor.json"
+            }
         },
         "tags": {
-            "$ref": "./content.json#/properties/tags"
+            "$ref": "./storage.json#/properties/tags"
         },
         "creator": {
-            "$ref": "./content.json#/properties/creator"
+            "type": "string"
         },
         "credits": {
-          "$ref": "./content.json#/properties/credits"
+            "type": "string"
         },
         "thumbnailUrl": {
-            "$ref": "./content.json#/properties/thumbnailUrl"
+            "type": "string",
+            "format": "url"
         },
         "iconUrl": {
-            "$ref": "./content.json#/properties/iconUrl"
+            "type": "string",
+            "format": "url"
         },
         "category": {
-            "$ref": "./content.json#/properties/category"
+            "$ref": "./storage.json#/properties/category"
         },
         "type": {
-            "$ref": "./content.json#/properties/type"
+            "$ref": "./storage.json#/properties/type"
         }
     },
     "required": [

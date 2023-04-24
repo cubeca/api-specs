@@ -1,0 +1,15 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/create_draft_response.json",
+    "title": "Create Profile Draft Response",
+    "description": "Create Profile Draft response",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "id"
+    ]
+}

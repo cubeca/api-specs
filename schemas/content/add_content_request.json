@@ -6,52 +6,46 @@
     "type": "object",
     "properties": {
         "profileId": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/profileId"
         },
         "type": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/type"
+        },
+        "category": {
+            "$ref": "./storage.json#/properties/category"
         },
         "title": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/title"
         },
         "expiry": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/expiry"
         },
         "description": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/description"
         },
         "coverImageFileId": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/coverImageFileId"
         },
         "mediaFileId": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/mediaFileId"
         },
         "subtitlesFileId": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/subtitlesFileId"
         },
         "transcriptFileId": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/transcriptFileId"
         },
         "coverImageText": {
-            "type": "string"
+            "$ref": "./storage.json#/properties/coverImageText"
         },
         "collaborators": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "./storage.json#/properties/collaborators"
         },
         "contributors": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "./storage.json#/properties/contributors"
         },
         "tags": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "./storage.json#/properties/tags"
         }
     },
     "required": [

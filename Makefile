@@ -124,6 +124,9 @@ gen_openapi_client: filter gen_openapi_client--bff gen_openapi_client--bff-auth
 gen_openapi_client--%:
 	-mkdir -p $(HERE)/build/gen/typescript-axios/$*
 	cp $(HERE)/gen/openapi-generator/typescript-axios.config.yaml $(HERE)/build/gen/typescript-axios.config.yaml
+	# If this fails with "Exception in thread "main" java.lang.RuntimeException: Could not generate model 'XYZ'"
+	# then try removing the `--user` CLI option. That option is needed in CI/CD in Github Actions, though.
+	# Exact reason why it's needed there and not on local, TBD.
 	$(DOCKER) \
 		run --rm \
 		--user $(shell id -u):$(shell id -g) \

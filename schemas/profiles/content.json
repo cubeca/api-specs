@@ -6,9 +6,9 @@
     "type": "object",
     "properties": {
         "category": {
-            "$ref": "../content/content.json#/properties/category"
+            "$ref": "../content/storage.json#/properties/category"
         },
-        "videos": {
+        "content": {
             "type": "array",
             "items": {
                 "$ref": "../content/content_listed.json"
@@ -17,6 +17,6 @@
     },
     "required": [
         "category",
-        "videos"
+        "content"
     ]
 }

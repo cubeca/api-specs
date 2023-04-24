@@ -2,17 +2,39 @@
     "$schema": "https://json-schema.org/draft-04/schema",
     "id": "https://docs.cubecommons.ca/schemas/content/storage.json",
     "title": "Content Storage",
-    "description": "Content Storage",
+    "description": "Storage schema for content microservice",
     "type": "object",
     "properties": {
         "id": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
         },
         "profileId": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
         },
         "type": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+                "video",
+                "audio",
+                "pdf"
+            ]
+        },
+        "category": {
+            "type": "string",
+            "enum": [
+                "all",
+                "video",
+                "audio",
+                "vr",
+                "pdf",
+                "digital-publications",
+                "talks",
+                "performances",
+                "cultural-teachings",
+                "featured"
+            ]
         },
         "title": {
             "type": "string"
@@ -24,16 +46,20 @@
             "type": "string"
         },
         "coverImageFileId": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
         },
         "mediaFileId": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
         },
         "subtitlesFileId": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
         },
         "transcriptFileId": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
         },
         "coverImageText": {
             "type": "string"
@@ -58,9 +84,9 @@
         }
     },
     "required": [
-        "id",
         "profileId",
         "type",
+        "category",
         "title",
         "expiry",
         "description",

@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/update_section_request.json",
+    "title": "Update Profile Request",
+    "description": "Update Profile Request",
+    "type": "object",
+    "properties": {
+        "organization": {
+            "$ref": "./storage.json#/properties/organization"
+        },
+        "website": {
+            "$ref": "./storage.json#/properties/website"
+        },
+        "tag": {
+            "$ref": "./storage.json#/properties/tag"
+        },
+        "heroFileId": {
+            "$ref": "./storage.json#/properties/heroFileId"
+        },
+        "logoFileId": {
+            "$ref": "./storage.json#/properties/logoFileId"
+        },
+        "description": {
+            "$ref": "./storage.json#/properties/description"
+        },
+        "descriptionAudioFileId": {
+            "$ref": "./storage.json#/properties/descriptionAudioFileId"
+        }
+    },
+    "minProperties": 1,
+    "additionalProperties": false
+}
