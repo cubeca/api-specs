@@ -24,7 +24,7 @@
         "description": {
             "$ref": "./storage.json#/properties/description"
         },
-        "descriptionUrl": {
+        "descriptionAudioUrl": {
             "type": "string",
             "format": "url",
             "description": "URL of audio file for description"
@@ -51,6 +51,18 @@
         "iconUrl": {
             "type": "string",
             "format": "url"
+        },
+        "mediaUrl": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "subtitlesUrl": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "transcriptUrl": {
+            "type": "string",
+            "format": "uuid"
         },
         "category": {
             "$ref": "./storage.json#/properties/category"
