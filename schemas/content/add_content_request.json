@@ -54,8 +54,6 @@
         "title",
         "expiry",
         "description",
-        "coverImageFileId",
-        "mediaFileId",
         "coverImageText",
         "collaborators",
         "contributors"
