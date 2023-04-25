@@ -27,14 +27,12 @@ info:
 tags:
   - name: Auth
     description: Login, forgot password, etc.
-  - name: User
-    description: User stuff
   - name: Profile
     description: Profile stuff
   - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
-  - name: ContentFiles
-    description: Just to keep the client lib consistent
+  - name: Files
+    description: Everything to do with files, but only *after* they have been uploaded
   - name: Upload
     description: All communications to do with uploading
 
@@ -196,7 +194,7 @@ paths:
       summary: Add content
       description: Add content.
       tags:
-        - ContentFiles
+        - Content
       requestBody:
         content:
           application/json:
