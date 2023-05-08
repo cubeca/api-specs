@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/content/add_content_request.json",
-    "title": "Add content request",
-    "description": "Adds content request",
+    "id": "https://docs.cubecommons.ca/schemas/content/update_content_request.json",
+    "title": "Update Content",
+    "description": "Updates Content",
     "type": "object",
     "properties": {
         "profileId": {

@@ -7,19 +7,18 @@
     "properties": {
         "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the content"
         },
         "profileId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the associated profile"
         },
         "type": {
             "type": "string",
-            "enum": [
-                "video",
-                "audio",
-                "pdf"
-            ]
+            "enum": ["video", "audio", "pdf"],
+            "description": "Type of content (video, audio, or pdf)"
         },
         "category": {
             "type": "string",
@@ -34,53 +33,65 @@
                 "performances",
                 "cultural-teachings",
                 "featured"
-            ]
+            ],
+            "description": "Category of the content"
         },
         "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Title of the content"
         },
         "expiry": {
-            "type": "string"
+            "type": "string",
+            "description": "Expiry date of the content"
         },
         "description": {
-            "type": "string"
+            "type": "string",
+            "description": "Description of the content"
         },
         "coverImageFileId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the cover image file"
         },
         "mediaFileId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the media file"
         },
         "subtitlesFileId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the subtitles file (optional)"
         },
         "transcriptFileId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the transcript file (optional)"
         },
         "coverImageText": {
-            "type": "string"
+            "type": "string",
+            "description": "Text displayed over the cover image"
         },
         "collaborators": {
             "type": "array",
             "items": {
                 "type": "string"
-            }
+            },
+            "description": "List of collaborator names (optional)"
         },
         "contributors": {
             "type": "array",
             "items": {
                 "type": "string"
-            }
+            },
+            "description": "List of contributor names (optional)"
         },
         "tags": {
             "type": "array",
             "items": {
                 "type": "string"
-            }
+            },
+            "description": "List of tags associated with the content (optional)"
         }
     },
     "required": [

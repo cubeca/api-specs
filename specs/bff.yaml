@@ -166,9 +166,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/list_response.json
+                $ref: ../schemas/content/storage_list.json
               example:
-                $ref: ../schemas/content/list_response.example.json
+                $ref: ../schemas/content/storage_list.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

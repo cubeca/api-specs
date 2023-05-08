@@ -41,11 +41,25 @@ security:
 
 paths:
 
+  '/':
+    get:
+      operationId: content_status
+      summary: Content service status
+      description: Check the run status of the content service
+      tags:
+        - Content
+      responses:
+        '200':
+          description: Status of content service
+          $ref: '#/components/responses/success200'
+        '500':
+          $ref: '#/components/responses/error500'
+
   '/content':
     get:
-      operationId: content_list
-      summary: List content
-      description: List content.
+      operationId: get_content_by_profileid
+      summary: Get content by profile Id
+      description: Get content by profile Id
       tags:
         - Content
       parameters:
@@ -68,61 +82,21 @@ paths:
           schema:
             type: string
             format: uuid
-        # - name: category
-        #   in: query
-        #   description: Content category
-        #   required: false
-        #   schema:
-        #     type: string
-        #     enum:
-        #       - all
-        #       - video
-        #       - audio
-        #       - vr
-        #       - pdf
-        #       - digital-publications
-        #       - talks
-        #       - performances
-        #       - cultural-teachings
-
-        #       # Hack to get the Frontend loading for MVP
-        #       - featured
-        #     default: all
-        # - name: type
-        #   in: query
-        #   description: Content type
-        #   required: false
-        #   schema:
-        #     type: string
-        #     enum:
-        #       - video
-        #       - audio
-        #       - pdf
-        #     default: video
-        # - name: nation
-        #   in: query
-        #   description: Related to Nation/Country
-        #   required: false
-        #   schema:
-        #     type: string
-        #     enum:
-        #       - CA
-        #     default: CA
-        # - name: creator
-        #   in: query
-        #   description: Created by
-        #   required: false
-        #   schema:
-        #     type: string
+        - name: filters
+          in: query
+          description: Filters for which content is returned
+          required: false
+          schema:
+            $ref: ../schemas/content/filters.json
       responses:
         '200':
-          description: List of content
+          description: List of content with optionally applied filters
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/storage_list.json
+                $ref: ../schemas/content/get_content_by_profileid_response.json
               example:
-                $ref: ../schemas/content/storage_list.example.json
+                $ref: ../schemas/content/get_content_by_profileid_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -153,9 +127,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/content/storage.json
+              $ref: ../schemas/content/add_content_request.json
             example:
-              $ref: ../schemas/content/storage.example.json
+              $ref: ../schemas/content/add_content_request.example.json
         description: Add content
         required: true
       responses:
@@ -164,9 +138,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/storage.json
+                $ref: ../schemas/content/add_content_response.json
               example:
-                $ref: ../schemas/content/storage.example.json
+                $ref: ../schemas/content/add_content_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -190,7 +164,7 @@ paths:
 
   '/content/{contentId}':
     get:
-      operationId: content_details
+      operationId: get_content
       summary: Get content details
       description: Get content details.
       tags:
@@ -208,9 +182,95 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/storage.json
+                $ref: ../schemas/content/get_content_response.json
               example:
-                $ref: ../schemas/content/storage.example.json
+                $ref: ../schemas/content/get_content_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    post:
+      operationId: update_content
+      summary: Update content
+      description: Update content.
+      tags:
+        - Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/content/update_content_request.json
+            example:
+              $ref: ../schemas/content/update_content_request.example.json
+        description: Update content
+        required: true
+      responses:
+        '200':
+          description: Update content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/update_content_response.json
+              example:
+                $ref: ../schemas/content/update_content_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    delete:
+      operationId: delete_content
+      summary: Delete content
+      description: Delete content.
+      tags:
+        - Content
+      parameters:
+        - name: contentId
+          in: path
+          description: Content ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Delete content
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/delete_content_response.json
+              example:
+                $ref: ../schemas/content/delete_content_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -234,6 +294,8 @@ paths:
 
 components:
   responses:
+    success200:
+      $ref: './_partials/common-components.yaml#/responses/success200'
     error400:
       $ref: './_partials/common-components.yaml#/responses/error400'
     error401:

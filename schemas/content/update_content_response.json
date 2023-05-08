@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/update_content_response.json",
+    "title": "UpdateContentResponse",
+    "description": "Update Content response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "../schemas/storage.json",
+            "description": "Content details"
+        }
+    },
+    "required": ["data"]
+}

@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/get_content_by_profileid_request.json",
+    "title": "Get content by profile id request",
+    "description": "Get content by profile id request",
+    "type": "object",
+    "properties": {
+        "offset": {
+            "type": "integer",
+            "description": "Offset into the result set"
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Max number of items to return"
+        },
+        "profileId": {
+            "$ref": "./storage.json#/properties/profileId"
+        },
+        "filters": {
+            "$ref": "../schemas/content/filters.json",
+            "description": "Filters for which content is returned"
+        }
+    },
+    "required": ["offset", "limit", "profileId"]
+}
