@@ -26,7 +26,6 @@ tags:
 
 servers:
   # No public URL available.
-
   - url: http://localhost:{port}
     description: Local development
     variables:
