@@ -6,7 +6,7 @@
     "type": "object",
     "properties": {
         "data": {
-            "$ref": "../schemas/storage.json",
+            "$ref": "./storage.json",
             "description": "Content details"
         }
     },
