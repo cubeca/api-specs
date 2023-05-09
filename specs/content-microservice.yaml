@@ -86,7 +86,7 @@ paths:
           description: Filters for which content is returned
           required: false
           schema:
-            $ref: ../schemas/content/filters.json
+            $ref: ./filters.json
       responses:
         '200':
           description: List of content with optionally applied filters

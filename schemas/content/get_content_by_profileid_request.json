@@ -17,7 +17,7 @@
             "$ref": "./storage.json#/properties/profileId"
         },
         "filters": {
-            "$ref": "../schemas/content/filters.json",
+            "$ref": "./filters.json",
             "description": "Filters for which content is returned"
         }
     },

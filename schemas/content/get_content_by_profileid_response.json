@@ -20,7 +20,7 @@
                     "description": "Max number of items to return"
                 },
                 "filters": {
-                    "$ref": "../schemas/content/filters.json",
+                    "$ref": "./filters.json",
                     "description": "Filters for which content is returned"
                 }
             },
