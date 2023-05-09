@@ -254,9 +254,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/content/detail_response.json
+                $ref: ../schemas/content/get_content_response.json
               example:
-                $ref: ../schemas/content/detail_response.example.json
+                $ref: ../schemas/content/get_content_response.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
