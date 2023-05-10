@@ -337,9 +337,9 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-    patch:
+    update:
       # For now, forwarding 1:1 to profile microservice.
-      $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}/patch
+      $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}
 
   '/collaborators':
     get:
