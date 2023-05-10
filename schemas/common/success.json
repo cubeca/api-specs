@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/common/success.json",
+    "title": "Success Response",
+    "description": "An success response",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "A URI uniquely defining the success type."
+        },
+        "status": {
+            "type": "integer",
+            "description": "HTTP status code, copied here in case the actual HTTP status code got mangled in transit."
+        }
+    },
+    "required": [
+        "type",
+        "status"
+    ],
+    "additionalProperties": false
+}
