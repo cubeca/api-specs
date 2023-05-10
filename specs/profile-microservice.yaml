@@ -8,8 +8,7 @@ info:
   
   description: |
     # Profile Microservice
-
-    The Profile Microservice is the custodian of Content Creator Profiles.
+    The Profile microservice is the custodian of Content Creator profiles.
 
   contact:
     email: tech@cubecommons.ca
@@ -20,7 +19,7 @@ info:
 
 tags:
   - name: Profile
-    description: Profile stuff
+    description: The Profile microservice is the custodian of Content Creator profiles.
 
 servers:
   - url: http://localhost:{port}
@@ -36,31 +35,45 @@ security:
   - jwt_logged_in: []
 
 paths:
+  '/':
+      get:
+        operationId: profile_status
+        summary: Profile service status
+        description: Check the run status of the profile service
+        tags:
+          - Profile
+        responses:
+          '200':
+            description: Status of profile service
+            $ref: '#/components/responses/success200'
+          '500':
+            $ref: '#/components/responses/error500'
+
   '/profiles':
     post:
-      operationId: create_profile_draft
-      summary: Create Profile draft
-      description: Create Profile draft. (This is currently triggered during user sign-up.)
+      operationId: create_profile
+      summary: Create Profile
+      description: Create Profile
       tags:
         - Profile
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../schemas/profiles/create_draft_request.json
+              $ref: ../schemas/profiles/create_profile_request.json
             example:
-              $ref: ../schemas/profiles/create_draft_request.example.json
-        description: Profile draft
+              $ref: ../schemas/profiles/create_profile_request.example.json
+        description: Create Profile Request
         required: true
       responses:
         '200':
-          description: Create Profile draft Response
+          description: Create Profile Response
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/create_draft_response.json
+                $ref: ../schemas/profiles/create_profile_response.json
               example:
-                $ref: ../schemas/profiles/create_draft_response.example.json
+                $ref: ../schemas/profiles/create_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -92,7 +105,7 @@ paths:
           type: string
           format: uuid
     get:
-      operationId: profile_details
+      operationId: get_profile
       summary: Get profile details
       description: Get profile details.
       tags:
@@ -103,9 +116,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/storage.json
+                $ref: ../schemas/profiles/get_profile_response.json
               example:
-                $ref: ../schemas/profiles/storage.example.json
+                $ref: ../schemas/profiles/get_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -126,7 +139,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-    patch:
+    update:
       operationId: update_profile
       summary: Update Profile
       description: Update Profile.
@@ -136,9 +149,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/profiles/update_request.json
+              $ref: ../schemas/profiles/update_profile_request.json
             example:
-              $ref: ../schemas/profiles/update_request.example.json
+              $ref: ../schemas/profiles/update_profile_request.example.json
         description: Profile Update
         required: true
       responses:
@@ -147,9 +160,44 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/storage.json
+                $ref: ../schemas/profiles/update_profile_response.json
               example:
-                $ref: ../schemas/profiles/storage.example.json
+                $ref: ../schemas/profiles/update_profile_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    delete:
+      operationId: delete_profile
+      summary: Delete profile
+      description: Delete profile details
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Delete a profile
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/delete_profile_response.json
+              example:
+                $ref: ../schemas/profiles/delete_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -173,6 +221,8 @@ paths:
 
 components:
   responses:
+    success200:
+      $ref: './_partials/common-components.yaml#/responses/success200'
     error400:
       $ref: './_partials/common-components.yaml#/responses/error400'
     error401:
