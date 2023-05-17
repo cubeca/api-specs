@@ -11,7 +11,7 @@
         "content": {
             "type": "array",
             "items": {
-                "$ref": "../content/content_listed.json"
+                "$ref": "../content/storage_list.json"
             }
         }
     },

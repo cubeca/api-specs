@@ -1,8 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/content/add_content_request.json",
-    "title": "Add content request",
-    "description": "Adds content request",
+    "title": "Filters",
+    "description": "Filters object for reducing content results",
     "type": "object",
     "properties": {
         "profileId": {
@@ -38,24 +37,9 @@
         "coverImageText": {
             "$ref": "./storage.json#/properties/coverImageText"
         },
-        "collaborators": {
-            "$ref": "./storage.json#/properties/collaborators"
-        },
-        "contributors": {
-            "$ref": "./storage.json#/properties/contributors"
-        },
         "tags": {
             "$ref": "./storage.json#/properties/tags"
         }
     },
-    "required": [
-        "profileId",
-        "type",
-        "title",
-        "expiry",
-        "description",
-        "coverImageText",
-        "collaborators",
-        "contributors"
-    ]
+    "required": []
 }

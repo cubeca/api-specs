@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/get_content_response.json",
+    "title": "Get content response",
+    "description": "Get content response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "./storage.json",
+            "description": "Content details"
+        }
+    },
+    "required": ["data"]
+}

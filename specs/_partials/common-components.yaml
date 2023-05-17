@@ -1,12 +1,12 @@
 responses:
   success200:
-      description: Success 200
-      content:
-        application/success+json:
-          schema:
-            $ref: ../../schemas/common/success.json
-          example:
-            $ref: ../../schemas/common/success.example.200.json
+    description: Success 200
+    content:
+      application/success+json:
+        schema:
+          $ref: ../../schemas/common/success.json
+        example:
+          $ref: ../../schemas/common/success.example.200.json
   error400:
     description: Error 400
     content:

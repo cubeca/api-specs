@@ -16,6 +16,9 @@
                 },
                 "total": {
                     "type": "integer"
+                },
+                "filters": {
+                    "type": "object"
                 }
             },
             "required": [
