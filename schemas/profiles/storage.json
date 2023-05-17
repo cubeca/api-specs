@@ -1,43 +1,45 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/storage.json",
-    "title": "Profile storage schema",
-    "description": "Profile storage schema",
+    "$id": "https://docs.cubecommons.ca/schemas/profiles/storage.json",
+    "title": "Profile Storage Schema",
+    "description": "A schema for storing profiles of organizations",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "A unique identifier for the profile"
         },
         "organization": {
-            "type": "string"
+            "type": "string",
+            "description": "The name of the organization"
         },
         "website": {
-            "type": "string"
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the organization's website"
         },
         "tag": {
-            "type": "string"
-        },
-        "heroFileId": {
             "type": "string",
-            "format": "uuid"
+            "description": "A descriptive tag for the profile"
         },
-        "logoFileId": {
+        "heroUrl": {
             "type": "string",
-            "format": "uuid"
+            "description": "The unique identifier of the image file used as the profile's hero image"
+        },
+        "logoUrl": {
+            "type": "string",
+            "description": "The unique identifier of the image file used as the profile's logo"
         },
         "description": {
-            "type": "string"
-        },
-        "descriptionAudioFileId": {
             "type": "string",
-            "format": "uuid",
-            "description": "description audio file"
+            "description": "A brief description of the profile"
+        },
+        "descriptionUrl": {
+            "type": "string",
+            "description": "The unique identifier of the audio file used as a description of the profile"
         }
     },
-    "required": [
-        "organization",
-        "website",
-        "tag"
-    ]
+    "required": ["organization", "website", "tag"],
+    "additionalProperties": false
 }
