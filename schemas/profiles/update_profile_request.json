@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/update_profile_request.json",
+    "title": "Update Profile Request",
+    "description": "Update Profile Request",
+    "type": "object",
+    "properties": {
+        "heroUrl": {
+            "$ref": "./storage.json#/properties/heroUrl"
+        },
+        "logoUrl": {
+            "$ref": "./storage.json#/properties/logoUrl"
+        },
+        "description": {
+            "$ref": "./storage.json#/properties/description"
+        },
+        "descriptionUrl": {
+            "$ref": "./storage.json#/properties/descriptionUrl"
+        }
+    },
+    "minProperties": 1,
+    "additionalProperties": false
+}

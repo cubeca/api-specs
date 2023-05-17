@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/content/create_draft_response.json",
-    "title": "Create Profile Draft Response",
-    "description": "Create Profile Draft response",
+    "id": "https://docs.cubecommons.ca/schemas/content/create_profile_response.json",
+    "title": "Create Profile Response",
+    "description": "Create Profile response",
     "type": "object",
     "properties": {
         "id": {

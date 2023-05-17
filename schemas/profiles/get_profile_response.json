@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/get_profile_response.json",
+    "title": "Get profile response",
+    "description": "Get profile response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$ref": "./storage.json#/properties/id"
+                },
+                "organization": {
+                    "$ref": "./storage.json#/properties/organization"
+                },
+                "website": {
+                    "$ref": "./storage.json#/properties/website"
+                },
+                "tag": {
+                    "$ref": "./storage.json#/properties/tag"
+                },
+                "heroUrl": {
+                    "$ref": "./storage.json#/properties/heroUrl"
+                },
+                "logoUrl": {
+                    "$ref": "./storage.json#/properties/logoUrl"
+                },
+                "description": {
+                    "$ref": "./storage.json#/properties/description"
+                },
+                "descriptionUrl": {
+                    "$ref": "./storage.json#/properties/descriptionUrl"
+                }
+            },
+            "required": ["id", "organization", "website", "tag"]
+        }
+    },
+    "required": ["data"]
+}
