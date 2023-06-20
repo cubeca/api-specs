@@ -16,6 +16,9 @@
         },
         "descriptionUrl": {
             "$ref": "./storage.json#/properties/descriptionUrl"
+        },
+        "budget": {
+            "$ref": "./storage.json#/properties/budget"
         }
     },
     "minProperties": 1,
