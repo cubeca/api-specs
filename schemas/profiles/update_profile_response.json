@@ -31,6 +31,9 @@
                 },
                 "descriptionUrl": {
                     "$ref": "./storage.json#/properties/descriptionUrl"
+                },
+                "budget": {
+                    "$ref": "./storage.json#/properties/budget"
                 }
             },
             "required": ["id", "organization", "website", "tag"]

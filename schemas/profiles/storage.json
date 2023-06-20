@@ -38,6 +38,10 @@
         "descriptionUrl": {
             "type": "string",
             "description": "The unique identifier of the audio file used as a description of the profile"
+        },
+        "budget": {
+            "type": "string",
+            "description": "The programming budget of the organization"
         }
     },
     "required": ["organization", "website", "tag"],
