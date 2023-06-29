@@ -1,19 +1,19 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/auth/login_response.json",
-    "title": "Login Response",
-    "description": "Login Response",
+    "id": "https://docs.cubecommons.ca/schemas/auth/create_user_response.json",
+    "title": "Create User Response",
+    "description": "Create User Response",
     "type": "object",
     "properties": {
         "jwt": {
             "type": "string",
             "description": "JWT."
         },
-        "profileId": {
+        "id": {
             "type": "string",
             "description": "Id of profile for authenticated user"
         }
     },
-    "required": ["jwt", "profileId"],
+    "required": ["jwt", "id"],
     "additionalProperties": false
 }

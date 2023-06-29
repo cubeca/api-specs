@@ -1,13 +1,13 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
     "id": "https://docs.cubecommons.ca/schemas/auth/login_request.json",
-    "title": "Username and Password JWT Request",
+    "title": "Email and Password JWT Request",
     "description": "OAuth2 password flow request",
     "type": "object",
     "properties": {
-        "username": {
+        "email": {
             "type": "string",
-            "description": "The username entered by the user."
+            "description": "The email entered by the user."
         },
         "password": {
             "type": "string",
@@ -15,7 +15,7 @@
         }
     },
     "required": [
-        "username",
+        "email",
         "password"
     ],
     "additionalProperties": false
