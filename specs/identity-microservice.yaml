@@ -156,10 +156,11 @@ paths:
         '201':
           description: Successful user creation
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-                example: OK
+                $ref: ../schemas/auth/create_user_response.json
+              example:
+                $ref: ../schemas/auth/create_user_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -255,7 +256,7 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
-  '/auth/verify':
+  '/auth/email/verify/{token}':
     get:
       operationId: verify_email
       summary: Verify user email.
@@ -269,11 +270,12 @@ paths:
       security: []
 
       parameters:
-        - in: query
-          name: uuid
+        - name: token
+          in: path
+          description: token
+          required: true
           schema:
             type: string
-          description: The uuid of the user verifying their email
       responses:
         '200':
           description: Successful email verification
@@ -310,12 +312,15 @@ paths:
       # global "security" setting with a local empty one.
       security: []
 
-      parameters:
-        - in: query
-          name: email
-          schema:
-            type: string
-          description: The email of the user resetting their password
+      requestBody:
+        description: Email to trigger reset process
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/auth/forgot_password_request.json
+            example:
+              $ref: ../schemas/auth/forgot_password_request.example.json
+        required: true
       responses:
         '200':
           description: Successful password update result

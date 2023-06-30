@@ -4,15 +4,6 @@
     "title": "Anonymous JWT Request",
     "description": "Anonymous JWT Request",
     "type": "object",
-    "properties": {
-        "anonymous": {
-            "type": "boolean",
-            "default": true,
-            "description": "Dummy value."
-        }
-    },
-    "required": [
-        "anonymous"
-    ],
+    "properties": {},
     "additionalProperties": false
 }
