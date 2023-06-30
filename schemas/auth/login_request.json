@@ -5,7 +5,7 @@
     "description": "OAuth2 password flow request",
     "type": "object",
     "properties": {
-        "username": {
+        "email": {
             "type": "string",
             "description": "The username entered by the user."
         },
@@ -15,7 +15,7 @@
         }
     },
     "required": [
-        "username",
+        "email",
         "password"
     ],
     "additionalProperties": false
