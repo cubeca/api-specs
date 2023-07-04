@@ -9,11 +9,11 @@
             "type": "string",
             "description": "JWT."
         },
-        "profileId": {
-            "type": "string",
-            "description": "Id of profile for authenticated user"
+        "user": {
+            "type": "object",
+            "description": "user object containing all attributes"
         }
     },
-    "required": ["jwt", "profileId"],
+    "required": ["jwt", "user"],
     "additionalProperties": false
 }
