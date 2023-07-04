@@ -86,9 +86,9 @@ paths:
     # For now, forwarding 1:1 to identity microservice.
     $ref: ./identity-microservice.yaml#/paths/~1auth~1password
 
-  '/auth/verify':
+  '/auth/email/verify/{token}':
     # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1verify
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1email~1verify~1{token}
 
   '/auth/forgot-password':
     # For now, forwarding 1:1 to identity microservice.

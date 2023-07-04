@@ -1,4 +1,15 @@
 {
     "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-    "profileId": "d8697d4f-2f09-4979-820a-f3aff45a2d2c"
+    "user": {
+        "email": "test-4@example.com",
+        "has_accepted_newsletter": true,
+        "has_accepted_terms": true,
+        "has_verified_email": true,
+        "id": "61b981e1-5f3b-49de-a3d5-d0a20d55d4c3",
+        "is_active": true,
+        "name": "Real Name",
+        "password": "U2FsdGVkX1+k/pdGa1ICKGokvsKdn99YFdcOwRg8MqOHTT2HWRR/tnFmb+MMS6B5cQFrvNo/DyLJokoSVdlsLEA5o71U5vfrRk9VAlv/864=",
+        "permission_ids": ["active"],
+        "profile_id": ""
+    }
 }

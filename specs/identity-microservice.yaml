@@ -90,7 +90,7 @@ paths:
   '/auth/login':
     post:
       operationId: login
-      summary: Login with username and password
+      summary: Login with email and password
       description: Log user in with username and password.
       tags:
         - Auth
@@ -277,13 +277,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        '301':
           description: Successful email verification
-          content:
-            text/plain:
+          headers:
+            Location:
               schema:
                 type: string
-                example: OK
+                example: /verify?token=token_value
         '400':
           $ref: '#/components/responses/error400'
         '401':
