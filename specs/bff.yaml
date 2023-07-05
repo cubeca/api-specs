@@ -337,7 +337,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-    update:
+    patch:
       operationId: update_profile
       summary: Update Profile
       description: Update Profile.
@@ -416,7 +416,6 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-          
   '/collaborators':
     get:
       operationId: collaborator_list
