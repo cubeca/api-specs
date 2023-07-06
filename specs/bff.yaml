@@ -337,7 +337,85 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-
+    patch:
+      operationId: update_profile
+      summary: Update Profile
+      description: Update Profile.
+      tags:
+        - Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profiles/update_profile_request.json
+            example:
+              $ref: ../schemas/profiles/update_profile_request.example.json
+        description: Profile Update
+        required: true
+      responses:
+        '200':
+          description: Update Profile Response
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/update_profile_response.json
+              example:
+                $ref: ../schemas/profiles/update_profile_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    delete:
+      operationId: delete_profile
+      summary: Delete profile
+      description: Delete profile details
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Delete a profile
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/delete_profile_response.json
+              example:
+                $ref: ../schemas/profiles/delete_profile_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
   '/collaborators':
     get:
       operationId: collaborator_list
