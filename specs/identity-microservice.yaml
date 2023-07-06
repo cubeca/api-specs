@@ -300,7 +300,7 @@ paths:
           $ref: '#/components/responses/error503'
 
   '/auth/forgot-password':
-    get:
+    post:
       operationId: forgot_password
       summary: Trigger forgot password flow.
       description: Trigger forgot password flow.
