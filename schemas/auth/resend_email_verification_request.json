@@ -1,0 +1,15 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/auth/resend_email_verification_request.json",
+    "title": "Token for resending the email validation email",
+    "description": "Token for resending the email validation email",
+    "type": "object",
+    "properties": {
+        "token": {
+            "type": "string",
+            "description": "jwt"
+        }
+    },
+    "required": ["token"],
+    "additionalProperties": false
+}

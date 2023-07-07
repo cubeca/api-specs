@@ -344,6 +344,51 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
+  '/auth/resend-email-verification':
+    post:
+      operationId: resend-email-verification
+      summary: resend the email verification if previous one lapsed.
+      description: resend the email verification if previous one lapsed.
+      tags:
+        - Auth
+
+      # While we are logging in we are not yet authenticated,
+      # so we have to allow for "no auth" by overriding the
+      # global "security" setting with a local empty one.
+      security: []
+
+      requestBody:
+        description: resend email verification request
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/auth/resend_email_verification_request.json
+            example:
+              $ref: ../schemas/auth/resend_email_verification_request.example.json
+        required: true
+      responses:
+        '200':
+          description: Successful resend verification email result
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '406':
+          $ref: '#/components/responses/error406'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
 components:
   responses:
     error400:

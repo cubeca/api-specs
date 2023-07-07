@@ -94,6 +94,10 @@ paths:
     # For now, forwarding 1:1 to identity microservice.
     $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
 
+  '/auth/resend-email-verification':
+    # For now, forwarding 1:1 to identity microservice.
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1resend-email-verification
+
   '/content':
     get:
       operationId: content_list
