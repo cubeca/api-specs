@@ -5,6 +5,12 @@
     "description": "Update Profile Request",
     "type": "object",
     "properties": {
+        "organization": {
+            "$ref": "./storage.json#/properties/organization"
+        },
+        "website": {
+            "$ref": "./storage.json#/properties/website"
+        },
         "heroUrl": {
             "$ref": "./storage.json#/properties/heroUrl"
         },

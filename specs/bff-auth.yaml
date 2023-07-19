@@ -55,20 +55,22 @@ security:
   - jwt_logged_in: []
 
 paths:
-  '/auth/anonymous':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
-  '/auth/login':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
   '/auth/user':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1user
+  '/auth/login':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
+  '/auth/anonymous':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
   '/auth/email':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1email
   '/auth/password':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1password
-  '/auth/verify':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1verify
+  '/auth/email/verify/{token}':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1email~1verify~1{token}
   '/auth/forgot-password':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
+  '/auth/resend-email-verification':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1resend-email-verification
 
 components:
   responses:
