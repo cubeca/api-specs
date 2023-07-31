@@ -218,6 +218,49 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
+  /profiles/tag/{tag}':
+    parameters:
+      - name: tag
+        in: path
+        description: Profile tag
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get_profile_by_tag
+      summary: Get profile details by tag
+      description: Get profile details by tag.
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/get_profile_response.json
+              example:
+                $ref: ../schemas/profiles/get_profile_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
 
 components:
   responses:
