@@ -23,11 +23,11 @@
             "type": "string",
             "description": "A descriptive tag for the profile"
         },
-        "heroUrl": {
+        "heroFileId": {
             "type": "string",
             "description": "The unique identifier of the image file used as the profile's hero image"
         },
-        "logoUrl": {
+        "logoFileId": {
             "type": "string",
             "description": "The unique identifier of the image file used as the profile's logo"
         },
@@ -35,7 +35,7 @@
             "type": "string",
             "description": "A brief description of the profile"
         },
-        "descriptionUrl": {
+        "descriptionFileId": {
             "type": "string",
             "description": "The unique identifier of the audio file used as a description of the profile"
         },
