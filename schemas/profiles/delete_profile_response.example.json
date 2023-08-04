@@ -3,8 +3,8 @@
     "organization": "org-1",
     "website": "https://org-1.example.com",
     "tag": "@org-1",
-    "herourl": "",
-    "logourl": "",
+    "heroFileId": "",
+    "logoFileId": "",
     "description": "",
-    "descriptionurl": ""
+    "descriptionFileId": ""
 }

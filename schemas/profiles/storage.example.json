@@ -3,8 +3,8 @@
     "organization": "MOA",
     "website": "https://moa.ubc.ca/",
     "tag": "@moa",
-    "heroUrl": "eef7ea4d-283e-4318-99da-b2196cb364b4",
-    "logoUrl": "6cd093eb-88e0-472a-a259-ebe2394ec98e",
+    "heroFileId": "eef7ea4d-283e-4318-99da-b2196cb364b4",
+    "logoFileId": "6cd093eb-88e0-472a-a259-ebe2394ec98e",
     "description": "Description of MOA Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare risus pretium vivamus leo, pharetra placerat mauris, viverra. Phasellus parturient amet sapien praesent semper tellus porttitor at auctor. Faucibus in at blandit dui eget in ut enim. Ultricies eu, lobortis vitae bibendum nunc tempor. Quam.",
-    "descriptionUrl": "fe4e37a4-1a22-4350-8d43-1934845452b1"
+    "descriptionFileId": "fe4e37a4-1a22-4350-8d43-1934845452b1"
 }

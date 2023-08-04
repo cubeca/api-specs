@@ -66,236 +66,46 @@ security:
   - jwt_logged_in: []
 
 paths:
-  '/auth/anonymous':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
-
-  '/auth/login':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
-
-  '/auth/user':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1user
-
-  '/auth/email':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1email
-
-  '/auth/password':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1password
-
-  '/auth/email/verify/{token}':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1email~1verify~1{token}
-
-  '/auth/forgot-password':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
-
-  '/auth/resend-email-verification':
-    # For now, forwarding 1:1 to identity microservice.
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1resend-email-verification
-
-  '/content':
-    get:
-      operationId: content_list
-      summary: List content
-      description: List content.
-      tags:
-        - Content
-      parameters:
-        - name: page
-          in: query
-          description: Page number
-          required: true
-          schema:
-            type: integer
-        - name: page_size
-          in: query
-          description: Number of items on a page
-          required: true
-          schema:
-            type: integer
-        - name: category
-          in: query
-          description: Content category
-          required: false
-          schema:
-            type: string
-            enum:
-              - all
-              - video
-              - audio
-              - vr
-              - pdf
-              - digital-publications
-              - talks
-              - performances
-              - cultural-teachings
-
-              # Hack to get the Frontend loading for MVP
-              - featured
-            default: all
-        - name: type
-          in: query
-          description: Content type
-          required: false
-          schema:
-            type: string
-            enum:
-              - video
-              - audio
-              - pdf
-            default: video
-        - name: nation
-          in: query
-          description: Related to Nation/Country
-          required: false
-          schema:
-            type: string
-            enum:
-              - CA
-            default: CA
-        - name: creator
-          in: query
-          description: Created by
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: List of content
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/content/storage_list.json
-              example:
-                $ref: ../schemas/content/storage_list.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-    post:
-      operationId: add_content
-      summary: Add content
-      description: Add content.
-      tags:
-        - Content
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/content/add_content_request.json
-            example:
-              $ref: ../schemas/content/add_content_request.example.json
-        description: Add content
-        required: true
-      responses:
-        '200':
-          description: Add content
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/content/add_content_response.json
-              example:
-                $ref: ../schemas/content/add_content_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
-  '/content/{contentId}':
-    get:
-      operationId: content_details
-      summary: Get content details
-      description: Get content details.
-      tags:
-        - Content
-      parameters:
-        - name: contentId
-          in: path
-          description: Content ID
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Content details
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/content/get_content_response.json
-              example:
-                $ref: ../schemas/content/get_content_response.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
-
   '/upload/video-tus-reservation':
-    # For now, forwarding 1:1 to cloudflare microservice.
     $ref: ./cloudflare-microservice.yaml#/paths/~1upload~1video-tus-reservation
 
   '/upload/s3-presigned-url':
-    # For now, forwarding 1:1 to cloudflare microservice.
     $ref: ./cloudflare-microservice.yaml#/paths/~1upload~1s3-presigned-url
 
   '/files/{fileId}':
-    # For now, forwarding 1:1 to cloudflare microservice.
     $ref: ./cloudflare-microservice.yaml#/paths/~1files~1{fileId}
 
+  '/content':
+    $ref: ./content-microservice.yaml#/paths/~1content
+
+  '/content/{contentId}':
+    $ref: ./content-microservice.yaml#/paths/~1content~1{contentId}
+
+  '/auth/user':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1user
+
+  '/auth/login':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
+
+  '/auth/anonymous':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
+
+  '/auth/email':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1email
+
+  '/auth/password':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1password
+
+  '/auth/email/verify/{token}':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1email~1verify~1{token}
+
+  '/auth/forgot-password':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
+
+  '/auth/resend-email-verification':
+    $ref: ./identity-microservice.yaml#/paths/~1auth~1resend-email-verification
+
   '/profiles':
-    # For now, forwarding 1:1 to profile microservice.
     $ref: ./profile-microservice.yaml#/paths/~1profiles
 
   '/profiles/{profileId}':
@@ -303,43 +113,6 @@ paths:
   
   '/profiles/tag/{tag}':
     $ref: ./profile-microservice.yaml#/paths/~1profiles~1tag~1{tag}
-
-  '/collaborators':
-    get:
-      operationId: collaborator_list
-      summary: List collaborators
-      description: List collaborators.
-      tags:
-        - Content
-      responses:
-        '200':
-          description: Collaborator List
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/collaborators/list_response.json
-              example:
-                $ref: ../schemas/collaborators/list_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
 
 components:
   responses:

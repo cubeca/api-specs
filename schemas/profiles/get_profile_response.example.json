@@ -3,9 +3,9 @@
     "organization": "org-4",
     "website": "https://org-4.example.com",
     "tag": "@org-4",
-    "herourl": "thisisanupdate",
-    "logourl": "",
+    "heroFileId": "thisisanupdate",
+    "logoFileId": "",
     "description": "",
-    "descriptionurl": "",
+    "descriptionFileId": "",
     "budget": "1"
 }

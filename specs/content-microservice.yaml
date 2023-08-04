@@ -210,6 +210,13 @@ paths:
       description: Update content.
       tags:
         - Content
+      parameters:
+        - name: contentId
+          in: path
+          description: Content ID
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:

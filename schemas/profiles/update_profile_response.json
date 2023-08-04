@@ -20,17 +20,17 @@
                 "tag": {
                     "$ref": "./storage.json#/properties/tag"
                 },
-                "heroUrl": {
-                    "$ref": "./storage.json#/properties/heroUrl"
+                "heroFileId": {
+                    "$ref": "./storage.json#/properties/heroFileId"
                 },
-                "logoUrl": {
-                    "$ref": "./storage.json#/properties/logoUrl"
+                "logoFileId": {
+                    "$ref": "./storage.json#/properties/logoFileId"
                 },
                 "description": {
                     "$ref": "./storage.json#/properties/description"
                 },
-                "descriptionUrl": {
-                    "$ref": "./storage.json#/properties/descriptionUrl"
+                "descriptionFileId": {
+                    "$ref": "./storage.json#/properties/descriptionFileId"
                 },
                 "budget": {
                     "$ref": "./storage.json#/properties/budget"
