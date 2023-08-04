@@ -218,7 +218,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-  /profiles/tag/{tag}':
+  '/profiles/tag/{tag}':
     parameters:
       - name: tag
         in: path
