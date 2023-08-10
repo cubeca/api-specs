@@ -1,5 +1,4 @@
 {
     "uuid": "4e2be9cb-0d75-4af3-8fc5-1699dafb2a99",
-    "email": "new-email@email.com",
-    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    "email": "new-email@email.com"
 }

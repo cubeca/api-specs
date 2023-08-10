@@ -12,16 +12,11 @@
         "email": {
             "type": "string",
             "description": "New email"
-        },
-        "token": {
-            "type": "string",
-            "description": "JWT"
         }
     },
     "required": [
         "uuid",
-        "email",
-        "token"
+        "email"
     ],
     "additionalProperties": false
 }
