@@ -157,6 +157,8 @@ paths:
 
 components:
   responses:
+    success200:
+      $ref: './_partials/common-components.yaml#/responses/success200'
     error400:
       $ref: './_partials/common-components.yaml#/responses/error400'
     error401:
