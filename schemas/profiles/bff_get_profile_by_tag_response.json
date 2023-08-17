@@ -36,7 +36,8 @@
                     "format": "url"
                 },
                 "content": {
-                    "type": "array"
+                    "type": "array",
+                    "items": {}
                 }
             },
             "required": [
