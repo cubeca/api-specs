@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_page_response.json",
-    "title": "BFF data for Profile page",
-    "description": "BFF data for Profile page",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_get_profile_by_tag_response.json",
+    "title": "BFF - Get profile by tag",
+    "description": "BFF - Get profile by tag",
     "type": "object",
     "properties": {
         "data": {
@@ -31,15 +31,13 @@
                 "description": {
                     "$ref": "./storage.json#/properties/description"
                 },
-                "descriptionAudioUrl": {
+                "descriptionUrl": {
                     "type": "string",
                     "format": "url"
                 },
                 "content": {
                     "type": "array",
-                    "items": {
-                        "$ref": "./content.json"
-                    }
+                    "items": {}
                 }
             },
             "required": [

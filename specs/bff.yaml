@@ -112,10 +112,53 @@ paths:
     $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}
   
   '/profiles/tag/{tag}':
-    $ref: ./profile-microservice.yaml#/paths/~1profiles~1tag~1{tag}
+    parameters:
+      - name: tag
+        in: path
+        description: Profile tag
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get_profile_by_tag
+      summary: Get profile details by tag
+      description: Get profile details by tag.
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/bff_get_profile_by_tag_response.json
+              example:
+                $ref: ../schemas/profiles/bff_get_profile_by_tag_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
 
 components:
   responses:
+    success200:
+      $ref: './_partials/common-components.yaml#/responses/success200'
     error400:
       $ref: './_partials/common-components.yaml#/responses/error400'
     error401:
