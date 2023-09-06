@@ -1,0 +1,10 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/get_profiles_by_id_list_request.json",
+    "title": "Get profiles by id list Request",
+    "description": "Get profiles by id list",
+    "type": "array",
+    "items": {
+        "$ref": "./storage.json#/properties/id"
+    }
+}

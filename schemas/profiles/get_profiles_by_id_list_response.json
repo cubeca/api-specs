@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/get_profile_by_id_list_response.json",
+    "title": "Get profile by id list response",
+    "description": "Get profile by id list response",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "$ref": "./storage.json#/properties/id"
+            },
+            "organization": {
+                "$ref": "./storage.json#/properties/organization"
+            },
+            "website": {
+                "$ref": "./storage.json#/properties/website"
+            },
+            "tag": {
+                "$ref": "./storage.json#/properties/tag"
+            },
+            "heroFileId": {
+                "$ref": "./storage.json#/properties/heroFileId"
+            },
+            "logoFileId": {
+                "$ref": "./storage.json#/properties/logoFileId"
+            },
+            "description": {
+                "$ref": "./storage.json#/properties/description"
+            },
+            "descriptionFileId": {
+                "$ref": "./storage.json#/properties/descriptionFileId"
+            },
+            "budget": {
+                "$ref": "./storage.json#/properties/budget"
+            }
+        },
+        "required": ["id", "organization", "website", "tag"]
+    }
+}

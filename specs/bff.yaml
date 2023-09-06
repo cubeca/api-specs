@@ -110,6 +110,9 @@ paths:
 
   '/profiles/{profileId}':
     $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}
+
+  '/collaborators':
+    $ref: ./profile-microservice.yaml#/paths/~1getProfilesByIdList
   
   '/profiles/tag/{tag}':
     parameters:
