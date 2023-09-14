@@ -35,6 +35,8 @@ tags:
     description: Everything to do with files, but only *after* they have been uploaded
   - name: Upload
     description: All communications to do with uploading
+  - name: Bff
+    description: BFF (Backend-for-Frontend) API
 
 servers:
   - url: https://bff-{stage}.cubecommons.ca
