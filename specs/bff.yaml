@@ -192,6 +192,14 @@ paths:
           schema:
             $ref: ../schemas/bff/filters.json
       responses:
+        '200':
+          description: Successful search operation
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/bff/search_response.json
+              example:
+                $ref: ../schemas/bff/search_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
