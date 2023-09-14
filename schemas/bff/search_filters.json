@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "title": "Filters",
+    "title": "Search Filters",
     "description": "Filters object for reducing search results",
     "type": "object",
     "properties": {
@@ -38,25 +38,25 @@
             "$ref": "../content/storage.json#/properties/tags"
         },
         "organization": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/organization"
         },
         "website": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/website"
         },
         "tag": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tag"
         },
         "heroFileId": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/heroFileId"
         },
         "logoFileId": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/logoFileId"
         },
         "descriptionFileId": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/descriptionFileId"
         },
         "budget": {
-            "$ref": "../profiles/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/budget"
         }
     },
     "required": []

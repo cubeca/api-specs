@@ -158,7 +158,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-
+  
   '/search':
     get:
       operationId: search
@@ -190,10 +190,10 @@ paths:
           description: Filters for which content is returned
           required: false
           schema:
-            $ref: ../schemas/bff/filters.json
+            $ref: ../schemas/bff/search_filters.json
       responses:
         '200':
-          description: Successful search operation
+          description: search results
           content:
             application/json:
               schema:
@@ -221,7 +221,6 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
-  
   '/profiles/tag/{tag}':
     parameters:
       - name: tag

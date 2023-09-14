@@ -1,5 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/bff/search_response.json",
     "title": "BFF - Search response",
     "description": "BFF - Response for combined content and profile search",
     "type": "object",
@@ -19,7 +20,7 @@
                             "description": "Max number of items to return"
                         },
                         "filters": {
-                            "$ref": "./filters.json",
+                            "$ref": "./search_filters.json",
                             "description": "Filters for which content is returned"
                         }
                     },
@@ -57,7 +58,7 @@
                             "description": "Max number of items to return"
                         },
                         "filters": {
-                            "$ref": "./filters.json",
+                            "$ref": "./search_filters.json",
                             "description": "Filters for which profiles are returned"
                         }
                     },
