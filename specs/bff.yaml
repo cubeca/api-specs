@@ -170,13 +170,13 @@ paths:
         - name: offset
           in: query
           description: Offset into the result set
-          required: true
+          required: false
           schema:
             type: integer
         - name: limit
           in: query
           description: Max number of items to return
-          required: true
+          required: false
           schema:
             type: integer
         - name: searchTerm

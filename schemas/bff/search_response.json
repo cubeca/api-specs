@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
     "id": "https://docs.cubecommons.ca/schemas/bff/search_response.json",
-    "title": "Search response",
-    "description": "Response for combined content and profile search",
+    "title": "BFF - Search response",
+    "description": "BFF - Response for combined content and profile search",
     "type": "object",
     "properties": {
         "contentResults": {
@@ -24,7 +24,7 @@
                             "description": "Filters for which content is returned"
                         }
                     },
-                    "required": ["offset", "limit", "profileId"]
+                    "required": ["offset", "limit"]
                 },
                 "data": {
                     "type": "array",
@@ -62,7 +62,7 @@
                             "description": "Filters for which profiles are returned"
                         }
                     },
-                    "required": ["offset", "limit", "profileId"]
+                    "required": ["offset", "limit"]
                 },
                 "data": {
                     "type": "array",
