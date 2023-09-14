@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "$id": "https://docs.cubecommons.ca/schemas/profiles/storage.json",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/storage.json",
     "title": "Profile Storage Schema",
     "description": "A schema for storing profiles of organizations",
     "type": "object",
