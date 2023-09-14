@@ -38,25 +38,25 @@
             "$ref": "../content/storage.json#/properties/tags"
         },
         "organization": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         },
         "website": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         },
         "tag": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         },
         "heroFileId": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         },
         "logoFileId": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         },
         "descriptionFileId": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         },
         "budget": {
-            "$ref": "../profile/storage.json#/properties/tags"
+            "$ref": "../profiles/storage.json#/properties/tags"
         }
     },
     "required": []
