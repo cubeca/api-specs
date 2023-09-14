@@ -112,7 +112,50 @@ paths:
     $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}
 
   '/collaborators':
-    $ref: ./profile-microservice.yaml#/paths/~1getProfilesByIdList
+    post:
+      operationId: collaborators
+      summary: get a list of collaborators
+      description: get a list of collaborators
+      tags:
+        - Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profiles/bff_collaborators_request.json
+            example:
+              $ref: ../schemas/profiles/bff_collaborators_request.example.json
+        description: get a list of collaborators
+        required: true
+      responses:
+        '200':
+          description: get a list of collaborators
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/bff_collaborators_response.json
+              example:
+                $ref: ../schemas/profiles/bff_collaborators_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
   
   '/profiles/tag/{tag}':
     parameters:

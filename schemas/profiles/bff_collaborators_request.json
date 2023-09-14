@@ -1,0 +1,10 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_collaborators_request.json",
+    "title": "Get collaborators by id list request",
+    "description": "Get collaborators by id list",
+    "type": "array",
+    "items": {
+        "$ref": "./storage.json#/properties/id"
+    }
+}

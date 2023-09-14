@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_collaborators_response.json",
+    "title": "Get collaborators by id list response",
+    "description": "Get collaborators by id list response",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "$ref": "./storage.json#/properties/id"
+            },
+            "organization": {
+                "$ref": "./storage.json#/properties/organization"
+            },
+            "tag": {
+                "$ref": "./storage.json#/properties/tag"
+            }
+        },
+        "required": ["id", "organization", "tag"]
+    }
+}
