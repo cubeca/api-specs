@@ -1,0 +1,63 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "title": "Filters",
+    "description": "Filters object for reducing search results",
+    "type": "object",
+    "properties": {
+        "type": {
+            "$ref": "../content/storage.json#/properties/type"
+        },
+        "category": {
+            "$ref": "../content/storage.json#/properties/category"
+        },
+        "title": {
+            "$ref": "../content/storage.json#/properties/title"
+        },
+        "expiry": {
+            "$ref": "../content/storage.json#/properties/expiry"
+        },
+        "description": {
+            "$ref": "../content/storage.json#/properties/description"
+        },
+        "coverImageFileId": {
+            "$ref": "../content/storage.json#/properties/coverImageFileId"
+        },
+        "mediaFileId": {
+            "$ref": "../content/storage.json#/properties/mediaFileId"
+        },
+        "subtitlesFileId": {
+            "$ref": "../content/storage.json#/properties/subtitlesFileId"
+        },
+        "transcriptFileId": {
+            "$ref": "../content/storage.json#/properties/transcriptFileId"
+        },
+        "coverImageText": {
+            "$ref": "../content/storage.json#/properties/coverImageText"
+        },
+        "tags": {
+            "$ref": "../content/storage.json#/properties/tags"
+        },
+        "organization": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        },
+        "website": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        },
+        "tag": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        },
+        "heroFileId": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        },
+        "logoFileId": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        },
+        "descriptionFileId": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        },
+        "budget": {
+            "$ref": "../profile/storage.json#/properties/tags"
+        }
+    },
+    "required": []
+}

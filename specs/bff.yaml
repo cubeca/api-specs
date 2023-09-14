@@ -156,6 +156,69 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
+
+  '/search':
+    get:
+      operationId: search
+      summary: Search based on query parameters
+      description: Returns search results based on the provided query parameters.
+      tags:
+        - Bff
+      parameters:
+        - name: offset
+          in: query
+          description: Offset into the result set
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Max number of items to return
+          required: true
+          schema:
+            type: integer
+        - name: searchTerm
+          in: query
+          description: term to look for in data
+          required: true
+          schema:
+            type: string
+        - name: filters
+          in: query
+          description: Filters for which content is returned
+          required: false
+          schema:
+            $ref: ../schemas/bff/filters.json
+      responses:
+        '200':
+          description: Successful search operation
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/bff/search_response.json
+              example:
+                $ref: ../schemas/bff/search_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
   
   '/profiles/tag/{tag}':
     parameters:
