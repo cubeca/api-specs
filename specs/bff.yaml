@@ -119,7 +119,7 @@ paths:
       summary: get a list of collaborators
       description: get a list of collaborators
       tags:
-        - Profile
+        - Bff
       responses:
         '200':
           description: get a list of collaborators
@@ -225,7 +225,7 @@ paths:
       summary: Get profile details by tag
       description: Get profile details by tag.
       tags:
-        - Profile
+        - Bff
       responses:
         '200':
           description: Profile details
