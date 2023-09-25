@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/get_profile_by_id_list_response.json",
-    "title": "Get profiles by id list response",
-    "description": "Get profiles by id list response",
+    "id": "https://docs.cubecommons.ca/schemas/profiles/get_profiles_response.json",
+    "title": "Get profiles response",
+    "description": "Get profiles response",
     "type": "array",
     "items": {
         "type": "object",

@@ -50,6 +50,41 @@ paths:
             $ref: '#/components/responses/error500'
 
   '/profiles':
+    get:
+      operationId: get_profiles
+      summary: Get all of the profiles
+      description: Get all of the profiles
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/get_profile_response.json
+              example:
+                $ref: ../schemas/profiles/get_profile_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
     post:
       operationId: create_profile
       summary: Create Profile

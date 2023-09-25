@@ -114,21 +114,12 @@ paths:
     $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}
 
   '/collaborators':
-    post:
+    get:
       operationId: collaborators
       summary: get a list of collaborators
       description: get a list of collaborators
       tags:
         - Profile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../schemas/profiles/bff_collaborators_request.json
-            example:
-              $ref: ../schemas/profiles/bff_collaborators_request.example.json
-        description: get a list of collaborators
-        required: true
       responses:
         '200':
           description: get a list of collaborators
