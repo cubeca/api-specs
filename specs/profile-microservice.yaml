@@ -341,6 +341,61 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
+  '/search':
+    get:
+      operationId: search
+      summary: Search based on query parameters
+      description: Returns search results based on the provided query parameters.
+      tags:
+        - Profile
+      parameters:
+        - name: offset
+          in: query
+          description: Offset into the result set
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Max number of items to return
+          required: false
+          schema:
+            type: integer
+        - name: searchTerm
+          in: query
+          description: term to look for in data
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: search results
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/profiles/storage_list.json
+              example:
+                $ref: ../schemas/profiles/storage_list.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
 
 components:
   responses:
