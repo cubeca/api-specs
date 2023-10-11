@@ -11,8 +11,11 @@
             "profileId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
             "description": "This is a test",
             "mediaFileId": "360cfe42-0db2-47d1-926b-9e627a22dd52",
-            "contributors": ["contributors"],
-            "collaborators": ["collaborators"],
+            "contributors": {
+                "artist": "artist",
+                "camera": "camera person"
+            },
+            "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
             "coverImageText": "Someone saying something",
             "subtitlesFileId": "213961d0-6804-4b4a-8164-961b7208b8c0",
             "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab",

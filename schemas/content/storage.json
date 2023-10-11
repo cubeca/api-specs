@@ -75,16 +75,17 @@
         "collaborators": {
             "type": "array",
             "items": {
-                "type": "string"
+                "type": "string",
+                "format": "uuid"
             },
-            "description": "List of collaborator names (optional)"
+            "description": "List of collaborator profile ids"
         },
         "contributors": {
-            "type": "array",
-            "items": {
+            "type": "object",
+            "additionalProperties": {
                 "type": "string"
             },
-            "description": "List of contributor names (optional)"
+            "description": "Object of key-value pairs representing contributors (optional)"
         },
         "tags": {
             "type": "array",

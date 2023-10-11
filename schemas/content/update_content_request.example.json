@@ -10,17 +10,10 @@
     "subtitlesFileId": "6f05411a-e991-4346-be54-6dc2b4e4e528",
     "transcriptFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
     "coverImageText": "Thumbnail Text",
-    "collaborators": [
-        "Museum of Anthropology",
-        "Burnaby Art Gallery"
-    ],
-    "contributors": [
-        "Dawn Powell, Camera Operator",
-        "Alissa Cat, Public Programs",
-        "Magnus Ten, Editor"
-    ],
-    "tags": [
-        "integration testing",
-        "tags are hard"
-    ]
+    "contributors": {
+        "artist": "artist",
+        "camera": "camera person"
+    },
+    "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
+    "tags": ["integration testing", "tags are hard"]
 }
