@@ -358,7 +358,28 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-
+  '/content/report':
+    post:
+      operationId: report_content
+      summary: Report content
+      description: Report content.
+      tags:
+        - Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/content/report_content_request.json
+            example:
+              $ref: ../schemas/content/report_content_request.example.json
+        description: Report content
+        required: true
+      responses:
+        '200':
+          description: Status of reported content
+          $ref: '#/components/responses/success200'
+        '500':
+          $ref: '#/components/responses/error500'
 
 components:
   responses:

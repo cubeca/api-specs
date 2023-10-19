@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/report_content_request.json",
+    "title": "Report content request",
+    "description": "Report content request",
+    "type": "object",
+    "properties": {
+        "disputedUrl": {
+            "type": "string",
+            "format": "url",
+            "description": "URL of the disputed content on Cube Commons"
+        },
+        "requestType": {
+            "type": "string",
+            "enum": ["legal", "policy"],
+            "description": "The type of the report"
+        },
+        "contactName": {
+            "type": "string",
+            "description": "The name of the entity submitting the report"
+        },
+        "contactEmail": {
+            "type": "string",
+            "description": "Email of the entity submitting the report"
+        },
+        "issueDesc": {
+            "type": "string",
+            "description": "What is the report submission about?"
+        }
+    },
+    "required": ["disputedUrl", "requestType", "contactName", "contactEmail", "issueDesc"]
+}
