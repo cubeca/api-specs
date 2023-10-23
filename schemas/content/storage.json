@@ -83,7 +83,10 @@
         "contributors": {
             "type": "object",
             "additionalProperties": {
-                "type": "string"
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
             },
             "description": "Object of key-value pairs representing contributors (optional)"
         },
