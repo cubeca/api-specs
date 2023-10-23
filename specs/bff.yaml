@@ -83,8 +83,8 @@ paths:
   '/content/{contentId}':
     $ref: ./content-microservice.yaml#/paths/~1content~1{contentId}
 
-  '/content/report':
-    $ref: ./content-microservice.yaml#/paths/~1content~1report
+  '/report':
+    $ref: ./content-microservice.yaml#/paths/~1report
 
   '/auth/user':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1user

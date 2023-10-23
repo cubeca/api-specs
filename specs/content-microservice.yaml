@@ -1,18 +1,11 @@
 openapi: 3.0.3
 info:
   title: Content Microservice - The Association for Cube Commons Canada
-
-  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
-  # In general, use semantic versioning: http://semver.org/
-  version: '0.0.1'
-  
+  version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
-    # Content Microservice
-
     The Content Microservice is the "custodian" of "content pieces", which are usually one main media file,
     tied together with some supporting files like thumbnail, sign language video, subtitles, etc.
     plus some metadata like title, description, owner profile etc.
-
   contact:
     email: tech@cubecommons.ca
     url: https://github.com/cubeca
@@ -358,7 +351,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-  '/content/report':
+  '/report':
     post:
       operationId: report_content
       summary: Report content
