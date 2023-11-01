@@ -18,6 +18,9 @@
                 "type": {
                     "$ref": "./storage.json#/properties/type"
                 },
+                "externalUrl": {
+                    "$ref": "./storage.json#/properties/externalUrl"
+                },
                 "category": {
                     "$ref": "./storage.json#/properties/category"
                 },
@@ -55,19 +58,8 @@
                     "$ref": "./storage.json#/properties/tags"
                 }
             },
-            "required": [
-                "profileId",
-                "type",
-                "title",
-                "expiry",
-                "description",
-                "coverImageText",
-                "collaborators",
-                "contributors"
-            ]
+            "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]
         }
     },
-    "required": [
-        "data"
-    ]
+    "required": ["data"]
 }

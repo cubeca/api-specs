@@ -15,5 +15,6 @@
         "camera": ["camera person"]
     },
     "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
-    "tags": ["integration testing", "tags are hard"]
+    "tags": ["integration testing", "tags are hard"],
+    "externalUrl": "www.google.com"
 }

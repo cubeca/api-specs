@@ -15,5 +15,6 @@
         "artist": ["artist"],
         "camera": ["camera person"]
     },
+    "externalUrl": "www.google.com",
     "tags": ["integration testing", "tags are hard"]
 }
