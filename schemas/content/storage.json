@@ -63,6 +63,15 @@
             "format": "uuid",
             "description": "Unique identifier for the media file"
         },
+        "bannerImageFileId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the banner file"
+        },
+        "isSuitableForChildren": {
+            "type": "boolean",
+            "description": "Is the content item suitable for any children?"
+        },
         "subtitlesFileId": {
             "type": "string",
             "format": "uuid",

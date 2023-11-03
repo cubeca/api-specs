@@ -32,6 +32,12 @@
         "mediaFileId": {
             "$ref": "./storage.json#/properties/mediaFileId"
         },
+        "bannerImageFileId": {
+            "$ref": "./storage.json#/properties/bannerImageFileId"
+        },
+        "isSuitableForChildren": {
+            "$ref": "./storage.json#/properties/isSuitableForChildren"
+        },
         "subtitlesFileId": {
             "$ref": "./storage.json#/properties/subtitlesFileId"
         },
