@@ -185,6 +185,12 @@ paths:
           required: false
           schema:
             $ref: ../schemas/bff/search_filters.json
+        - name: scope
+          in: query
+          description: whether to scope by profiles, content or both.
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: search results
