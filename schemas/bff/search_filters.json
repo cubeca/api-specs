@@ -31,6 +31,9 @@
         "transcriptFileId": {
             "$ref": "../content/storage.json#/properties/transcriptFileId"
         },
+        "profileId": {
+            "$ref": "../content/storage.json#/properties/profileId"
+        },
         "coverImageText": {
             "$ref": "../content/storage.json#/properties/coverImageText"
         },

@@ -36,6 +36,9 @@
         },
         "tags": {
             "$ref": "./storage.json#/properties/tags"
+        },
+        "profileId": {
+            "$ref": "./storage.json#/properties/profileId"
         }
     },
     "required": []
