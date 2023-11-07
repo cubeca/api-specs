@@ -1,61 +1,67 @@
 {
-    "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/content/update_content_request.json",
-    "title": "Update Content",
-    "description": "Updates Content",
-    "type": "object",
-    "properties": {
-        "profileId": {
-            "$ref": "./storage.json#/properties/profileId"
-        },
-        "type": {
-            "$ref": "./storage.json#/properties/type"
-        },
-        "externalUrl": {
-            "$ref": "./storage.json#/properties/externalUrl"
-        },
-        "category": {
-            "$ref": "./storage.json#/properties/category"
-        },
-        "title": {
-            "$ref": "./storage.json#/properties/title"
-        },
-        "expiry": {
-            "$ref": "./storage.json#/properties/expiry"
-        },
-        "description": {
-            "$ref": "./storage.json#/properties/description"
-        },
-        "coverImageFileId": {
-            "$ref": "./storage.json#/properties/coverImageFileId"
-        },
-        "mediaFileId": {
-            "$ref": "./storage.json#/properties/mediaFileId"
-        },
-        "bannerImageFileId": {
-            "$ref": "./storage.json#/properties/bannerImageFileId"
-        },
-        "isSuitableForChildren": {
-            "$ref": "./storage.json#/properties/isSuitableForChildren"
-        },
-        "subtitlesFileId": {
-            "$ref": "./storage.json#/properties/subtitlesFileId"
-        },
-        "transcriptFileId": {
-            "$ref": "./storage.json#/properties/transcriptFileId"
-        },
-        "coverImageText": {
-            "$ref": "./storage.json#/properties/coverImageText"
-        },
-        "collaborators": {
-            "$ref": "./storage.json#/properties/collaborators"
-        },
-        "contributors": {
-            "$ref": "./storage.json#/properties/contributors"
-        },
-        "tags": {
-            "$ref": "./storage.json#/properties/tags"
-        }
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "id": "https://docs.cubecommons.ca/schemas/content/update_content_request.json",
+  "title": "Update Content",
+  "description": "Updates Content",
+  "type": "object",
+  "properties": {
+    "profileId": {
+      "$ref": "./storage.json#/properties/profileId"
     },
-    "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]
+    "type": {
+      "$ref": "./storage.json#/properties/type"
+    },
+    "externalUrl": {
+      "$ref": "./storage.json#/properties/externalUrl"
+    },
+    "category": {
+      "$ref": "./storage.json#/properties/category"
+    },
+    "title": {
+      "$ref": "./storage.json#/properties/title"
+    },
+    "expiry": {
+      "$ref": "./storage.json#/properties/expiry"
+    },
+    "description": {
+      "$ref": "./storage.json#/properties/description"
+    },
+    "coverImageFileId": {
+      "$ref": "./storage.json#/properties/coverImageFileId"
+    },
+    "mediaFileId": {
+      "$ref": "./storage.json#/properties/mediaFileId"
+    },
+    "bannerImageFileId": {
+      "$ref": "./storage.json#/properties/bannerImageFileId"
+    },
+    "isSuitableForChildren": {
+      "$ref": "./storage.json#/properties/isSuitableForChildren"
+    },
+    "vttFileId": {
+      "$ref": "./storage.json#/properties/vttFileId"
+    },
+    "coverImageText": {
+      "$ref": "./storage.json#/properties/coverImageText"
+    },
+    "collaborators": {
+      "$ref": "./storage.json#/properties/collaborators"
+    },
+    "contributors": {
+      "$ref": "./storage.json#/properties/contributors"
+    },
+    "tags": {
+      "$ref": "./storage.json#/properties/tags"
+    }
+  },
+  "required": [
+    "profileId",
+    "type",
+    "title",
+    "expiry",
+    "description",
+    "coverImageText",
+    "collaborators",
+    "contributors"
+  ]
 }

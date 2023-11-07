@@ -1,128 +1,123 @@
 {
-    "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/content/storage.json",
-    "title": "Content Storage",
-    "description": "Storage schema for content microservice",
-    "type": "object",
-    "properties": {
-        "id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the content"
-        },
-        "profileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the associated profile"
-        },
-        "type": {
-            "type": "string",
-            "enum": ["video", "audio", "pdf", "link"],
-            "description": "Type of content (video, audio, or pdf)"
-        },
-        "externalUrl": {
-            "type": "string",
-            "description": "External URL pointing to additional information or supporting the link type"
-        },
-        "category": {
-            "type": "string",
-            "enum": [
-                "all",
-                "video",
-                "audio",
-                "link",
-                "vr",
-                "pdf",
-                "digital-publications",
-                "talks",
-                "performances",
-                "cultural-teachings",
-                "featured"
-            ],
-            "description": "Category of the content"
-        },
-        "title": {
-            "type": "string",
-            "description": "Title of the content"
-        },
-        "expiry": {
-            "type": "string",
-            "description": "Expiry date of the content"
-        },
-        "description": {
-            "type": "string",
-            "description": "Description of the content"
-        },
-        "coverImageFileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the cover image file"
-        },
-        "mediaFileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the media file"
-        },
-        "bannerImageFileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the banner file"
-        },
-        "isSuitableForChildren": {
-            "type": "boolean",
-            "description": "Is the content item suitable for any children?"
-        },
-        "subtitlesFileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the subtitles file (optional)"
-        },
-        "transcriptFileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the transcript file (optional)"
-        },
-        "coverImageText": {
-            "type": "string",
-            "description": "Text displayed over the cover image"
-        },
-        "collaborators": {
-            "type": "array",
-            "items": {
-                "type": "string",
-                "format": "uuid"
-            },
-            "description": "List of collaborator profile ids"
-        },
-        "contributors": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
-            },
-            "description": "Object of key-value pairs representing contributors (optional)"
-        },
-        "tags": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "List of tags associated with the content (optional)"
-        }
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "id": "https://docs.cubecommons.ca/schemas/content/storage.json",
+  "title": "Content Storage",
+  "description": "Storage schema for content microservice",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the content"
     },
-    "required": [
-        "profileId",
-        "type",
-        "category",
-        "title",
-        "expiry",
-        "description",
-        "coverImageFileId",
-        "mediaFileId",
-        "coverImageText",
-        "collaborators",
-        "contributors"
-    ]
+    "profileId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the associated profile"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["video", "audio", "pdf", "link"],
+      "description": "Type of content (video, audio, or pdf)"
+    },
+    "externalUrl": {
+      "type": "string",
+      "description": "External URL pointing to additional information or supporting the link type"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "all",
+        "video",
+        "audio",
+        "link",
+        "vr",
+        "pdf",
+        "digital-publications",
+        "talks",
+        "performances",
+        "cultural-teachings",
+        "featured"
+      ],
+      "description": "Category of the content"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the content"
+    },
+    "expiry": {
+      "type": "string",
+      "description": "Expiry date of the content"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the content"
+    },
+    "coverImageFileId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the cover image file"
+    },
+    "mediaFileId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the media file"
+    },
+    "bannerImageFileId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the banner file"
+    },
+    "isSuitableForChildren": {
+      "type": "boolean",
+      "description": "Is the content item suitable for any children?"
+    },
+    "vttFileId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the subtitles file (optional)"
+    },
+    "coverImageText": {
+      "type": "string",
+      "description": "Text displayed over the cover image"
+    },
+    "collaborators": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "List of collaborator profile ids"
+    },
+    "contributors": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Object of key-value pairs representing contributors (optional)"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of tags associated with the content (optional)"
+    }
+  },
+  "required": [
+    "profileId",
+    "type",
+    "category",
+    "title",
+    "expiry",
+    "description",
+    "coverImageFileId",
+    "mediaFileId",
+    "coverImageText",
+    "collaborators",
+    "contributors"
+  ]
 }

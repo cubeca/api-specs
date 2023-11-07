@@ -1,22 +1,24 @@
 {
-    "profileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
-    "type": "video",
-    "category": "video",
-    "title": "Test Video Upload",
-    "expiry": "Say What??? Why should this ever be over?",
-    "description": "This text field shall describe the content file.",
-    "coverImageFileId": "24d6b370-a709-4a7b-b323-752186cd492d",
-    "mediaFileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
-    "subtitlesFileId": "6f05411a-e991-4346-be54-6dc2b4e4e528",
-    "transcriptFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
-    "bannerImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
-    "isSuitableForChildren": "true",
-    "coverImageText": "Thumbnail Text",
-    "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
-    "contributors": {
-        "artist": ["artist"],
-        "camera": ["camera person"]
-    },
-    "externalUrl": "www.google.com",
-    "tags": ["integration testing", "tags are hard"]
+  "profileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
+  "type": "video",
+  "category": "video",
+  "title": "Test Video Upload",
+  "expiry": "Say What??? Why should this ever be over?",
+  "description": "This text field shall describe the content file.",
+  "coverImageFileId": "24d6b370-a709-4a7b-b323-752186cd492d",
+  "mediaFileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
+  "vttFileId": "6f05411a-e991-4346-be54-6dc2b4e4e528",
+  "bannerImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
+  "isSuitableForChildren": "true",
+  "coverImageText": "Thumbnail Text",
+  "collaborators": [
+    "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
+    "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"
+  ],
+  "contributors": {
+    "artist": ["artist"],
+    "camera": ["camera person"]
+  },
+  "externalUrl": "www.google.com",
+  "tags": ["integration testing", "tags are hard"]
 }

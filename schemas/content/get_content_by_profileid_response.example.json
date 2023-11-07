@@ -1,27 +1,29 @@
 {
-    "meta": { "offset": 0, "limit": 10, "filters": { "type": "video" } },
-    "data": [
-        {
-            "id": "9a4801b4-006c-4cc3-b80d-3ac929937fd6",
-            "createdAt": "2023-05-08T20:12:06.291Z",
-            "updatedAt": "2023-05-08T20:12:06.291Z",
-            "tags": ["tag"],
-            "type": "video",
-            "title": "Retrieve Test",
-            "profileId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
-            "description": "This is a test",
-            "mediaFileId": "360cfe42-0db2-47d1-926b-9e627a22dd52",
-            "contributors": {
-                "artist": ["artist"],
-                "camera": ["camera person"]
-            },
-            "bannerImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
-            "isSuitableForChildren": "true",
-            "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
-            "coverImageText": "Someone saying something",
-            "subtitlesFileId": "213961d0-6804-4b4a-8164-961b7208b8c0",
-            "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab",
-            "transcriptFileId": "5e090213-b892-478a-901b-5f0317937fc6"
-        }
-    ]
+  "meta": { "offset": 0, "limit": 10, "filters": { "type": "video" } },
+  "data": [
+    {
+      "id": "9a4801b4-006c-4cc3-b80d-3ac929937fd6",
+      "createdAt": "2023-05-08T20:12:06.291Z",
+      "updatedAt": "2023-05-08T20:12:06.291Z",
+      "tags": ["tag"],
+      "type": "video",
+      "title": "Retrieve Test",
+      "profileId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
+      "description": "This is a test",
+      "mediaFileId": "360cfe42-0db2-47d1-926b-9e627a22dd52",
+      "contributors": {
+        "artist": ["artist"],
+        "camera": ["camera person"]
+      },
+      "bannerImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
+      "isSuitableForChildren": "true",
+      "collaborators": [
+        "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
+        "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"
+      ],
+      "coverImageText": "Someone saying something",
+      "vttFileId": "213961d0-6804-4b4a-8164-961b7208b8c0",
+      "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab"
+    }
+  ]
 }
