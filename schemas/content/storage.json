@@ -27,9 +27,9 @@
         "category": {
             "type": "array",
             "items": {
-                "type": "string"
+                "type": "string",
+                "enum": ["video", "audio", "activity-book", "digital-publications", "link", "collaborations", "sign-language"]
             },
-            "enum": ["video", "audio", "activity-book", "digital-publications", "link", "collaborations", "sign-language"],
             "description": "Category of the content"
         },
         "title": {
