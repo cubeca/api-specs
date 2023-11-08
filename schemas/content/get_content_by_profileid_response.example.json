@@ -15,6 +15,7 @@
                 "artist": ["artist"],
                 "camera": ["camera person"]
             },
+            "category": ["video", "audio"],
             "bannerImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
             "isSuitableForChildren": "true",
             "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],

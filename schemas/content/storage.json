@@ -25,20 +25,11 @@
             "description": "External URL pointing to additional information or supporting the link type"
         },
         "category": {
-            "type": "string",
-            "enum": [
-                "all",
-                "video",
-                "audio",
-                "link",
-                "vr",
-                "pdf",
-                "digital-publications",
-                "talks",
-                "performances",
-                "cultural-teachings",
-                "featured"
-            ],
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "enum": ["video", "audio", "activity-book", "digital-publications", "link", "collaborations", "sign-language"],
             "description": "Category of the content"
         },
         "title": {
