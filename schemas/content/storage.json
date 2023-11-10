@@ -63,12 +63,7 @@
             "type": "boolean",
             "description": "Is the content item suitable for any children?"
         },
-        "subtitlesFileId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Unique identifier for the subtitles file (optional)"
-        },
-        "transcriptFileId": {
+        "vttFileId": {
             "type": "string",
             "format": "uuid",
             "description": "Unique identifier for the transcript file (optional)"

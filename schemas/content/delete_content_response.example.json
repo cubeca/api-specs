@@ -14,8 +14,7 @@
         },
         "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
         "coverImageText": "Someone laying on table",
-        "subtitlesFileId": "213961d0-6804-4b4a-8164-961b7208b8c0",
         "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab",
-        "transcriptFileId": "5e090213-b892-478a-901b-5f0317937fc6"
+        "vttFileId": "5e090213-b892-478a-901b-5f0317937fc6"
     }
 }
