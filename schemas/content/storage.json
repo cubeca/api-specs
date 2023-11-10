@@ -90,7 +90,7 @@
             "additionalProperties": {
                 "type": "array",
                 "items": {
-                    "type": "string"
+                    "type": "object"
                 }
             },
             "description": "Object of key-value pairs representing contributors (optional)"

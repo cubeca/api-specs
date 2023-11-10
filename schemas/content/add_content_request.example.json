@@ -14,8 +14,7 @@
     "coverImageText": "Thumbnail Text",
     "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
     "contributors": {
-        "artist": ["artist"],
-        "camera": ["camera person"]
+        "artist": [{ "name": "artist", "url": "https://google.ca" }]
     },
     "externalUrl": "www.google.com",
     "tags": ["integration testing", "tags are hard"]
