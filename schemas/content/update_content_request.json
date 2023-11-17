@@ -52,6 +52,9 @@
     },
     "tags": {
       "$ref": "./storage.json#/properties/tags"
+    },
+    "vttQueued": {
+      "$ref": "./storage.json#/properties/vttQueued"
     }
   },
   "required": [
