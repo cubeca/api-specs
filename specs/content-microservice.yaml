@@ -373,7 +373,7 @@ paths:
           $ref: '#/components/responses/success200'
         '500':
           $ref: '#/components/responses/error500'
-  'vtt':
+  '/vtt':
     get:
       operationId: get_vtt
       summary: Get vtt
