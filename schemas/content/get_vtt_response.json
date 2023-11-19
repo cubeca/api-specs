@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/VTT/get_VTT_response.json",
+    "title": "Get VTT response",
+    "description": "Get VTT response",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "The id of the VTT file and content it relates to."
+        },
+        "transcript": {
+            "type": "object",
+            "description": "The transcript of the VTT file.",
+            "additionalProperties": true
+        }
+    },
+    "required": ["id", "transcript"]
+}

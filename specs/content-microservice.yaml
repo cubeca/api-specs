@@ -373,7 +373,101 @@ paths:
           $ref: '#/components/responses/success200'
         '500':
           $ref: '#/components/responses/error500'
-
+  'vtt':
+    get:
+      operationId: get_vtt
+      summary: Get vtt
+      description: Get vtt.
+      tags:
+        - Content
+      parameters:
+        - name: id
+          in: path
+          description: Content ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: VTT
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/get_vtt_response.json
+              example:
+                $ref: ../schemas/content/get_vtt_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    put:
+      operationId: update_vtt
+      summary: Update vtt
+      description: Update vtt.
+      tags:
+        - Content
+      parameters:
+        - name: id
+          in: path
+          description: Content ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/content/update_vtt_request.json
+            example:
+              $ref: ../schemas/content/update_vtt_request.example.json
+        description: Update vtt
+        required: true
+      responses:
+        '200':
+          description: Update vtt
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/update_vtt_response.json
+              example:
+                $ref: ../schemas/content/update_vtt_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    
 components:
   responses:
     success200:
