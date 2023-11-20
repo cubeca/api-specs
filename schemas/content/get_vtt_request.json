@@ -4,7 +4,7 @@
     "title": "Get vtt by id request",
     "description": "Get vtt by id request",
     "type": "object",
-    "properties": {
+    "parameters": {
         "id": {
             "type": "string",
             "description": "The id of the VTT file and content it relates to."
