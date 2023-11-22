@@ -1,67 +1,61 @@
 {
-  "$schema": "https://json-schema.org/draft-04/schema",
-  "id": "https://docs.cubecommons.ca/schemas/content/add_content_request.json",
-  "title": "Add content request",
-  "description": "Adds content request",
-  "type": "object",
-  "properties": {
-    "profileId": {
-      "$ref": "./storage.json#/properties/profileId"
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/add_content_request.json",
+    "title": "Add content request",
+    "description": "Adds content request",
+    "type": "object",
+    "properties": {
+        "profileId": {
+            "$ref": "./storage.json#/properties/profileId"
+        },
+        "type": {
+            "$ref": "./storage.json#/properties/type"
+        },
+        "externalUrl": {
+            "$ref": "./storage.json#/properties/externalUrl"
+        },
+        "category": {
+            "$ref": "./storage.json#/properties/category"
+        },
+        "title": {
+            "$ref": "./storage.json#/properties/title"
+        },
+        "expiry": {
+            "$ref": "./storage.json#/properties/expiry"
+        },
+        "description": {
+            "$ref": "./storage.json#/properties/description"
+        },
+        "coverImageFileId": {
+            "$ref": "./storage.json#/properties/coverImageFileId"
+        },
+        "mediaFileId": {
+            "$ref": "./storage.json#/properties/mediaFileId"
+        },
+        "bannerImageFileId": {
+            "$ref": "./storage.json#/properties/bannerImageFileId"
+        },
+        "isSuitableForChildren": {
+            "$ref": "./storage.json#/properties/isSuitableForChildren"
+        },
+        "vttFileId": {
+            "$ref": "./storage.json#/properties/vttFileId"
+        },
+        "coverImageText": {
+            "$ref": "./storage.json#/properties/coverImageText"
+        },
+        "bannerImageText": {
+            "$ref": "./storage.json#/properties/bannerImageText"
+        },
+        "collaborators": {
+            "$ref": "./storage.json#/properties/collaborators"
+        },
+        "contributors": {
+            "$ref": "./storage.json#/properties/contributors"
+        },
+        "tags": {
+            "$ref": "./storage.json#/properties/tags"
+        }
     },
-    "type": {
-      "$ref": "./storage.json#/properties/type"
-    },
-    "externalUrl": {
-      "$ref": "./storage.json#/properties/externalUrl"
-    },
-    "category": {
-      "$ref": "./storage.json#/properties/category"
-    },
-    "title": {
-      "$ref": "./storage.json#/properties/title"
-    },
-    "expiry": {
-      "$ref": "./storage.json#/properties/expiry"
-    },
-    "description": {
-      "$ref": "./storage.json#/properties/description"
-    },
-    "coverImageFileId": {
-      "$ref": "./storage.json#/properties/coverImageFileId"
-    },
-    "mediaFileId": {
-      "$ref": "./storage.json#/properties/mediaFileId"
-    },
-    "bannerImageFileId": {
-      "$ref": "./storage.json#/properties/bannerImageFileId"
-    },
-    "isSuitableForChildren": {
-      "$ref": "./storage.json#/properties/isSuitableForChildren"
-    },
-    "vttFileId": {
-      "$ref": "./storage.json#/properties/vttFileId"
-    },
-    "coverImageText": {
-      "$ref": "./storage.json#/properties/coverImageText"
-    },
-    "collaborators": {
-      "$ref": "./storage.json#/properties/collaborators"
-    },
-    "contributors": {
-      "$ref": "./storage.json#/properties/contributors"
-    },
-    "tags": {
-      "$ref": "./storage.json#/properties/tags"
-    }
-  },
-  "required": [
-    "profileId",
-    "type",
-    "title",
-    "expiry",
-    "description",
-    "coverImageText",
-    "collaborators",
-    "contributors"
-  ]
+    "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]
 }

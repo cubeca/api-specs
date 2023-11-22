@@ -72,6 +72,10 @@
             "type": "string",
             "description": "Text displayed over the cover image"
         },
+        "bannerImageText": {
+            "type": "string",
+            "description": "Text displayed over the cover image"
+        },
         "collaborators": {
             "type": "array",
             "items": {

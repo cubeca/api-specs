@@ -11,6 +11,7 @@
     "bannerImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
     "isSuitableForChildren": "true",
     "coverImageText": "Thumbnail Text",
+    "bannerImageText": "Thumbnail Text",
     "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
     "contributors": {
         "artist": [{ "name": "artist", "url": "https://google.ca" }]
