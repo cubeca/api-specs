@@ -55,6 +55,9 @@
         },
         "tags": {
             "$ref": "./storage.json#/properties/tags"
+        },
+        "vttQueued": {
+            "$ref": "./storage.json#/properties/vttQueued"
         }
     },
     "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]

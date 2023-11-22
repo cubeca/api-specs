@@ -80,6 +80,9 @@ paths:
   '/content':
     $ref: ./content-microservice.yaml#/paths/~1content
 
+  '/vtt':
+    $ref: ./content-microservice.yaml#/paths/~1vtt
+
   '/content/{contentId}':
     $ref: ./content-microservice.yaml#/paths/~1content~1{contentId}
 

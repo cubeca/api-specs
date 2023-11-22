@@ -100,6 +100,10 @@
                 "type": "string"
             },
             "description": "List of tags associated with the content (optional)"
+        },
+        "vttQueued": {
+            "type": "boolean",
+            "description": "Indicator that VTT file will be generated."
         }
     },
     "required": [

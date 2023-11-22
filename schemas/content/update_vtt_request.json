@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/content/update_vtt_by_id_request.json",
+    "title": "Update vtt by id request",
+    "description": "Update vtt by id request",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "The id of the VTT file and content it relates to."
+        },
+        "transcript": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "The content of the VTT file."
+        }
+    },
+    "required": ["id", "transcript"]
+}
