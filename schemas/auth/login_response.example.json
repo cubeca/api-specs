@@ -10,6 +10,7 @@
         "name": "Real Name",
         "password": "U2FsdGVkX1+k/pdGa1ICKGokvsKdn99YFdcOwRg8MqOHTT2HWRR/tnFmb+MMS6B5cQFrvNo/DyLJokoSVdlsLEA5o71U5vfrRk9VAlv/864=",
         "permission_ids": ["active"],
-        "profile_id": ""
+        "profile_id": "",
+        "isOver18": true
     }
 }

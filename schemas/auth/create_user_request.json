@@ -10,40 +10,38 @@
             "description": "The name entered by the user."
         },
         "organization": {
-          "type": "string",
-          "description": "The name entered by the user."
+            "type": "string",
+            "description": "The name entered by the user."
         },
         "website": {
-          "type": "string",
-          "description": "The name entered by the user."
+            "type": "string",
+            "description": "The name entered by the user."
         },
         "tag": {
-          "type": "string",
-          "description": "The name entered by the user."
+            "type": "string",
+            "description": "The name entered by the user."
         },
         "email": {
             "type": "string",
             "description": "The email entered by the user."
         },
         "password": {
-          "type": "string",
-          "description": "The password entered by the user."
+            "type": "string",
+            "description": "The password entered by the user."
         },
         "hasAcceptedTerms": {
-          "type": "boolean",
-          "description": "Indicate if user has accepted terms."
+            "type": "boolean",
+            "description": "Indicate if user has accepted terms."
         },
         "hasAcceptedNewsletter": {
-          "type": "boolean",
-          "description": "Indicate if user has accepted newsletter."
-      }
+            "type": "boolean",
+            "description": "Indicate if user has accepted newsletter."
+        },
+        "isOver18": {
+            "type": "boolean",
+            "description": "Indicate if user is age of majority."
+        }
     },
-    "required": [
-        "name",
-        "email",
-        "password",
-        "hasAcceptedTerms",
-        "hasAcceptedNewsletter"
-    ],
+    "required": ["name", "email", "password", "hasAcceptedTerms", "hasAcceptedNewsletter", "isOver18"],
     "additionalProperties": false
 }
