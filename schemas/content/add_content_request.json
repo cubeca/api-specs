@@ -53,6 +53,9 @@
         "coverImageExternalUrl": {
             "$ref": "./storage.json#/properties/coverImageExternalUrl"
         },
+        "mediaLength": {
+            "$ref": "./storage.json#/properties/mediaLength"
+        },
         "collaborators": {
             "$ref": "./storage.json#/properties/collaborators"
         },

@@ -47,6 +47,9 @@
         "bannerImageText": {
             "$ref": "./storage.json#/properties/bannerImageText"
         },
+        "mediaLength": {
+            "$ref": "./storage.json#/properties/mediaLength"
+        },
         "bannerImageExternalUrl": {
             "$ref": "./storage.json#/properties/bannerImageExternalUrl"
         },
