@@ -48,6 +48,12 @@
                 "bannerImageText": {
                     "$ref": "./storage.json#/properties/bannerImageText"
                 },
+                "bannerImageExternalUrl": {
+                    "$ref": "./storage.json#/properties/bannerImageExternalUrl"
+                },
+                "coverImageExternalUrl": {
+                    "$ref": "./storage.json#/properties/coverImageExternalUrl"
+                },
                 "collaborators": {
                     "$ref": "./storage.json#/properties/collaborators"
                 },

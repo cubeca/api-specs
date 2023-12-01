@@ -49,6 +49,10 @@
             "format": "uuid",
             "description": "Unique identifier for the cover image file"
         },
+        "coverImageExternalUrl": {
+            "type": "string",
+            "description": "External URL of the cover image (optional)"
+        },
         "mediaFileId": {
             "type": "string",
             "format": "uuid",
@@ -58,6 +62,10 @@
             "type": "string",
             "format": "uuid",
             "description": "Unique identifier for the banner file"
+        },
+        "bannerImageExternalUrl": {
+            "type": "string",
+            "description": "External URL of the banner image (optional)"
         },
         "isSuitableForChildren": {
             "type": "boolean",
