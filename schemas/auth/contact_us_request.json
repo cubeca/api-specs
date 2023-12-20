@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/auth/contact_us_request.json",
+    "title": "Send contact us email",
+    "description": "Send contact us email",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "desc": {
+            "type": "string"
+        }
+    },
+    "required": ["name", "email", "desc"],
+    "additionalProperties": false
+}

@@ -256,6 +256,46 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
+  '/email/contact-us':
+    put:
+      operationId: contact_us
+      summary: send an email when the contact us form is filled out.
+      description: send an email when the contact us form is filled out.
+      tags:
+        - Auth
+
+      requestBody:
+        description: Send an email when the contact us form is filled out.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/auth/contact_us_request.json
+            example:
+              $ref: ../schemas/auth/contact_us_request.example.json
+        required: true
+      responses:
+        '200':
+          description: Successful sent an email
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '406':
+          $ref: '#/components/responses/error406'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
   '/auth/email/verify/{token}':
     get:
       operationId: verify_email
