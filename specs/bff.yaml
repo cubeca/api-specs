@@ -113,6 +113,9 @@ paths:
   '/auth/resend-email-verification':
     $ref: ./identity-microservice.yaml#/paths/~1auth~1resend-email-verification
 
+  '/email/contact-us':
+    $ref: ./identity-microservice.yaml#/paths/~1email~1contact-us
+
   '/profiles':
     $ref: ./profile-microservice.yaml#/paths/~1profiles
 
