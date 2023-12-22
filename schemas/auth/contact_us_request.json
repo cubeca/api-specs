@@ -13,8 +13,11 @@
         },
         "desc": {
             "type": "string"
+        },
+        "ticketId": {
+            "type": "string"
         }
     },
-    "required": ["name", "email", "desc"],
+    "required": ["name", "email", "desc", "ticketId"],
     "additionalProperties": false
 }
