@@ -257,7 +257,7 @@ paths:
           $ref: '#/components/responses/error503'
 
   '/email/contact-us':
-    put:
+    post:
       operationId: contact_us
       summary: send an email when the contact us form is filled out.
       description: send an email when the contact us form is filled out.
