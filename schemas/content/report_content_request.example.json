@@ -3,5 +3,6 @@
     "requestType": "legal",
     "contactName": "Bob",
     "contactEmail": "bob@gmail.com",
-    "issueDesc": "This content item offends me, please remove it!"
+    "issueDesc": "This content item offends me, please remove it!",
+    "ticketId": "1234567890"
 }

@@ -26,7 +26,10 @@
         "issueDesc": {
             "type": "string",
             "description": "What is the report submission about?"
+        },
+        "ticketId": {
+            "type": "string"
         }
     },
-    "required": ["disputedUrl", "requestType", "contactName", "contactEmail", "issueDesc"]
+    "required": ["disputedUrl", "requestType", "contactName", "contactEmail", "issueDesc", "ticketId"]
 }
