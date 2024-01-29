@@ -1,0 +1,63 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "title": "Search Filters",
+    "description": "Filters object for reducing search results",
+    "type": "object",
+    "properties": {
+        "type": {
+            "$ref": "../content/storage.json#/properties/type"
+        },
+        "category": {
+            "$ref": "../content/storage.json#/properties/category"
+        },
+        "title": {
+            "$ref": "../content/storage.json#/properties/title"
+        },
+        "expiry": {
+            "$ref": "../content/storage.json#/properties/expiry"
+        },
+        "description": {
+            "$ref": "../content/storage.json#/properties/description"
+        },
+        "coverImageFileId": {
+            "$ref": "../content/storage.json#/properties/coverImageFileId"
+        },
+        "mediaFileId": {
+            "$ref": "../content/storage.json#/properties/mediaFileId"
+        },
+        "vttFileId": {
+            "$ref": "../content/storage.json#/properties/vttFileId"
+        },
+        "profileId": {
+            "$ref": "../content/storage.json#/properties/profileId"
+        },
+        "coverImageText": {
+            "$ref": "../content/storage.json#/properties/coverImageText"
+        },
+        "tags": {
+            "$ref": "../content/storage.json#/properties/tags"
+        },
+        "organization": {
+            "$ref": "../profile/storage.json#/properties/organization"
+        },
+        "website": {
+            "$ref": "../profile/storage.json#/properties/website"
+        },
+        "tag": {
+            "$ref": "../profile/storage.json#/properties/tag"
+        },
+        "heroFileId": {
+            "$ref": "../profile/storage.json#/properties/heroFileId"
+        },
+        "logoFileId": {
+            "$ref": "../profile/storage.json#/properties/logoFileId"
+        },
+        "descriptionFileId": {
+            "$ref": "../profile/storage.json#/properties/descriptionFileId"
+        },
+        "budget": {
+            "$ref": "../profile/storage.json#/properties/budget"
+        }
+    },
+    "required": []
+}

@@ -1,18 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Cloudflare Microservice - The Association for Cube Commons Canada
-
-  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
-  # In general, use semantic versioning: http://semver.org/
-  version: '0.0.1'
-  
+  title: Cloudflare - The Association for Cube Commons Canada
+  version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
-    # Cloudflare Microservice
+    # Cloudflare APIs
 
-    The Cloudflare Microservice should probably be named "File Microservice".
-    It just so happened that CUBE started out by hosting all uploaded files with Cloudflare.
-
-    The Cloudflare Microservice is the custodian of all files that have been uploaded to CUBE,
+    The Cloudflare APIs are the custodian of all files that have been uploaded to CUBE,
     regardless of what purpose for, be it profile hero images, video subtitles,
     or content cover images (a.k.a. thumbnails).
 
@@ -24,33 +17,20 @@ info:
     url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
 
 tags:
-  - name: Files
-    description: Everything to do with files, but only *after* they have been uploaded
-  - name: Upload
-    description: All communications to do with uploading
-
-servers:
-  - url: http://localhost:{port}
-    description: Local development
-    variables:
-      port:
-        enum:
-          - '8080'
-          - '18080'
-        default: '8080'
+  - name: Cloudflare
+    description: Everything to do with interactions with Cloudflare
 
 security: 
   - jwt_logged_in: []
 
 paths:
-
   '/upload/video-tus-reservation':
     post:
       operationId: upload_video_tus_endpoint
       summary: TUS "endpoint" to upload URL from Cloudflare
       description: This (and not it's return value!) has to be given directly to the TUS client as it's `endpoint` parameter.
       tags:
-        - Upload
+        - Cloudflare
       parameters:
         - name: upload-length
           in: header
@@ -103,14 +83,14 @@ paths:
       summary: Get S3 / R2 presigned url from Cloudflare
       description: Get S3 / R2 presigned url from Cloudflare
       tags:
-        - Upload
+        - Cloudflare
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../schemas/upload/s3_presigned_url_request.json
+              $ref: ../schemas/cloudflare/s3_presigned_url_request.json
             example:
-              $ref: ../schemas/upload/s3_presigned_url_request.example.json
+              $ref: ../schemas/cloudflare/s3_presigned_url_request.example.json
         description: Add content
         required: true
       responses:
@@ -119,9 +99,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/upload/s3_presigned_url_response.json
+                $ref: ../schemas/cloudflare/s3_presigned_url_response.json
               example:
-                $ref: ../schemas/upload/s3_presigned_url_response.example.json
+                $ref: ../schemas/cloudflare/s3_presigned_url_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -149,7 +129,7 @@ paths:
       summary: Get file details
       description: Get file details.
       tags:
-        - Files
+        - Cloudflare
       parameters:
         - name: fileId
           in: path
@@ -163,9 +143,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/files/detail_response.json
+                $ref: ../schemas/cloudflare/detail_response.json
               example:
-                $ref: ../schemas/files/detail_response.example.json
+                $ref: ../schemas/cloudflare/detail_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

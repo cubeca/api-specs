@@ -22,12 +22,11 @@ while read api_id; do
   yq '.info.version = "'${NEW_VERSION}'"' --inplace --output-format=json ${HERE}/build/gen/all-specs-unbundled-npm-pkg/specs/${api_id}.json
   API_IDS=${API_IDS},$api_id
 done <<EOF
-bff
-bff-auth
-cloudflare-microservice
-content-microservice
-identity-microservice
-profile-microservice
+index
+cloudflare
+content
+identity
+profile
 EOF
 
 node ${HERE}/gen/all-specs-unbundled-npm-pkg/write-package.mjs ${HERE}/build/gen/all-specs-unbundled-npm-pkg ${NEW_VERSION} ${API_IDS}

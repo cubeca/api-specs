@@ -3,7 +3,7 @@ info:
   title: Content Microservice - The Association for Cube Commons Canada
   version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
-    The Content Microservice is the "custodian" of "content pieces", which are usually one main media file,
+    The Content APIs are the "custodian" of "content pieces", which are usually one main media file,
     tied together with some supporting files like thumbnail, sign language video, subtitles, etc.
     plus some metadata like title, description, owner profile etc.
   contact:
@@ -17,36 +17,10 @@ tags:
   - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
 
-servers:
-  # No public URL available.
-  - url: http://localhost:{port}
-    description: Local development
-    variables:
-      port:
-        enum:
-          - '8081'
-          - '18081'
-        default: '8081'
-
 security: 
   - jwt_logged_in: []
 
 paths:
-
-  '/':
-    get:
-      operationId: content_status
-      summary: Content service status
-      description: Check the run status of the content service
-      tags:
-        - Content
-      responses:
-        '200':
-          description: Status of content service
-          $ref: '#/components/responses/success200'
-        '500':
-          $ref: '#/components/responses/error500'
-
   '/content':
     get:
       operationId: get_content_by_profileid

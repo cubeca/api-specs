@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_get_profile_by_tag_response.json",
-    "title": "BFF - Get profile by tag",
-    "description": "BFF - Get profile by tag",
+    "id": "https://docs.cubecommons.ca/schemas/profile/delete_profile_response.json",
+    "title": "Delete profile response",
+    "description": "Delete profile response",
     "type": "object",
     "properties": {
         "data": {
@@ -20,35 +20,21 @@
                 "tag": {
                     "$ref": "./storage.json#/properties/tag"
                 },
-                "heroUrl": {
-                    "type": "string",
-                    "format": "url"
+                "heroFileId": {
+                    "$ref": "./storage.json#/properties/heroFileId"
                 },
-                "logoUrl": {
-                    "type": "string",
-                    "format": "url"
+                "logoFileId": {
+                    "$ref": "./storage.json#/properties/logoFileId"
                 },
                 "description": {
                     "$ref": "./storage.json#/properties/description"
                 },
-                "descriptionUrl": {
-                    "type": "string",
-                    "format": "url"
-                },
-                "content": {
-                    "type": "array",
-                    "items": {}
+                "descriptionFileId": {
+                    "$ref": "./storage.json#/properties/descriptionFileId"
                 }
             },
-            "required": [
-                "id",
-                "organization",
-                "website",
-                "tag"
-            ]
+            "required": ["id", "organization", "website", "tag"]
         }
     },
-    "required": [
-        "data"
-    ]
+    "required": ["data"]
 }

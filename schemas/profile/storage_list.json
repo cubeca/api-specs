@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/list_response.json",
+    "id": "https://docs.cubecommons.ca/schemas/profile/list_response.json",
     "title": "List of profiles",
     "description": "Profile microservice list of stored profiles",
     "type": "object",
@@ -18,10 +18,7 @@
                     "type": "integer"
                 }
             },
-            "required": [
-                "offset",
-                "limit"
-            ]
+            "required": ["offset", "limit"]
         },
         "data": {
             "type": "array",
@@ -30,8 +27,5 @@
             }
         }
     },
-    "required": [
-        "meta",
-        "data"
-    ]
+    "required": ["meta", "data"]
 }

@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/bff/search_response.json",
-    "title": "BFF - Search response",
-    "description": "BFF - Response for combined content and profile search",
+    "id": "https://docs.cubecommons.ca/schemas/search/search_response.json",
+    "title": "Search response",
+    "description": "Response for combined content and profile search",
     "type": "object",
     "properties": {
         "contentResults": {
@@ -67,7 +67,7 @@
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "../profiles/storage.json"
+                        "$ref": "../profile/storage.json"
                     }
                 },
                 "status": {

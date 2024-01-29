@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/delete_profile_response.json",
-    "title": "Delete profile response",
-    "description": "Delete profile response",
+    "id": "https://docs.cubecommons.ca/schemas/profile/get_profile_response.json",
+    "title": "Get profile response",
+    "description": "Get profile response",
     "type": "object",
     "properties": {
         "data": {
@@ -31,6 +31,9 @@
                 },
                 "descriptionFileId": {
                     "$ref": "./storage.json#/properties/descriptionFileId"
+                },
+                "budget": {
+                    "$ref": "./storage.json#/properties/budget"
                 }
             },
             "required": ["id", "organization", "website", "tag"]
