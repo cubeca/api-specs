@@ -49,8 +49,8 @@ jobs:
 
             - name: Authenticate with npmjs.org to publish packages
               run: |
-                  ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/index/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/index/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/cube-svc/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/cube-svc/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
                   ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
                   ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/content/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
                   ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/identity/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
@@ -69,8 +69,8 @@ jobs:
 
             - name: Publish to npm.pkg.github.com
               run: |
-                  ./scripts/publish.sh ./build/gen/typescript-axios/index "${{ steps.determine_version.outputs.new_version }}"
-                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/index "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/typescript-axios/cube-svc "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/cube-svc "${{ steps.determine_version.outputs.new_version }}"
                   ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare "${{ steps.determine_version.outputs.new_version }}"
                   ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/content "${{ steps.determine_version.outputs.new_version }}"
                   ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/identity "${{ steps.determine_version.outputs.new_version }}"
