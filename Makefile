@@ -19,13 +19,13 @@ setup_google_artifact_registry:
 	gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
 .PHONY: merge
-merge: merge--index merge--cloudflare merge--content merge--identity merge--profile
+merge: merge--cube-svc merge--cloudflare merge--content merge--identity merge--profile
 
 merge--%:
 	npx speccy resolve --internal-refs specs/$*.yaml -o build/$*.yaml
 
 .PHONY: filter
-filter: merge filter--index filter--cloudflare filter--content filter--identity filter--profile
+filter: merge filter--cube-svc filter--cloudflare filter--content filter--identity filter--profile
 
 filter--%:
 	cat $(HERE)/build/$*.yaml > $(HERE)/build/$*-filtered.yaml
@@ -37,14 +37,14 @@ filter--%:
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
 .PHONY: filterdiff
-filterdiff: filter filterdiff--index
+filterdiff: filter filterdiff--cube-svc
 
 filterdiff--%:
 	yq '.' $(HERE)/build/$*.yaml > $(HERE)/build/$*-yq.yaml
 	git diff --no-index build/$*-yq.yaml build/$*-filtered.yaml
 
 .PHONY: gen_openapi_client
-gen_openapi_client: filter gen_openapi_client--index
+gen_openapi_client: filter gen_openapi_client--cube-svc
 
 gen_openapi_client--%:
 	-mkdir -p $(HERE)/build/gen/typescript-axios/$*
@@ -72,7 +72,7 @@ gen_openapi_client--%:
 		--output /build/gen/typescript-axios/$*
 
 .PHONY: gen_single_spec_bundled_npm_pkg
-gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--index gen_single_spec_bundled_npm_pkg--cloudflare gen_single_spec_bundled_npm_pkg--content gen_single_spec_bundled_npm_pkg--identity gen_single_spec_bundled_npm_pkg--profile
+gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--cube-svc gen_single_spec_bundled_npm_pkg--cloudflare gen_single_spec_bundled_npm_pkg--content gen_single_spec_bundled_npm_pkg--identity gen_single_spec_bundled_npm_pkg--profile
 
 gen_single_spec_bundled_npm_pkg--%:
 	-mkdir -p $(HERE)/build/gen/single-spec-bundled-npm-pkg/$*
@@ -91,7 +91,7 @@ ci_gha_install:
 ci_gha: ci_gha_install gen_openapi_client fix_openapi_client_package_json gen_single_spec_bundled_npm_pkg gen_all_specs_unbundled_npm_pkg
 
 .PHONY: fix_openapi_client_package_json
-fix_openapi_client_package_json: gen_openapi_client fix_openapi_client_package_json--index
+fix_openapi_client_package_json: gen_openapi_client fix_openapi_client_package_json--cube-svc
 
 fix_openapi_client_package_json--%:
 	# debug start
