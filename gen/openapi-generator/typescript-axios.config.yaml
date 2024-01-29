@@ -12,9 +12,6 @@
 # required discriminator and throws an error if the discriminator is missing.
 legacyDiscriminatorBehavior: false
 
-# # The name under which you want to publish generated npm package. Required to generate a full package
-npmName: "@cubeca/cube-svc-client-oas-axios"
-
 # Use this property to set an url of your private npmRepo in the package.json
 # npmRepository: https://npm.pkg.github.com
 npmRepository: https://registry.npmjs.org

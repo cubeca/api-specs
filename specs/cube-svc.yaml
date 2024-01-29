@@ -22,7 +22,7 @@ tags:
     description: Content (e.g. videos, pdfs, audio, etc)
   - name: Cloudflare
     description: Everything to do with interactions with cloudflare
-  - name: Core
+  - name: Common
     description: Common search and other operations touching multiple operations to aggregate data
 
 servers:
@@ -108,7 +108,7 @@ paths:
       summary: get a list of collaborators
       description: get a list of collaborators
       tags:
-        - Core
+        - Common
       responses:
         '200':
           description: get a list of collaborators
@@ -145,7 +145,7 @@ paths:
       summary: Search based on query parameters
       description: Returns search results based on the provided query parameters.
       tags:
-        - Core
+        - Common
       parameters:
         - name: offset
           in: query
@@ -220,7 +220,7 @@ paths:
       summary: Get profile details by tag
       description: Get profile details by tag.
       tags:
-        - Core
+        - Common
       responses:
         '200':
           description: Profile details
