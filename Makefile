@@ -80,6 +80,26 @@ fix_openapi_client_package_json--%:
 		'.repository.url = "https://github.com/cubeca/api-specs.git"' \
 		$(HERE)/build/gen/typescript-axios/$*/package.json
 
+# Link the BFF API client package(s) locally
+# See https://docs.npmjs.com/cli/v9/commands/npm-link
+# See https://www.geeksforgeeks.org/how-to-install-a-local-module-using-npm/
+.PHONY: npm_link
+npm_link:
+	rm -rf $(HERE)/build/gen/
+	make gen_openapi_client
+	$(MAKE) npm_link--bff
+	$(MAKE) npm_link--bff-auth
+
+npm_link--%:
+	cd $(HERE)/build/gen/typescript-axios/$* && \
+	npm install && \
+	npm run build && \
+	npm link
+
+
+.PHONY: npm_link_check
+npm_link_check:
+	ls -la $(NPM_PREFIX_GLOBAL)/lib/node_modules/\@cubeca
 
 .PHONY: install_local_tools
 install_local_tools:
