@@ -22,7 +22,7 @@ while read api_id; do
   yq '.info.version = "'${NEW_VERSION}'"' --inplace --output-format=json ${HERE}/build/gen/all-specs-unbundled-npm-pkg/specs/${api_id}.json
   API_IDS=${API_IDS},$api_id
 done <<EOF
-index
+cube-svc
 cloudflare
 content
 identity
