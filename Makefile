@@ -1,10 +1,13 @@
 
 HERE = $(shell pwd)
 
+DOCKER ?= docker
+
 ifneq ($(FORCE),)
 	OPENAPI_GENERATOR_OPTIONS ?= --skip-validate-spec
 endif
 
+OPENAPI_GENERATOR_DOCKER_IMAGE ?= openapitools/openapi-generator-cli:v6.4.0
 export DEFAULT_PREVIOUS_VERSION ?= 0.0.1
 export PREVIOUS_VERSION ?= $(DEFAULT_PREVIOUS_VERSION)
 export NEW_VERSION ?= $(PREVIOUS_VERSION)
@@ -47,6 +50,27 @@ gen_openapi_client--%:
 	-mkdir -p $(HERE)/build/gen/typescript-axios/$*
 	cp $(HERE)/gen/openapi-generator/typescript-axios.config.yaml $(HERE)/build/gen/typescript-axios.config.yaml
 
+	# If this fails with "Exception in thread "main" java.lang.RuntimeException: Could not generate model 'XYZ'"
+	# then try removing the `--user` CLI option. That option is needed in CI/CD in Github Actions, though.
+	# Exact reason why it's needed there and not on local, TBD.
+	$(DOCKER) \
+		run --rm \
+		--user $(shell id -u):$(shell id -g) \
+		--volume $(HERE)/build:/build \
+		$(OPENAPI_GENERATOR_DOCKER_IMAGE) \
+		generate \
+		--input-spec /build/$*-filtered.yaml \
+		--generator-name typescript-axios \
+		--config /build/gen/typescript-axios.config.yaml \
+		--global-property verbose=true \
+		--global-property apiDocs=true \
+		--global-property modelDocs=true \
+		--global-property apiTests=true \
+		--global-property modelTests=true \
+		--additional-properties=npmName="@cubeca/$*-client-oas-axios" \
+		$(OPENAPI_GENERATOR_OPTIONS) \
+		--output /build/gen/typescript-axios/$*
+
 .PHONY: gen_single_spec_bundled_npm_pkg
 gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--index gen_single_spec_bundled_npm_pkg--cloudflare gen_single_spec_bundled_npm_pkg--content gen_single_spec_bundled_npm_pkg--identity gen_single_spec_bundled_npm_pkg--profile
 
@@ -80,26 +104,6 @@ fix_openapi_client_package_json--%:
 		'.repository.url = "https://github.com/cubeca/api-specs.git"' \
 		$(HERE)/build/gen/typescript-axios/$*/package.json
 
-# Link the BFF API client package(s) locally
-# See https://docs.npmjs.com/cli/v9/commands/npm-link
-# See https://www.geeksforgeeks.org/how-to-install-a-local-module-using-npm/
-.PHONY: npm_link
-npm_link:
-	rm -rf $(HERE)/build/gen/
-	make gen_openapi_client
-	$(MAKE) npm_link--bff
-	$(MAKE) npm_link--bff-auth
-
-npm_link--%:
-	cd $(HERE)/build/gen/typescript-axios/$* && \
-	npm install && \
-	npm run build && \
-	npm link
-
-
-.PHONY: npm_link_check
-npm_link_check:
-	ls -la $(NPM_PREFIX_GLOBAL)/lib/node_modules/\@cubeca
 
 .PHONY: install_local_tools
 install_local_tools:
