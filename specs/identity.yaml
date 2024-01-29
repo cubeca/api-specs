@@ -1,19 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Identity Microservice - The Association for Cube Commons Canada
-
-  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
-  # In general, use semantic versioning: http://semver.org/
-  version: '0.0.1'
-  
+  title: Identity - The Association for Cube Commons Canada
+  version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
-    # Identity Microservice
+    # Identity APIs
 
-    The Identity Microservice is the custodian of User Identities.
-
-    Since it's dealing with Passwords and PII, it should 
-    not concern itself with anything else, to keep it simple and less error-prone.
-
+    The Identity APIs is the custodian of User Identities.
   contact:
     email: tech@cubecommons.ca
     url: https://github.com/cubeca
@@ -22,20 +14,8 @@ info:
     url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
 
 tags:
-  - name: Auth
+  - name: Identity
     description: Login, forgot password, etc.
-
-servers:
-  # No public URL available.
-
-  - url: http://localhost:{port}
-    description: Local development
-    variables:
-      port:
-        enum:
-          - '8082'
-          - '18082'
-        default: '8082'
 
 security: 
   - jwt_logged_in: []
@@ -47,8 +27,7 @@ paths:
       summary: Acquire a JWT as an anonymous user.
       description: Acquire a JWT as an anonymous user.
       tags:
-        - Auth
-
+        - Identity
       # While we are logging in we are not yet authenticated,
       # so we have to allow for "no auth" by overriding the
       # global "security" setting with a local empty one.
@@ -59,9 +38,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/anonymous_jwt_request.json
+              $ref: ../schemas/identity/anonymous_jwt_request.json
             example:
-              $ref: ../schemas/auth/anonymous_jwt_request.example.json
+              $ref: ../schemas/identity/anonymous_jwt_request.example.json
         required: true
       responses:
         '200':
@@ -69,9 +48,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/auth/jwt_response.json
+                $ref: ../schemas/identity/jwt_response.json
               example:
-                $ref: ../schemas/auth/jwt_response.example.json
+                $ref: ../schemas/identity/jwt_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -93,7 +72,7 @@ paths:
       summary: Login with email and password
       description: Log user in with username and password.
       tags:
-        - Auth
+        - Identity
 
       # This can be called without JWT, or with an `anonymous` JWT claim.
       security:
@@ -105,9 +84,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/login_request.json
+              $ref: ../schemas/identity/login_request.json
             example:
-              $ref: ../schemas/auth/login_request.example.json
+              $ref: ../schemas/identity/login_request.example.json
         required: true
       responses:
         '200':
@@ -115,9 +94,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/auth/login_response.json
+                $ref: ../schemas/identity/login_response.json
               example:
-                $ref: ../schemas/auth/login_response.example.json
+                $ref: ../schemas/identity/login_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -135,7 +114,7 @@ paths:
       summary: Create a new user
       description: Creates a new user.
       tags:
-        - Auth
+        - Identity
 
       # When calling this without JWT (or without a `userAdmin` JWT claim), the created user will only be allowed to have a single JWT claim called `active`.
       # When calling this with a `userAdmin` JWT claim, the created user will be allowed all requested JWT claims.
@@ -148,9 +127,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/create_user_request.json
+              $ref: ../schemas/identity/create_user_request.json
             example:
-              $ref: ../schemas/auth/create_user_request.example.json
+              $ref: ../schemas/identity/create_user_request.example.json
         required: true
       responses:
         '201':
@@ -158,9 +137,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/auth/create_user_response.json
+                $ref: ../schemas/identity/create_user_response.json
               example:
-                $ref: ../schemas/auth/create_user_response.example.json
+                $ref: ../schemas/identity/create_user_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -182,16 +161,16 @@ paths:
       summary: Update user email.
       description: Update user email.
       tags:
-        - Auth
+        - Identity
 
       requestBody:
         description: Update Email
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/update_email_request.json
+              $ref: ../schemas/identity/update_email_request.json
             example:
-              $ref: ../schemas/auth/update_email_request.example.json
+              $ref: ../schemas/identity/update_email_request.example.json
         required: true
       responses:
         '200':
@@ -222,16 +201,16 @@ paths:
       summary: Update user password.
       description: Update user password.
       tags:
-        - Auth
+        - Identity
 
       requestBody:
         description: Update Password
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/update_password_request.json
+              $ref: ../schemas/identity/update_password_request.json
             example:
-              $ref: ../schemas/auth/update_password_request.example.json
+              $ref: ../schemas/identity/update_password_request.example.json
         required: true
       responses:
         '200':
@@ -262,16 +241,16 @@ paths:
       summary: send an email when the contact us form is filled out.
       description: send an email when the contact us form is filled out.
       tags:
-        - Auth
+        - Identity
 
       requestBody:
         description: Send an email when the contact us form is filled out.
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/contact_us_request.json
+              $ref: ../schemas/identity/contact_us_request.json
             example:
-              $ref: ../schemas/auth/contact_us_request.example.json
+              $ref: ../schemas/identity/contact_us_request.example.json
         required: true
       responses:
         '200':
@@ -302,7 +281,7 @@ paths:
       summary: Verify user email.
       description: Verify user email.
       tags:
-        - Auth
+        - Identity
 
       # While we are creating a new user, we are not yet authenticated,
       # so we have to allow for "no auth" by overriding the
@@ -345,7 +324,7 @@ paths:
       summary: Trigger forgot password flow.
       description: Trigger forgot password flow.
       tags:
-        - Auth
+        - Identity
 
       # While we are creating a new user, we are not yet authenticated,
       # so we have to allow for "no auth" by overriding the
@@ -357,9 +336,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/forgot_password_request.json
+              $ref: ../schemas/identity/forgot_password_request.json
             example:
-              $ref: ../schemas/auth/forgot_password_request.example.json
+              $ref: ../schemas/identity/forgot_password_request.example.json
         required: true
       responses:
         '200':
@@ -390,7 +369,7 @@ paths:
       summary: resend the email verification if previous one lapsed.
       description: resend the email verification if previous one lapsed.
       tags:
-        - Auth
+        - Identity
 
       # While we are logging in we are not yet authenticated,
       # so we have to allow for "no auth" by overriding the
@@ -402,9 +381,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/auth/resend_email_verification_request.json
+              $ref: ../schemas/identity/resend_email_verification_request.json
             example:
-              $ref: ../schemas/auth/resend_email_verification_request.example.json
+              $ref: ../schemas/identity/resend_email_verification_request.example.json
         required: true
       responses:
         '200':

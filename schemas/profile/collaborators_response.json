@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/bff_collaborators_response.json",
+    "id": "https://docs.cubecommons.ca/schemas/profile/collaborators_response.json",
     "title": "Get collaborators by id list response",
     "description": "Get collaborators by id list response",
     "type": "array",

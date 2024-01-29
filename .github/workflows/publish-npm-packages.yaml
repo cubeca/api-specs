@@ -5,114 +5,74 @@ run-name: Publish API NPM packages @ ${{ github.sha }}
 on: push
 
 jobs:
-  publish_package:
-    runs-on: ubuntu-22.04
-    name: Publish API client and server NPM packages
-    steps:
-      - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v3
+    publish_package:
+        runs-on: ubuntu-22.04
+        name: Publish API client and server NPM packages
+        steps:
+            - name: Checkout ${{ github.repository }}
+              uses: actions/checkout@v3
 
-      - name: Set BRANCH_HASH env var
-        run: echo "BRANCH_HASH=$(echo -n '${{ github.ref_name }}' | sha256sum | cut -b 1-12)" >> $GITHUB_ENV
+            - name: Set BRANCH_HASH env var
+              run: echo "BRANCH_HASH=$(echo -n '${{ github.ref_name }}' | sha256sum | cut -b 1-12)" >> $GITHUB_ENV
 
-      - name: Determine new version if any
-        id: determine_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          # Calculate the new version early on, so it is available in all deployment steps.
-          # But do not create a git tag just yet, in case anything goes wrong during deployment.
-          dry_run: true
-          tag_prefix: ""
+            - name: Determine new version if any
+              id: determine_version
+              uses: mathieudutour/github-tag-action@v6.1
+              with:
+                  # Calculate the new version early on, so it is available in all deployment steps.
+                  # But do not create a git tag just yet, in case anything goes wrong during deployment.
+                  dry_run: true
+                  tag_prefix: ""
 
-          # Since the full version string goes onto permanent record at npmjs.org,
-          # we conceal the branch name which would get appended by default.
-          append_to_pre_release_tag: prerelease-${{ env.BRANCH_HASH }}
+                  # Since the full version string goes onto permanent record at npmjs.org,
+                  # we conceal the branch name which would get appended by default.
+                  append_to_pre_release_tag: prerelease-${{ env.BRANCH_HASH }}
 
-          custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+                  custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: "Debugging output from determine_version step"
-      #   run: |
-      #     echo "Using output determine_version.previous_tag: ${{ steps.determine_version.outputs.previous_tag }}"
-      #     echo "Using output determine_version.new_tag: ${{ steps.determine_version.outputs.new_tag }}"
+            - name: Set up node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
 
-      #     echo "Using output determine_version.previous_version: ${{ steps.determine_version.outputs.previous_version }}"
-      #     echo "Using output determine_version.new_version: ${{ steps.determine_version.outputs.new_version }}"
+            - name: "Run make ci_gha"
+              env:
+                  PREVIOUS_TAG: "${{ steps.determine_version.outputs.previous_tag }}"
+                  NEW_TAG: "${{ steps.determine_version.outputs.new_tag }}"
+                  PREVIOUS_VERSION: "${{ steps.determine_version.outputs.previous_version }}"
+                  NEW_VERSION: "${{ steps.determine_version.outputs.new_version }}"
+                  RELEASE_TYPE: "${{ steps.determine_version.outputs.release_type }}"
+                  CHANGELOG: "${{ steps.determine_version.outputs.changelog }}"
+              run: |
+                  make ci_gha
 
-      #     echo "Using output determine_version.release_type: ${{ steps.determine_version.outputs.release_type }}"
-      #     echo "Using output determine_version.changelog: ${{ steps.determine_version.outputs.changelog }}"
+            - name: Authenticate with npmjs.org to publish packages
+              run: |
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/index/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/index/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/content/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/identity/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/profile/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
+                  ./scripts/write_npmrc_npmjs.sh ./build/gen/all-specs-unbundled-npm-pkg/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
 
-      - name: Set up node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+            - name: Tag version and push tag
+              id: tag_version_and_push
+              uses: mathieudutour/github-tag-action@v6.1
+              with:
+                  custom_tag: ${{ steps.determine_version.outputs.new_tag }}
+                  create_annotated_tag: true
+                  tag_prefix: ""
+                  custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Run make ci_gha"
-        env:
-          PREVIOUS_TAG: "${{ steps.determine_version.outputs.previous_tag }}"
-          NEW_TAG: "${{ steps.determine_version.outputs.new_tag }}"
-          PREVIOUS_VERSION: "${{ steps.determine_version.outputs.previous_version }}"
-          NEW_VERSION: "${{ steps.determine_version.outputs.new_version }}"
-          RELEASE_TYPE: "${{ steps.determine_version.outputs.release_type }}"
-          CHANGELOG: "${{ steps.determine_version.outputs.changelog }}"
-        run: |
-          make ci_gha
-
-      # - name: "Switch to GPR (Github Packages Registry) at npm.pkg.github.com for all @${{ github.repository_owner }}/* packages"
-      #   run: |
-      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff/.npmrc '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
-      #     ./scripts/write_npmrc_gpr.sh ./build/gen/typescript-axios/bff-auth/.npmrc '${{ secrets.GITHUB_TOKEN }}' '${{ github.repository_owner }}'
-
-      - name: Authenticate with npmjs.org to publish packages
-        run: |
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/typescript-axios/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/bff/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/bff-auth/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/content-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/identity-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/single-spec-bundled-npm-pkg/profile-microservice/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-          ./scripts/write_npmrc_npmjs.sh ./build/gen/all-specs-unbundled-npm-pkg/.npmrc '${{ secrets.NPMJS_ACCESS_TOKEN }}'
-
-      - name: Tag version and push tag
-        id: tag_version_and_push
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          custom_tag: ${{ steps.determine_version.outputs.new_tag }}
-          create_annotated_tag: true
-          tag_prefix: ""
-          custom_release_rules: patch:patch,fix:patch,bug:patch,chore:patch,minor:minor,feat:minor,feature:minor,major:major,breaking:major
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-
-      # - name: "Debugging output from tag_version_and_push step"
-      #   run: |
-      #     echo "Using output tag_version_and_push.previous_tag: ${{ steps.tag_version_and_push.outputs.previous_tag }}"
-      #     echo "Using output tag_version_and_push.new_tag: ${{ steps.tag_version_and_push.outputs.new_tag }}"
-
-      #     echo "Using output tag_version_and_push.previous_version: ${{ steps.tag_version_and_push.outputs.previous_version }}"
-      #     echo "Using output tag_version_and_push.new_version: ${{ steps.tag_version_and_push.outputs.new_version }}"
-
-      #     echo "Using output tag_version_and_push.release_type: ${{ steps.tag_version_and_push.outputs.release_type }}"
-      #     echo "Using output tag_version_and_push.changelog: ${{ steps.tag_version_and_push.outputs.changelog }}"
-
-      - name: Publish to npm.pkg.github.com
-        run: |
-          ./scripts/publish.sh ./build/gen/typescript-axios/bff "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/typescript-axios/bff-auth "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/bff "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/bff-auth "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare-microservice "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/content-microservice "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/identity-microservice "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/profile-microservice "${{ steps.determine_version.outputs.new_version }}"
-          ./scripts/publish.sh ./build/gen/all-specs-unbundled-npm-pkg "${{ steps.determine_version.outputs.new_version }}"
-
-      # - # See also https://github.com/marketplace/actions/action-repository-dispatch
-      #   name: Trigger update of vendorized API client pkgs in cubeca/cube_ui repo
-      #   uses: iniva/action-repository-dispatch@v1.1.7
-      #   with:
-      #     targetRepository: cubeca/cube_ui
-      #     eventType: vendor-update
-      #     token: ${{ secrets.VENDOR_UPDATE_PERSONAL_ACCESS_TOKEN }}
+            - name: Publish to npm.pkg.github.com
+              run: |
+                  ./scripts/publish.sh ./build/gen/typescript-axios/index "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/index "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/cloudflare "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/content "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/identity "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/single-spec-bundled-npm-pkg/profile "${{ steps.determine_version.outputs.new_version }}"
+                  ./scripts/publish.sh ./build/gen/all-specs-unbundled-npm-pkg "${{ steps.determine_version.outputs.new_version }}"

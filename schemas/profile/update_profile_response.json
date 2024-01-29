@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/update_profile_response.json",
+    "id": "https://docs.cubecommons.ca/schemas/profile/update_profile_response.json",
     "title": "Update profile response",
     "description": "Update profile response",
     "type": "object",

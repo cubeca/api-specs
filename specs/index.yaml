@@ -1,22 +1,11 @@
 openapi: 3.0.3
 info:
-  title: BFF - The Association for Cube Commons Canada
-
-  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
-  # In general, use semantic versioning: http://semver.org/
-  version: '0.0.1'
-  
+  title: The Association for Cube Commons
+  version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
-    # BFF (Backend-for-Frontend)
-
-    The BFF API caters to each and every whim of the Frontend,
+    The CubeCommons API caters to each and every whim of the Frontend,
     i.e. it receives, bundles, packages and formats data exactly
     as the Frontend needs it.
-
-    The actual implementation of the BFF will then in turn translate
-    the Frontend traffic into whatever the specialized and semantically
-    modular "real" backend services understand.
-
   contact:
     email: tech@cubecommons.ca
     url: https://github.com/cubeca
@@ -25,33 +14,25 @@ info:
     url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
 
 tags:
-  - name: Auth
+  - name: Identity
     description: Login, forgot password, etc.
   - name: Profile
     description: Profile stuff
   - name: Content
     description: Content (e.g. videos, pdfs, audio, etc)
-  - name: Files
-    description: Everything to do with files, but only *after* they have been uploaded
-  - name: Upload
-    description: All communications to do with uploading
-  - name: Bff
-    description: BFF (Backend-for-Frontend) API
+  - name: Cloudflare
+    description: Everything to do with interactions with cloudflare
+  - name: Core
+    description: Common search and other operations touching multiple operations to aggregate data
 
 servers:
-  - url: https://bff-{stage}.cubecommons.ca
+  - url: https://cube-svc-{stage}.cubecommons.ca
     description: CUBE's shared API server instances, including production
     variables:
       stage:
         enum:
-          # # DEV, UNSTABLE and STAGING are stages in the development environment
           - dev
           - unstable
-          # - staging
-
-          # # Both SANDBOX and LIVE are stages in the production environment
-          # - sandbox
-          # - live
         default: dev
         description: deployment stage
 
@@ -60,67 +41,66 @@ servers:
     variables:
       port:
         enum:
-          - '8084'
-          - '18084'
-        default: '8084'
+          - '8080'
+        default: '8080'
 
 security: 
   - jwt_logged_in: []
 
 paths:
   '/upload/video-tus-reservation':
-    $ref: ./cloudflare-microservice.yaml#/paths/~1upload~1video-tus-reservation
+    $ref: ./cloudflare.yaml#/paths/~1upload~1video-tus-reservation
 
   '/upload/s3-presigned-url':
-    $ref: ./cloudflare-microservice.yaml#/paths/~1upload~1s3-presigned-url
+    $ref: ./cloudflare.yaml#/paths/~1upload~1s3-presigned-url
 
   '/files/{fileId}':
-    $ref: ./cloudflare-microservice.yaml#/paths/~1files~1{fileId}
+    $ref: ./cloudflare.yaml#/paths/~1files~1{fileId}
 
   '/content':
-    $ref: ./content-microservice.yaml#/paths/~1content
+    $ref: ./content.yaml#/paths/~1content
 
   '/vtt':
-    $ref: ./content-microservice.yaml#/paths/~1vtt
+    $ref: ./content.yaml#/paths/~1vtt
 
   '/content/{contentId}':
-    $ref: ./content-microservice.yaml#/paths/~1content~1{contentId}
+    $ref: ./content.yaml#/paths/~1content~1{contentId}
 
   '/report':
-    $ref: ./content-microservice.yaml#/paths/~1report
+    $ref: ./content.yaml#/paths/~1report
 
   '/auth/user':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1user
+    $ref: ./identity.yaml#/paths/~1auth~1user
 
   '/auth/login':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1login
+    $ref: ./identity.yaml#/paths/~1auth~1login
 
   '/auth/anonymous':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1anonymous
+    $ref: ./identity.yaml#/paths/~1auth~1anonymous
 
   '/auth/email':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1email
+    $ref: ./identity.yaml#/paths/~1auth~1email
 
   '/auth/password':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1password
+    $ref: ./identity.yaml#/paths/~1auth~1password
 
   '/auth/email/verify/{token}':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1email~1verify~1{token}
+    $ref: ./identity.yaml#/paths/~1auth~1email~1verify~1{token}
 
   '/auth/forgot-password':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1forgot-password
+    $ref: ./identity.yaml#/paths/~1auth~1forgot-password
 
   '/auth/resend-email-verification':
-    $ref: ./identity-microservice.yaml#/paths/~1auth~1resend-email-verification
+    $ref: ./identity.yaml#/paths/~1auth~1resend-email-verification
 
   '/email/contact-us':
-    $ref: ./identity-microservice.yaml#/paths/~1email~1contact-us
+    $ref: ./identity.yaml#/paths/~1email~1contact-us
 
   '/profiles':
-    $ref: ./profile-microservice.yaml#/paths/~1profiles
+    $ref: ./profile.yaml#/paths/~1profiles
 
   '/profiles/{profileId}':
-    $ref: ./profile-microservice.yaml#/paths/~1profiles~1{profileId}
+    $ref: ./profile.yaml#/paths/~1profiles~1{profileId}
 
   '/collaborators':
     get:
@@ -128,16 +108,16 @@ paths:
       summary: get a list of collaborators
       description: get a list of collaborators
       tags:
-        - Bff
+        - Core
       responses:
         '200':
           description: get a list of collaborators
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/bff_collaborators_response.json
+                $ref: ../schemas/profile/collaborators_response.json
               example:
-                $ref: ../schemas/profiles/bff_collaborators_response.example.json
+                $ref: ../schemas/profile/collaborators_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -165,7 +145,7 @@ paths:
       summary: Search based on query parameters
       description: Returns search results based on the provided query parameters.
       tags:
-        - Bff
+        - Core
       parameters:
         - name: offset
           in: query
@@ -190,7 +170,7 @@ paths:
           description: Filters for which content is returned
           required: false
           schema:
-            $ref: ../schemas/bff/search_filters.json
+            $ref: ../schemas/search/search_filters.json
         - name: scope
           in: query
           description: whether to scope by profiles, content or both.
@@ -203,9 +183,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/bff/search_response.json
+                $ref: ../schemas/search/search_response.json
               example:
-                $ref: ../schemas/bff/search_response.example.json
+                $ref: ../schemas/search/search_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -240,16 +220,16 @@ paths:
       summary: Get profile details by tag
       description: Get profile details by tag.
       tags:
-        - Bff
+        - Core
       responses:
         '200':
           description: Profile details
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/bff_get_profile_by_tag_response.json
+                $ref: ../schemas/profile/get_profile_by_tag_response.json
               example:
-                $ref: ../schemas/profiles/bff_get_profile_by_tag_response.example.json
+                $ref: ../schemas/profile/get_profile_by_tag_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

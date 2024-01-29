@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/get_profile_response.json",
-    "title": "Get profile response",
-    "description": "Get profile response",
+    "id": "https://docs.cubecommons.ca/schemas/profile/get_profile_by_tag_response.json",
+    "title": "Get profile by tag",
+    "description": "Get profile by tag",
     "type": "object",
     "properties": {
         "data": {
@@ -20,20 +20,24 @@
                 "tag": {
                     "$ref": "./storage.json#/properties/tag"
                 },
-                "heroFileId": {
-                    "$ref": "./storage.json#/properties/heroFileId"
+                "heroUrl": {
+                    "type": "string",
+                    "format": "url"
                 },
-                "logoFileId": {
-                    "$ref": "./storage.json#/properties/logoFileId"
+                "logoUrl": {
+                    "type": "string",
+                    "format": "url"
                 },
                 "description": {
                     "$ref": "./storage.json#/properties/description"
                 },
-                "descriptionFileId": {
-                    "$ref": "./storage.json#/properties/descriptionFileId"
+                "descriptionUrl": {
+                    "type": "string",
+                    "format": "url"
                 },
-                "budget": {
-                    "$ref": "./storage.json#/properties/budget"
+                "content": {
+                    "type": "array",
+                    "items": {}
                 }
             },
             "required": ["id", "organization", "website", "tag"]

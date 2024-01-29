@@ -1,14 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Profile Microservice - The Association for Cube Commons Canada
-
-  # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
-  # In general, use semantic versioning: http://semver.org/
-  version: '0.0.1'
-  
+  title: Profile - The Association for Cube Commons Canada\
+  version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
-    # Profile Microservice
-    The Profile microservice is the custodian of Content Creator profiles.
+    # Profile APIs
+
+    The Profile APIs are the custodian of Content Creator profiles.
 
   contact:
     email: tech@cubecommons.ca
@@ -21,34 +18,10 @@ tags:
   - name: Profile
     description: The Profile microservice is the custodian of Content Creator profiles.
 
-servers:
-  - url: http://localhost:{port}
-    description: Local development
-    variables:
-      port:
-        enum:
-          - '8083'
-          - '18083'
-        default: '8083'
-
 security: 
   - jwt_logged_in: []
 
 paths:
-  '/':
-      get:
-        operationId: profile_status
-        summary: Profile service status
-        description: Check the run status of the profile service
-        tags:
-          - Profile
-        responses:
-          '200':
-            description: Status of profile service
-            $ref: '#/components/responses/success200'
-          '500':
-            $ref: '#/components/responses/error500'
-
   '/profiles':
     get:
       operationId: get_profiles
@@ -62,9 +35,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/get_profile_response.json
+                $ref: ../schemas/profile/get_profile_response.json
               example:
-                $ref: ../schemas/profiles/get_profile_response.example.json
+                $ref: ../schemas/profile/get_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -95,9 +68,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/profiles/create_profile_request.json
+              $ref: ../schemas/profile/create_profile_request.json
             example:
-              $ref: ../schemas/profiles/create_profile_request.example.json
+              $ref: ../schemas/profile/create_profile_request.example.json
         description: Create Profile Request
         required: true
       responses:
@@ -106,9 +79,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/create_profile_response.json
+                $ref: ../schemas/profile/create_profile_response.json
               example:
-                $ref: ../schemas/profiles/create_profile_response.example.json
+                $ref: ../schemas/profile/create_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -151,9 +124,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/get_profile_response.json
+                $ref: ../schemas/profile/get_profile_response.json
               example:
-                $ref: ../schemas/profiles/get_profile_response.example.json
+                $ref: ../schemas/profile/get_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -184,9 +157,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/profiles/update_profile_request.json
+              $ref: ../schemas/profile/update_profile_request.json
             example:
-              $ref: ../schemas/profiles/update_profile_request.example.json
+              $ref: ../schemas/profile/update_profile_request.example.json
         description: Profile Update
         required: true
       responses:
@@ -195,9 +168,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/update_profile_response.json
+                $ref: ../schemas/profile/update_profile_response.json
               example:
-                $ref: ../schemas/profiles/update_profile_response.example.json
+                $ref: ../schemas/profile/update_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -230,9 +203,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/delete_profile_response.json
+                $ref: ../schemas/profile/delete_profile_response.json
               example:
-                $ref: ../schemas/profiles/delete_profile_response.example.json
+                $ref: ../schemas/profile/delete_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -273,9 +246,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/get_profile_response.json
+                $ref: ../schemas/profile/get_profile_response.json
               example:
-                $ref: ../schemas/profiles/get_profile_response.example.json
+                $ref: ../schemas/profile/get_profile_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -307,9 +280,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../schemas/profiles/get_profiles_by_id_list_request.json
+              $ref: ../schemas/profile/get_profiles_by_id_list_request.json
             example:
-              $ref: ../schemas/profiles/get_profiles_by_id_list_request.example.json
+              $ref: ../schemas/profile/get_profiles_by_id_list_request.example.json
         description: Get profiles by id list request
         required: true
       responses:
@@ -318,9 +291,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/get_profiles_by_id_list_response.json
+                $ref: ../schemas/profile/get_profiles_by_id_list_response.json
               example:
-                $ref: ../schemas/profiles/get_profiles_by_id_list_response.example.json
+                $ref: ../schemas/profile/get_profiles_by_id_list_response.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':
@@ -373,9 +346,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../schemas/profiles/storage_list.json
+                $ref: ../schemas/profile/storage_list.json
               example:
-                $ref: ../schemas/profiles/storage_list.example.json
+                $ref: ../schemas/profile/storage_list.example.json
         '400':
           $ref: '#/components/responses/error400'
         '401':

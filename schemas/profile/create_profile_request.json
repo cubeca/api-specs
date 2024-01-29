@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://docs.cubecommons.ca/schemas/profiles/update_profile_request.json",
-    "title": "Update Profile Request",
-    "description": "Update Profile Request",
+    "id": "https://docs.cubecommons.ca/schemas/profile/create_profile_request.json",
+    "title": "Create Profile Request",
+    "description": "Create Profile Request",
     "type": "object",
     "properties": {
         "organization": {
@@ -10,6 +10,9 @@
         },
         "website": {
             "$ref": "./storage.json#/properties/website"
+        },
+        "tag": {
+            "$ref": "./storage.json#/properties/tag"
         },
         "heroFileId": {
             "$ref": "./storage.json#/properties/heroFileId"
@@ -22,11 +25,7 @@
         },
         "descriptionFileId": {
             "$ref": "./storage.json#/properties/descriptionFileId"
-        },
-        "budget": {
-            "$ref": "./storage.json#/properties/budget"
         }
     },
-    "minProperties": 1,
-    "additionalProperties": false
+    "required": ["organization", "website", "tag"]
 }
