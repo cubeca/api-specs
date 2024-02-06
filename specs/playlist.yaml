@@ -129,7 +129,7 @@ paths:
 
   '/playlist/{playlistId}':
     get:
-      operationId: get_playlist
+      operationId: get_playlist_by_id
       summary: Get playlist details
       description: Get playlist details.
       tags:
