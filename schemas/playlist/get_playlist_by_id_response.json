@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/get_playlist_by_id_response.json",
+    "title": "Get playlist by id response",
+    "description": "Get playlist by id response",
+    "type": "object",
+    "properties": {
+        "meta": {
+            "type": "object",
+            "properties": {
+                "profileId": {
+                    "$ref": "./storage.json#/properties/profileId"
+                },
+                "userId": {
+                    "$ref": "./storage.json#/properties/userId"
+                },
+                "offset": {
+                    "type": "integer",
+                    "description": "Offset into the result set"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Max number of items to return"
+                },
+                "filters": {
+                    "$ref": "./filters.json",
+                    "description": "Filters for which content is returned"
+                }
+            },
+            "required": ["offset", "limit"]
+        },
+        "data": {
+            "type": "array",
+            "items": {
+                "$ref": "./storage.json"
+            }
+        }
+    },
+    "required": ["meta", "data"]
+}

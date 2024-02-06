@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/storage.json",
+    "title": "Playlist Storage",
+    "description": "Storage schema for playlists",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the playlist"
+        },
+        "profileId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the associated profile"
+        },
+        "userId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the associated user"
+        },
+        "title": {
+            "type": "string",
+            "description": "Title of the content"
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of the content"
+        },
+        "contentIds": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "description": "list of associated content items"
+        }
+    },
+    "required": ["profileId", "userId", "title", "description", "contentIds"]
+}

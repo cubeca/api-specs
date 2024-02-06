@@ -1,0 +1,294 @@
+openapi: 3.0.3
+info:
+  title: Playlist - The Association for Cube Commons Canada
+  version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
+  description: |
+    The Playlist APIs are used to manage the lifespan of playlists and their items.
+  contact:
+    email: tech@cubecommons.ca
+    url: https://github.com/cubeca
+  license:
+    name: UNLICENSED
+    url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
+
+tags:
+  - name: Playlist
+    description: Playlists arranging content items in a specific order
+
+security: 
+  - jwt_logged_in: []
+
+paths:
+  '/playlist':
+    get:
+      operationId: get_playlist
+      summary: Get get_playlist by profile or user Id
+      description: Get get_playlist by profile or user Id
+      tags:
+        - Playlist
+      parameters:
+        - name: offset
+          in: query
+          description: Offset into the result set
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Max number of items to return
+          required: true
+          schema:
+            type: integer
+        - name: profileId
+          in: query
+          description: ID of profile to return playlist for
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: userId
+          in: query
+          description: ID of user to return playlist for
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of playlist with optionally applied filters
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/content/get_playlist_by_id_response.json
+              example:
+                $ref: ../schemas/content/get_playlist_by_id_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    post:
+      operationId: add_playlist
+      summary: Add playlist
+      description: Add playlist.
+      tags:
+        - Playlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/playlist/add_playlist_request.json
+            example:
+              $ref: ../schemas/playlist/add_playlist_request.example.json
+        description: Add playlist
+        required: true
+      responses:
+        '200':
+          description: Add playlist
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/playlist/add_playlist_response.json
+              example:
+                $ref: ../schemas/playlist/add_playlist_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/playlist/{playlistId}':
+    get:
+      operationId: get_playlist
+      summary: Get playlist details
+      description: Get playlist details.
+      tags:
+        - Playlist
+      parameters:
+        - name: playlistId
+          in: path
+          description: playlist ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: playlist details
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/playlist/get_playlist_response.json
+              example:
+                $ref: ../schemas/playlist/get_playlist_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    post:
+      operationId: update_playlist
+      summary: Update playlist
+      description: Update playlist.
+      tags:
+        - Playlist
+      parameters:
+        - name: playlistId
+          in: path
+          description: playlist ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/playlist/update_playlist_request.json
+            example:
+              $ref: ../schemas/playlist/update_playlist_request.example.json
+        description: Update playlist
+        required: true
+      responses:
+        '200':
+          description: Update playlist
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/playlist/update_playlist_response.json
+              example:
+                $ref: ../schemas/playlist/update_playlist_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    delete:
+      operationId: delete_playlist
+      summary: Delete playlist
+      description: Delete playlist.
+      tags:
+        - Playlist
+      parameters:
+        - name: playlistId
+          in: path
+          description: playlist ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Delete playlist
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/playlist/delete_playlist_response.json
+              example:
+                $ref: ../schemas/playlist/delete_playlist_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+    
+components:
+  responses:
+    success200:
+      $ref: './_partials/common-components.yaml#/responses/success200'
+    error400:
+      $ref: './_partials/common-components.yaml#/responses/error400'
+    error401:
+      $ref: './_partials/common-components.yaml#/responses/error401'
+    error403:
+      $ref: './_partials/common-components.yaml#/responses/error403'
+    error404:
+      $ref: './_partials/common-components.yaml#/responses/error404'
+    error405:
+      $ref: './_partials/common-components.yaml#/responses/error405'
+    error406:
+      $ref: './_partials/common-components.yaml#/responses/error406'
+    error422:
+      $ref: './_partials/common-components.yaml#/responses/error422'
+    error429:
+      $ref: './_partials/common-components.yaml#/responses/error429'
+    error500:
+      $ref: './_partials/common-components.yaml#/responses/error500'
+    error503:
+      $ref: './_partials/common-components.yaml#/responses/error503'
+
+  securitySchemes:
+    jwt_logged_in:
+      $ref: './_partials/common-components.yaml#/securitySchemes/jwt_logged_in'

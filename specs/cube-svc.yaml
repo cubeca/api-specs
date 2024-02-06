@@ -22,6 +22,8 @@ tags:
     description: Content (e.g. videos, pdfs, audio, etc)
   - name: Cloudflare
     description: Everything to do with interactions with cloudflare
+  - name: Playlist
+    description: Playlists arranging content items in a specific order
   - name: Common
     description: Common search and other operations touching multiple operations to aggregate data
 

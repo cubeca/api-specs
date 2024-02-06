@@ -1,0 +1,26 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/add_playlist_request.json",
+    "title": "Add playlist request",
+    "description": "Adds playlist request",
+    "type": "object",
+    "properties": {
+        "profileId": {
+            "$ref": "./storage.json#/properties/profileId"
+        },
+        "userId": {
+            "$ref": "./storage.json#/properties/userId"
+        },
+        "title": {
+            "$ref": "./storage.json#/properties/title"
+        },
+        "description": {
+            "$ref": "./storage.json#/properties/description"
+        },
+
+        "contentIds": {
+            "$ref": "./storage.json#/properties/contentIds"
+        }
+    },
+    "required": ["profileId", "userId", "title", "description", "contentIds"]
+}

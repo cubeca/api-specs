@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/delete_playlist_response.json",
+    "title": "Delete playlist response",
+    "description": "Delete playlist response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "./storage.json",
+            "description": "playlist details"
+        }
+    },
+    "required": ["data"]
+}

@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/update_playlist_response.json",
+    "title": "Update playlist response",
+    "description": "Update playlist response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "./storage.json",
+            "description": "playlist details"
+        }
+    },
+    "required": ["data"]
+}

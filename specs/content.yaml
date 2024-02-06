@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Content Microservice - The Association for Cube Commons Canada
+  title: Content - The Association for Cube Commons Canada
   version: '0.0.1' # BEWARE: This is just a placeholder and will be set by the package publishing scripts.
   description: |
     The Content APIs are the "custodian" of "content pieces", which are usually one main media file,

@@ -1,0 +1,14 @@
+{
+    "data": [
+        {
+            "id": "9a4801b4-006c-4cc3-b80d-3ac929937fd6",
+            "createdAt": "2023-05-08T20:12:06.291Z",
+            "updatedAt": "2023-05-08T20:12:06.291Z",
+            "title": "Retrieve Test",
+            "profileId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
+            "userId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
+            "description": "This is a test",
+            "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"]
+        }
+    ]
+}
