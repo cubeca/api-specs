@@ -21,10 +21,6 @@
                 "limit": {
                     "type": "integer",
                     "description": "Max number of items to return"
-                },
-                "filters": {
-                    "$ref": "./filters.json",
-                    "description": "Filters for which content is returned"
                 }
             },
             "required": ["offset", "limit"]
