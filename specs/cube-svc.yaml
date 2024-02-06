@@ -104,6 +104,12 @@ paths:
   '/profiles/{profileId}':
     $ref: ./profile.yaml#/paths/~1profiles~1{profileId}
 
+  '/playlist':
+    $ref: ./playlist.yaml#/paths/~1playlist
+    
+  '/playlist/{playlistId}':
+    $ref: ./playlist.yaml#/paths/~1playlist~1{playlistId}
+
   '/collaborators':
     get:
       operationId: collaborators
