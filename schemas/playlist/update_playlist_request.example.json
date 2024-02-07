@@ -3,5 +3,6 @@
     "userId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
     "title": "Test Video Upload",
     "description": "This text field shall describe the content file.",
+    "coverImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
     "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"]
 }

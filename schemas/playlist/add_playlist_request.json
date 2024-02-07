@@ -17,7 +17,9 @@
         "description": {
             "$ref": "./storage.json#/properties/description"
         },
-
+        "coverImageFileId": {
+            "$ref": "./storage.json#/properties/coverImageFileId"
+        },
         "contentIds": {
             "$ref": "./storage.json#/properties/contentIds"
         }

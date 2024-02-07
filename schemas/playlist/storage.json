@@ -24,6 +24,15 @@
             "type": "string",
             "description": "Title of the content"
         },
+        "coverImageFileId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the cover image"
+        },
+        "coverImageExternalUrl": {
+            "type": "string",
+            "description": "URL for the cover image"
+        },
         "description": {
             "type": "string",
             "description": "Description of the content"
@@ -35,6 +44,13 @@
                 "format": "uuid"
             },
             "description": "list of associated content items"
+        },
+        "contentItems": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "description": "List of content items"
         }
     },
     "required": ["profileId", "userId", "title", "description", "contentIds"]

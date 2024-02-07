@@ -5,6 +5,7 @@
         "updatedAt": "2023-05-08T19:34:30.523Z",
         "title": "Create Content Test",
         "profileId": "4863f84d-7ca5-4a00-bd80-b0c87e005711",
+        "coverImageExternalUrl": "https://www.google.com",
         "description": "This is a test",
         "userId": "360cfe42-0db2-47d1-926b-9e627a22dd5c",
         "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"]
