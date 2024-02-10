@@ -80,6 +80,44 @@
                 }
             },
             "required": ["meta", "data", "status", "error"]
+        },
+        "playlistResults": {
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "type": "object",
+                    "properties": {
+                        "offset": {
+                            "type": "integer",
+                            "description": "Offset into the result set"
+                        },
+                        "limit": {
+                            "type": "integer",
+                            "description": "Max number of items to return"
+                        },
+                        "filters": {
+                            "$ref": "./search_filters.json",
+                            "description": "Filters for which profiles are returned"
+                        }
+                    },
+                    "required": ["offset", "limit"]
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "../playlist/storage.json"
+                    }
+                },
+                "status": {
+                    "type": "integer",
+                    "description": "HTTP status code"
+                },
+                "error": {
+                    "type": "string",
+                    "description": "Error message, if any"
+                }
+            },
+            "required": ["meta", "data", "status", "error"]
         }
     },
     "required": ["contentResults", "profileResults"]

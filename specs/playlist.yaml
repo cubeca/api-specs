@@ -263,6 +263,113 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
+  
+  '/playlist/addContent/{playlistId}':
+    post:
+      operationId: add_content_to_playlist
+      summary: Add content to playlist
+      description: Add content to playlist.
+      tags:
+        - Playlist
+      parameters:
+        - name: playlistId
+          in: path
+          description: playlist ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/playlist/add_content_to_playlist_request.json
+            example:
+              $ref: ../schemas/playlist/add_content_to_playlist_request.example.json
+        description: Add content to playlist
+        required: true
+      responses:
+        '200':
+          description: Add content to playlist
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/playlist/add_content_to_playlist_response.json
+              example:
+                $ref: ../schemas/playlist/add_content_to_playlist_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
+  '/playlist/removeCotent/{playlistId}':
+    post:
+      operationId: remove_content_from_playlist
+      summary: Remove content from playlist
+      description: Remove content from playlist.
+      tags:
+        - Playlist
+      parameters:
+        - name: playlistId
+          in: path
+          description: playlist ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/playlist/remove_content_from_playlist_request.json
+            example:
+              $ref: ../schemas/playlist/remove_content_from_playlist_request.example.json
+        description: Remove content from playlist
+        required: true
+      responses:
+        '200':
+          description: Remove content from playlist
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/playlist/remove_content_from_playlist_response.json
+              example:
+                $ref: ../schemas/playlist/remove_content_from_playlist_response.example.json
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
     
 components:
   responses:

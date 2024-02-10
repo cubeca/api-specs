@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/add_content_to_playlist_response.json",
+    "title": "Add content to playlist response",
+    "description": "Add content to playlist response",
+    "type": "object",
+    "properties": {
+        "data": {
+            "$ref": "./storage.json",
+            "description": "playlist details"
+        }
+    },
+    "required": ["data"]
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/add_content_to_playlist_request.json",
+    "title": "Add content to playlist request",
+    "description": "Adds content to playlist request",
+    "type": "object",
+    "properties": {
+        "contentId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the content."
+        }
+    },
+    "required": ["contentId"]
+}

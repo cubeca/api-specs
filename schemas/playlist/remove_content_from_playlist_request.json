@@ -1,0 +1,15 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/playlist/remove_content_from_playlist_request.json",
+    "title": "remove content from playlist request",
+    "description": "Removes content from playlist request",
+    "type": "object",
+    "properties": {
+        "contentId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the content."
+        }
+    },
+    "required": ["contentId"]
+}

@@ -1,67 +1,82 @@
 {
-  "contentResults": {
-    "meta": {
-      "offset": 0,
-      "limit": 10,
-      "filters": {}
+    "contentResults": {
+        "meta": {
+            "offset": 0,
+            "limit": 10,
+            "filters": {}
+        },
+        "data": [
+            {
+                "id": "d09d098c-1d51-4186-a5ef-a38420350121",
+                "created_at": "2023-08-11T17:33:48.817Z",
+                "updated_at": "2023-08-11T17:33:48.817Z",
+                "data": {
+                    "tags": ["exercises", "art", "rest", "BC", "still a string?"],
+                    "type": "video",
+                    "title": "Retrieve Test",
+                    "profileId": "f211042e-3225-4da7-97ba-2c2d901d485f",
+                    "description": "9eb482fd-8670-41c6-a762-4cb75d18f599",
+                    "mediaFileId": "360cfe42-0db2-47d1-926b-9e627a22dd52",
+                    "contributors": ["still a string?"],
+                    "collaborators": ["f211042e-3225-4da7-97ba-2c2d901d485f", "dde4f681-6b70-4f45-bc40-2f3d2ac2b6ab"],
+                    "coverImageText": "Someone saying something",
+                    "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab",
+                    "vttFileId": "5e090213-b892-478a-901b-5f0317937fc6"
+                }
+            }
+        ],
+        "status": 200,
+        "error": null
     },
-    "data": [
-      {
-        "id": "d09d098c-1d51-4186-a5ef-a38420350121",
-        "created_at": "2023-08-11T17:33:48.817Z",
-        "updated_at": "2023-08-11T17:33:48.817Z",
-        "data": {
-          "tags": ["exercises", "art", "rest", "BC", "still a string?"],
-          "type": "video",
-          "title": "Retrieve Test",
-          "profileId": "f211042e-3225-4da7-97ba-2c2d901d485f",
-          "description": "9eb482fd-8670-41c6-a762-4cb75d18f599",
-          "mediaFileId": "360cfe42-0db2-47d1-926b-9e627a22dd52",
-          "contributors": ["still a string?"],
-          "collaborators": [
-            "f211042e-3225-4da7-97ba-2c2d901d485f",
-            "dde4f681-6b70-4f45-bc40-2f3d2ac2b6ab"
-          ],
-          "coverImageText": "Someone saying something",
-          "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab",
-          "vttFileId": "5e090213-b892-478a-901b-5f0317937fc6"
-        }
-      }
-    ],
-    "status": 200,
-    "error": null
-  },
-  "profileResults": {
-    "meta": {
-      "offset": 0,
-      "limit": 10,
-      "filters": {}
+    "profileResults": {
+        "meta": {
+            "offset": 0,
+            "limit": 10,
+            "filters": {}
+        },
+        "data": [
+            {
+                "id": "f211042e-3225-4da7-97ba-2c2d901d485f",
+                "organization": "ezdcnr@hi2.in",
+                "website": "https://www.google.ca",
+                "tag": "ezdcnr@hi2.in",
+                "herofileid": "",
+                "logofileid": "9eb482fd-8670-41c6-a762-4cb75d18f599",
+                "description": "",
+                "descriptionfileid": "",
+                "budget": ""
+            },
+            {
+                "id": "dde4f681-6b70-4f45-bc40-2f3d2ac2b6ab",
+                "organization": "xcfyxkzj",
+                "website": "xcfyxkzj.com",
+                "tag": "xcfyxkzj",
+                "herofileid": "",
+                "logofileid": "9eb482fd-8670-41c6-a762-4cb75d18f599",
+                "description": "",
+                "descriptionfileid": "",
+                "budget": ""
+            }
+        ],
+        "status": 200,
+        "error": null
     },
-    "data": [
-      {
-        "id": "f211042e-3225-4da7-97ba-2c2d901d485f",
-        "organization": "ezdcnr@hi2.in",
-        "website": "https://www.google.ca",
-        "tag": "ezdcnr@hi2.in",
-        "herofileid": "",
-        "logofileid": "9eb482fd-8670-41c6-a762-4cb75d18f599",
-        "description": "",
-        "descriptionfileid": "",
-        "budget": ""
-      },
-      {
-        "id": "dde4f681-6b70-4f45-bc40-2f3d2ac2b6ab",
-        "organization": "xcfyxkzj",
-        "website": "xcfyxkzj.com",
-        "tag": "xcfyxkzj",
-        "herofileid": "",
-        "logofileid": "9eb482fd-8670-41c6-a762-4cb75d18f599",
-        "description": "",
-        "descriptionfileid": "",
-        "budget": ""
-      }
-    ],
-    "status": 200,
-    "error": null
-  }
+    "playlistResults": {
+        "meta": {
+            "offset": 0,
+            "limit": 10,
+            "filters": {}
+        },
+        "data": [
+            {
+                "id": "f211042e-3225-4da7-97ba-2c2d901d485f",
+                "title": "Retrieve Test",
+                "profileId": "f211042e-3225-4da7-97ba-2c2d901d485f",
+                "userId": "f211042e-3225-4da7-97ba-2c2d901d485f",
+                "contentIds": ["d09d098c-1d51-4186-a5ef-a38420350121"]
+            }
+        ],
+        "status": 200,
+        "error": null
+    }
 }
