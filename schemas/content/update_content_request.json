@@ -67,6 +67,9 @@
         },
         "vttQueued": {
             "$ref": "./storage.json#/properties/vttQueued"
+        },
+        "embedContentWhitelist": {
+            "$ref": "./storage.json#/properties/embedContentWhitelist"
         }
     },
     "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]

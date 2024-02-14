@@ -17,5 +17,6 @@
         "artist": [{ "name": "artist", "url": "https://google.ca" }]
     },
     "externalUrl": "www.google.com",
-    "tags": ["integration testing", "tags are hard"]
+    "tags": ["integration testing", "tags are hard"],
+    "embedContentWhitelist": ["www.google.com", "www.youtube.com"]
 }

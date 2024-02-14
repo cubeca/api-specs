@@ -116,6 +116,13 @@
         "vttQueued": {
             "type": "boolean",
             "description": "Indicator that VTT file will be generated."
+        },
+        "embedContentWhitelist": {
+            "type": "array",
+            "description": "Indicator that the content embed option is displayed",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "required": [
