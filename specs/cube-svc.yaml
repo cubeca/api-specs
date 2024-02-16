@@ -110,6 +110,12 @@ paths:
   '/playlist/{playlistId}':
     $ref: ./playlist.yaml#/paths/~1playlist~1{playlistId}
 
+  '/playlist/addContent/{playlistId}':
+    $ref: ./playlist.yaml#/paths/~1playlist~1addContent~1{playlistId}
+
+  '/playlist/removeContent/{playlistId}':
+    $ref: ./playlist.yaml#/paths/~1playlist~1removeContent~1{playlistId}
+
   '/collaborators':
     get:
       operationId: collaborators
