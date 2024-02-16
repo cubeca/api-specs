@@ -316,8 +316,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-
-  '/playlist/removeCotent/{playlistId}':
+  '/playlist/removeContent/{playlistId}':
     post:
       operationId: remove_content_from_playlist
       summary: Remove content from playlist

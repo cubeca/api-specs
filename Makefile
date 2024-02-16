@@ -19,13 +19,13 @@ setup_google_artifact_registry:
 	gcloud auth configure-docker northamerica-northeast2-docker.pkg.dev
 
 .PHONY: merge
-merge: merge--cube-svc merge--cloudflare merge--content merge--identity merge--profile
+merge: merge--cube-svc merge--cloudflare merge--content merge--identity merge--profile merge--playlist
 
 merge--%:
 	npx speccy resolve --internal-refs specs/$*.yaml -o build/$*.yaml
 
 .PHONY: filter
-filter: merge filter--cube-svc filter--cloudflare filter--content filter--identity filter--profile
+filter: merge filter--cube-svc filter--cloudflare filter--content filter--identity filter--profile filter--playlist
 
 filter--%:
 	cat $(HERE)/build/$*.yaml > $(HERE)/build/$*-filtered.yaml

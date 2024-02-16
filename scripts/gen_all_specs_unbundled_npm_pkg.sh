@@ -27,6 +27,7 @@ cloudflare
 content
 identity
 profile
+playlist
 EOF
 
 node ${HERE}/gen/all-specs-unbundled-npm-pkg/write-package.mjs ${HERE}/build/gen/all-specs-unbundled-npm-pkg ${NEW_VERSION} ${API_IDS}
