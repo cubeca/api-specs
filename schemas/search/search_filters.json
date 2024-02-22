@@ -57,6 +57,9 @@
         },
         "budget": {
             "$ref": "../profile/storage.json#/properties/budget"
+        },
+        "contentId": {
+            "$ref": "../content/storage.json#/properties/id"
         }
     },
     "required": []
