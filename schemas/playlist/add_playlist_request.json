@@ -22,6 +22,9 @@
         },
         "contentIds": {
             "$ref": "./storage.json#/properties/contentIds"
+        },
+        "embedPlaylistWhitelist": {
+            "$ref": "./storage.json#/properties/embedPlaylistWhitelist"
         }
     },
     "required": ["profileId", "userId", "title", "description", "contentIds"]

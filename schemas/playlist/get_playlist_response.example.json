@@ -8,7 +8,8 @@
             "profileId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
             "userId": "4863f84d-7ca5-4a00-bd80-b0c87e005712",
             "description": "This is a test",
-            "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"]
+            "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
+            "embedPlaylistWhitelist": ["google.com", "youtube.com"]
         }
     ]
 }

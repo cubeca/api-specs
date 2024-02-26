@@ -18,5 +18,5 @@
     },
     "externalUrl": "www.google.com",
     "tags": ["integration testing", "tags are hard"],
-    "embedContentWhitelist": ["www.google.com", "www.youtube.com"]
+    "embedContentWhitelist": ["google.com", "youtube.com"]
 }

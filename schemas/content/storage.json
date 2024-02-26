@@ -119,7 +119,7 @@
         },
         "embedContentWhitelist": {
             "type": "array",
-            "description": "Indicator that the content embed option is displayed",
+            "description": "a list of domains that can embed this content",
             "items": {
                 "type": "string"
             }

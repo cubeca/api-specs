@@ -4,5 +4,6 @@
     "title": "Test Video Upload",
     "description": "This text field shall describe the content file.",
     "coverImageFileId": "ac56cff2-553e-4f7f-94ea-c703c1c0dce6",
-    "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"]
+    "contentIds": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
+    "embedPlaylistWhitelist": ["google.com", "youtube.com"]
 }
