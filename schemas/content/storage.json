@@ -117,6 +117,10 @@
             "type": "boolean",
             "description": "Indicator that VTT file will be generated."
         },
+        "embedToggleEnabled": {
+            "type": "boolean",
+            "description": "Indicator that the embed toggle is enabled or disabled."
+        },
         "embedContentWhitelist": {
             "type": "array",
             "description": "a list of domains that can embed this content",

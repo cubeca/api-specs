@@ -70,6 +70,9 @@
         },
         "embedContentWhitelist": {
             "$ref": "./storage.json#/properties/embedContentWhitelist"
+        },
+        "embedToggleEnabled": {
+            "$ref": "./storage.json#/properties/embedToggleEnabled"
         }
     },
     "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]

@@ -16,5 +16,6 @@
     "collaborators": ["ac56cff2-553e-4f7f-94ea-c703c1c0dce6", "ac56cff2-553e-4f7f-94ea-c703c1c0dce6"],
     "tags": ["integration testing", "tags are hard"],
     "externalUrl": "www.google.com",
-    "embedContentWhitelist": ["www.google.com", "www.youtube.com"]
+    "embedContentWhitelist": ["www.google.com", "www.youtube.com"],
+    "embedToggleEnabled": true
 }
