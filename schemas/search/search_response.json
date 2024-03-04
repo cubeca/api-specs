@@ -120,5 +120,5 @@
             "required": ["meta", "data", "status", "error"]
         }
     },
-    "required": ["contentResults", "profileResults"]
+    "required": ["contentResults", "profileResults", "playlistResults"]
 }
