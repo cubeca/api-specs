@@ -39,6 +39,9 @@
         },
         "profileId": {
             "$ref": "./storage.json#/properties/profileId"
+        },
+        "languageTags": {
+            "$ref": "./storage.json#/properties/languageTags"
         }
     },
     "required": []

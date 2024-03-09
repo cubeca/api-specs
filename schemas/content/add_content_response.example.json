@@ -19,6 +19,7 @@
         "vttFileId": "5e090213-b892-478a-901b-5f0317937fc6",
         "externalUrl": "www.google.com",
         "embedContentWhitelist": ["www.google.com", "www.youtube.com"],
-        "embedToggleEnabled": true
+        "embedToggleEnabled": true,
+        "languageTags": ["english"]
     }
 }

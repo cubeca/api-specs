@@ -73,6 +73,9 @@
         },
         "embedToggleEnabled": {
             "$ref": "./storage.json#/properties/embedToggleEnabled"
+        },
+        "languageTags": {
+            "$ref": "./storage.json#/properties/languageTags"
         }
     },
     "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]
