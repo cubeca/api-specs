@@ -17,8 +17,8 @@
         },
         "type": {
             "type": "string",
-            "enum": ["video", "audio", "pdf", "link"],
-            "description": "Type of content (video, audio, pdf, or link)"
+            "enum": ["video", "audio", "pdf", "link", "document"],
+            "description": "Type of content (video, audio, pdf, link or document)"
         },
         "externalUrl": {
             "type": "string",
