@@ -1,42 +1,45 @@
 {
-  "$schema": "https://json-schema.org/draft-04/schema",
-  "title": "Filters",
-  "description": "Filters object for reducing content results",
-  "type": "object",
-  "properties": {
-    "profileId": {
-      "$ref": "./storage.json#/properties/profileId"
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "title": "Filters",
+    "description": "Filters object for reducing content results",
+    "type": "object",
+    "properties": {
+        "profileId": {
+            "$ref": "./storage.json#/properties/profileId"
+        },
+        "type": {
+            "$ref": "./storage.json#/properties/type"
+        },
+        "category": {
+            "$ref": "./storage.json#/properties/category"
+        },
+        "title": {
+            "$ref": "./storage.json#/properties/title"
+        },
+        "expiry": {
+            "$ref": "./storage.json#/properties/expiry"
+        },
+        "description": {
+            "$ref": "./storage.json#/properties/description"
+        },
+        "coverImageFileId": {
+            "$ref": "./storage.json#/properties/coverImageFileId"
+        },
+        "mediaFileId": {
+            "$ref": "./storage.json#/properties/mediaFileId"
+        },
+        "vttFileId": {
+            "$ref": "./storage.json#/properties/vttFileId"
+        },
+        "coverImageText": {
+            "$ref": "./storage.json#/properties/coverImageText"
+        },
+        "tags": {
+            "$ref": "./storage.json#/properties/tags"
+        },
+        "languageTags": {
+            "$ref": "./storage.json#/properties/languageTags"
+        }
     },
-    "type": {
-      "$ref": "./storage.json#/properties/type"
-    },
-    "category": {
-      "$ref": "./storage.json#/properties/category"
-    },
-    "title": {
-      "$ref": "./storage.json#/properties/title"
-    },
-    "expiry": {
-      "$ref": "./storage.json#/properties/expiry"
-    },
-    "description": {
-      "$ref": "./storage.json#/properties/description"
-    },
-    "coverImageFileId": {
-      "$ref": "./storage.json#/properties/coverImageFileId"
-    },
-    "mediaFileId": {
-      "$ref": "./storage.json#/properties/mediaFileId"
-    },
-    "vttFileId": {
-      "$ref": "./storage.json#/properties/vttFileId"
-    },
-    "coverImageText": {
-      "$ref": "./storage.json#/properties/coverImageText"
-    },
-    "tags": {
-      "$ref": "./storage.json#/properties/tags"
-    }
-  },
-  "required": []
+    "required": []
 }

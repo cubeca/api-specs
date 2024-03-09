@@ -127,6 +127,13 @@
             "items": {
                 "type": "string"
             }
+        },
+        "languageTags": {
+            "type": "array",
+            "description": "List of language tags associated with the content (optional)",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "required": [
