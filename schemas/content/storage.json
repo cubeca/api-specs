@@ -113,13 +113,6 @@
             },
             "description": "List of tags associated with the content (optional)"
         },
-        "languageTags": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "List of languages associated to this piece of content"
-        },
         "vttQueued": {
             "type": "boolean",
             "description": "Indicator that VTT file will be generated."

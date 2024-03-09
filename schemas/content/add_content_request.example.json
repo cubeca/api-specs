@@ -19,6 +19,5 @@
     "externalUrl": "www.google.com",
     "tags": ["integration testing", "tags are hard"],
     "embedContentWhitelist": ["google.com", "youtube.com"],
-    "embedToggleEnabled": true,
-    "languageTags": ["english"]
+    "embedToggleEnabled": true
 }
