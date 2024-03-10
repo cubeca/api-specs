@@ -38,6 +38,10 @@
                 "content": {
                     "type": "array",
                     "items": {}
+                },
+                "playlists": {
+                    "type": "array",
+                    "items": {}
                 }
             },
             "required": ["id", "organization", "website", "tag"]
