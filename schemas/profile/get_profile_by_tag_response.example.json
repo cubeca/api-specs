@@ -32,6 +32,13 @@
                     }
                 ]
             }
+        ],
+        "playlists": [
+            {
+                "id": "a2643e33-7c5b-4370-9faa-435a8d0ee119",
+                "title": "Title 1",
+                "contentIds": ["a2643e33-7c5b-4370-9faa-435a8d0ee119", "2e98cfd3-051e-4489-9522-71e6466dc050"]
+            }
         ]
     }
 }
