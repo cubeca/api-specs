@@ -25,6 +25,9 @@
         },
         "embedPlaylistWhitelist": {
             "$ref": "./storage.json#/properties/embedPlaylistWhitelist"
+        },
+        "embedToggleEnabled": {
+            "$ref": "./storage.json#/properties/embedToggleEnabled"
         }
     },
     "required": ["profileId", "userId", "title", "description", "contentIds"]

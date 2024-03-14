@@ -58,6 +58,10 @@
             "items": {
                 "type": "string"
             }
+        },
+        "embedToggleEnabled": {
+            "type": "boolean",
+            "description": "toggle to allow or disallow showing the embed code"
         }
     },
     "required": ["profileId", "userId", "title", "description", "contentIds"]
