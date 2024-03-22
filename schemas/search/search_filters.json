@@ -37,6 +37,9 @@
         "tags": {
             "$ref": "../content/storage.json#/properties/tags"
         },
+        "languageTags": {
+            "$ref": "../content/storage.json#/properties/languageTags"
+        },
         "organization": {
             "$ref": "../profile/storage.json#/properties/organization"
         },
