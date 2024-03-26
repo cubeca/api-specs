@@ -30,6 +30,6 @@ See also:
 - https://www.npmjs.com/package/@semantic-release/commit-analyzer
 - https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration
 
-## Notes 
+## Notes  
 
 You can add a `FORCE=True` prefix to the `make` invocations. Currently it allows the code generator for the API client NPM package to ignore validation errors.
