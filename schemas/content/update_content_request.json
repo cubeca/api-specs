@@ -76,6 +76,9 @@
         },
         "languageTags": {
             "$ref": "./storage.json#/properties/languageTags"
+        },
+        "vttLanguage": {
+            "$ref": "./storage.json#/properties/vttLanguage"
         }
     },
     "required": ["profileId", "type", "title", "expiry", "description", "coverImageText", "collaborators", "contributors"]

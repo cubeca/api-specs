@@ -134,6 +134,10 @@
             "items": {
                 "type": "string"
             }
+        },
+        "vttLanguage": {
+            "type": "string",
+            "description": "Language of the transcript file (optional)"
         }
     },
     "required": [

@@ -18,5 +18,6 @@
     "externalUrl": "www.google.com",
     "embedContentWhitelist": ["www.google.com", "www.youtube.com"],
     "embedToggleEnabled": true,
-    "languageTags": ["en", "fr"]
+    "languageTags": ["en", "fr"],
+    "vttLanguage": "en"
 }

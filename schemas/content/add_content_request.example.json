@@ -20,5 +20,6 @@
     "tags": ["integration testing", "tags are hard"],
     "embedContentWhitelist": ["google.com", "youtube.com"],
     "embedToggleEnabled": true,
-    "languageTags": ["en", "fr"]
+    "languageTags": ["en", "fr"],
+    "vttLanguage": "en"
 }

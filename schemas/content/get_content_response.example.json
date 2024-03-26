@@ -19,7 +19,8 @@
             "coverImageFileId": "e0821a87-caef-472f-affd-a657692850ab",
             "vttFileId": "5e090213-b892-478a-901b-5f0317937fc6",
             "embedContentWhitelist": ["www.google.com", "www.youtube.com"],
-            "embedToggleEnabled": true
+            "embedToggleEnabled": true,
+            "vttLanguage": "en"
         }
     ]
 }
