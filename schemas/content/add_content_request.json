@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft-04/schema",
     "id": "https://docs.cubecommons.ca/schemas/content/add_content_request.json",
     "title": "Add content request",
-    "description": "Add content request!",
+    "description": "Add content request",
     "type": "object",
     "properties": {
         "profileId": {
