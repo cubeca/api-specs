@@ -31,6 +31,9 @@
                 },
                 "descriptionFileId": {
                     "$ref": "./storage.json#/properties/descriptionFileId"
+                },
+                "status": {
+                    "$ref": "./storage.json#/properties/status"
                 }
             },
             "required": ["id", "organization", "website", "tag"]

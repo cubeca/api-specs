@@ -34,6 +34,9 @@
                 },
                 "budget": {
                     "$ref": "./storage.json#/properties/budget"
+                },
+                "status": {
+                    "$ref": "./storage.json#/properties/status"
                 }
             },
             "required": ["id", "organization", "website", "tag"]

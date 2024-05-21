@@ -34,6 +34,9 @@
                 "descriptionUrl": {
                     "type": "string",
                     "format": "url"
+                },
+                "status": {
+                    "$ref": "./storage.json#/properties/status"
                 }
             },
             "required": ["id", "organization", "website", "tag"]

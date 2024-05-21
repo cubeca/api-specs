@@ -8,7 +8,8 @@
         "logofileid": "9eb482fd-8670-41c6-a762-4cb75d18f599",
         "description": "",
         "descriptionfileid": "",
-        "budget": ""
+        "budget": "",
+        "status": "active"
     },
     {
         "id": "f211042e-3225-4da7-97ba-2c2d901d485f",
@@ -19,6 +20,7 @@
         "logofileid": "9eb482fd-8670-41c6-a762-4cb75d18f599",
         "description": "",
         "descriptionfileid": "",
-        "budget": ""
+        "budget": "",
+        "status": "active"
     }
 ]

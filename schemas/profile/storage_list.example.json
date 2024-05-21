@@ -1,10 +1,10 @@
 {
-    "meta":{
+    "meta": {
         "offset": 0,
         "limit": 1,
         "total": 1
     },
-    "data":[
+    "data": [
         {
             "id": "dc755421-8579-4d89-abd8-a9d4ad658652",
             "organization": "MOA",
@@ -13,7 +13,8 @@
             "heroFileId": "eef7ea4d-283e-4318-99da-b2196cb364b4",
             "logoFileId": "6cd093eb-88e0-472a-a259-ebe2394ec98e",
             "description": "Description of MOA Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare risus pretium vivamus leo, pharetra placerat mauris, viverra. Phasellus parturient amet sapien praesent semper tellus porttitor at auctor. Faucibus in at blandit dui eget in ut enim. Ultricies eu, lobortis vitae bibendum nunc tempor. Quam.",
-            "descriptionFileId": "fe4e37a4-1a22-4350-8d43-1934845452b1"
+            "descriptionFileId": "fe4e37a4-1a22-4350-8d43-1934845452b1",
+            "status": "active"
         }
     ]
 }

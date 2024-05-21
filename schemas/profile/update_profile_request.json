@@ -25,6 +25,9 @@
         },
         "budget": {
             "$ref": "./storage.json#/properties/budget"
+        },
+        "status": {
+            "$ref": "./storage.json#/properties/status"
         }
     },
     "minProperties": 1,

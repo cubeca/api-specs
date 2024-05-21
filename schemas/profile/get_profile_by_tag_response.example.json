@@ -7,6 +7,7 @@
         "heroUrl": "https://www-dev.cubecommons.ca/images/profile-hero.jpg",
         "logoUrl": "https://www-dev.cubecommons.ca/images/moa.svg",
         "description": "Description of MOA Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare risus pretium vivamus leo, pharetra placerat mauris, viverra. Phasellus parturient amet sapien praesent semper tellus porttitor at auctor. Faucibus in at blandit dui eget in ut enim. Ultricies eu, lobortis vitae bibendum nunc tempor. Quam.",
-        "descriptionUrl": "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3"
+        "descriptionUrl": "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3",
+        "status": "active"
     }
 }
