@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://docs.cubecommons.ca/schemas/profile/deactivate_profile_request.json",
+    "title": "deactivate_profile_request",
+    "description": "deactivate_profile_request",
+    "type": "object",
+    "properties": {
+        "profileId": {
+            "$ref": "./storage.json#/properties/id"
+        }
+    },
+    "required": ["profileId"]
+}

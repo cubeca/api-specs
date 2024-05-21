@@ -221,6 +221,49 @@ paths:
         '503':
           $ref: '#/components/responses/error503'
 
+  '/deactivateProfile':
+    post:
+      operationId: deactivateProfile
+      summary: Deactivate a profile
+      description: Deactivate a profile
+      tags:
+        - Common
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/profile/deactivate_profile_request.json
+            example:
+              $ref: ../schemas/profile/deactivate_profile_request.example.json
+      responses:
+        '200':
+          description: Successful deactivated profile result
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+        '400':
+          $ref: '#/components/responses/error400'
+        '401':
+          $ref: '#/components/responses/error401'
+        '403':
+          $ref: '#/components/responses/error403'
+        '404':
+          $ref: '#/components/responses/error404'
+        '405':
+          $ref: '#/components/responses/error405'
+        '406':
+          $ref: '#/components/responses/error406'
+        '422':
+          $ref: '#/components/responses/error422'
+        '429':
+          $ref: '#/components/responses/error429'
+        '500':
+          $ref: '#/components/responses/error500'
+        '503':
+          $ref: '#/components/responses/error503'
+
   '/profiles/tag/{tag}':
     parameters:
       - name: tag
