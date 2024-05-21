@@ -191,41 +191,7 @@ paths:
           $ref: '#/components/responses/error500'
         '503':
           $ref: '#/components/responses/error503'
-    delete:
-      operationId: delete_profile
-      summary: Delete profile
-      description: Delete profile details
-      tags:
-        - Profile
-      responses:
-        '200':
-          description: Delete a profile
-          content:
-            application/json:
-              schema:
-                $ref: ../schemas/profile/delete_profile_response.json
-              example:
-                $ref: ../schemas/profile/delete_profile_response.example.json
-        '400':
-          $ref: '#/components/responses/error400'
-        '401':
-          $ref: '#/components/responses/error401'
-        '403':
-          $ref: '#/components/responses/error403'
-        '404':
-          $ref: '#/components/responses/error404'
-        '405':
-          $ref: '#/components/responses/error405'
-        '406':
-          $ref: '#/components/responses/error406'
-        '422':
-          $ref: '#/components/responses/error422'
-        '429':
-          $ref: '#/components/responses/error429'
-        '500':
-          $ref: '#/components/responses/error500'
-        '503':
-          $ref: '#/components/responses/error503'
+
   '/profiles/tag/{tag}':
     parameters:
       - name: tag
