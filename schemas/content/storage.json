@@ -40,6 +40,10 @@
             "type": "string",
             "description": "Expiry date of the content"
         },
+        "live": {
+            "type": "string",
+            "description": "Live date of the content"
+        },
         "mediaLengh": {
             "type": "string",
             "description": "Typically the time duration of the content"

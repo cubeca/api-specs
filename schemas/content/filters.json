@@ -19,6 +19,9 @@
         "expiry": {
             "$ref": "./storage.json#/properties/expiry"
         },
+        "live": {
+            "$ref": "./storage.json#/properties/live"
+        },
         "description": {
             "$ref": "./storage.json#/properties/description"
         },

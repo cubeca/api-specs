@@ -4,6 +4,7 @@
     "category": ["video"],
     "title": "Test Video Upload",
     "expiry": "Say What??? Why should this ever be over?",
+    "live": "2024-01-01",
     "description": "This text field shall describe the content file.",
     "coverImageFileId": "24d6b370-a709-4a7b-b323-752186cd492d",
     "mediaFileId": "7b20d847-d928-4726-98dd-bab4bfcf8ccf",
