@@ -34,6 +34,7 @@ filter--%:
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) |= "default"' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '.info.version = "'$(NEW_VERSION)'"' $(HERE)/build/$*-filtered.yaml
+	yq --inplace '.info.license.name = "MIT" $(HERE)/build/$*-filtered.yaml
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
 .PHONY: filterdiff
@@ -67,7 +68,7 @@ gen_openapi_client--%:
 		--global-property modelDocs=true \
 		--global-property apiTests=true \
 		--global-property modelTests=true \
-		--additional-properties=npmName="@cubeca/$*-client-oas-axios",licenseName="MIT" \
+		--additional-properties=npmName="@cubeca/$*-client-oas-axios" \
 		$(OPENAPI_GENERATOR_OPTIONS) \
 		--output /build/gen/typescript-axios/$*
 
