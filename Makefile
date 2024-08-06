@@ -103,6 +103,7 @@ fix_openapi_client_package_json--%:
 		--inplace \
 		--output-format=json \
 		'.repository.url = "https://github.com/cubeca/api-specs.git"' \
+		'.info.license.name = "MIT"' \
 		$(HERE)/build/gen/typescript-axios/$*/package.json
 
 
