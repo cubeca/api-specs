@@ -22,6 +22,8 @@ npmRepository: https://registry.npmjs.org
 # # Generate string enums instead of objects for enum values.
 # stringEnums:
 
+licenseName: "MIT"
+
 # Generate code that conforms to ES6.
 supportsES6: true
 

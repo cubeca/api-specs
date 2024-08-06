@@ -68,7 +68,6 @@ gen_openapi_client--%:
 		--global-property apiTests=true \
 		--global-property modelTests=true \
 		--additional-properties=npmName="@cubeca/$*-client-oas-axios" \
-		--additional-properties=licenseName="MIT" \
 		$(OPENAPI_GENERATOR_OPTIONS) \
 		--output /build/gen/typescript-axios/$*
 
