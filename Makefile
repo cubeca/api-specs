@@ -34,7 +34,7 @@ filter--%:
 	yq --inplace 'del(.. | .["$$schema"]?)' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '(.. | select(has("const")) | .const | key) |= "default"' $(HERE)/build/$*-filtered.yaml
 	yq --inplace '.info.version = "'$(NEW_VERSION)'"' $(HERE)/build/$*-filtered.yaml
-	yq --inplace '.info.license.name = "MIT" $(HERE)/build/$*-filtered.yaml
+	yq --inplace '.info.license.name = "MIT"' $(HERE)/build/$*-filtered.yaml
 	yq --output-format=json '.' $(HERE)/build/$*-filtered.yaml > $(HERE)/build/$*-filtered.json
 
 .PHONY: filterdiff
