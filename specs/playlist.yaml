@@ -8,8 +8,7 @@ info:
     email: tech@cubecommons.ca
     url: https://github.com/cubeca
   license:
-    name: UNLICENSED
-    url: https://docs.npmjs.com/cli/v8/configuring-npm/package-json#license
+    name: MIT
 
 tags:
   - name: Playlist

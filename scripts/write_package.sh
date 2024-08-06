@@ -23,7 +23,7 @@ pkg=$(cat <<EOF
     "cubecommons",
     "openapi"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "echo \\"INFO: no build step necessary\\" && exit 0",
     "prepare": "npm run build"
