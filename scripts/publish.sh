@@ -16,6 +16,9 @@ if [ -n "$NEW_VERSION" ] && [ "$LATEST_PUBLISHED_VERSION" != "$NEW_VERSION" ]; t
   cat ./package.json | jq '.version = $ENV.NEW_VERSION' > ./package-edited.json
   mv ./package-edited.json ./package.json
 
+  cat ./package.json | jq '.license.name = MIT' > ./package-edited.json
+  mv ./package-edited.json ./package.json
+
   npm install
   npm run build
   npm publish --access public
