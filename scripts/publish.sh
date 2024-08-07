@@ -16,12 +16,8 @@ if [ -n "$NEW_VERSION" ] && [ "$LATEST_PUBLISHED_VERSION" != "$NEW_VERSION" ]; t
   cat ./package.json | jq '.version = $ENV.NEW_VERSION' > ./package-edited.json
   mv ./package-edited.json ./package.json
 
-  cat ./package.json
-
   cat ./package.json | jq '.license = "MIT"' > ./package-edited-license.json
   mv ./package-edited-license.json ./package.json
-
-  cat ./package.json
 
   npm install
   npm run build
