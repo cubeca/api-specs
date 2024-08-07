@@ -68,11 +68,9 @@ gen_openapi_client--%:
 		--global-property modelDocs=true \
 		--global-property apiTests=true \
 		--global-property modelTests=true \
-		--additional-properties=npmName="@cubeca/$*-client-oas-axios",licenseName="MIT",licenseUrl="https://opensource.org/licenses/MIT" \
+		--additional-properties=npmName="@cubeca/$*-client-oas-axios" \
 		$(OPENAPI_GENERATOR_OPTIONS) \
 		--output /build/gen/typescript-axios/$*
-
-	cp $(HERE)/LICENSE.md $(HERE)/build/gen/typescript-axios/$*/LICENSE.md
 
 .PHONY: gen_single_spec_bundled_npm_pkg
 gen_single_spec_bundled_npm_pkg: filter gen_single_spec_bundled_npm_pkg--cube-svc gen_single_spec_bundled_npm_pkg--cloudflare gen_single_spec_bundled_npm_pkg--content gen_single_spec_bundled_npm_pkg--identity gen_single_spec_bundled_npm_pkg--profile
